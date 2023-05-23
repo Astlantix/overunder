@@ -7,7 +7,7 @@ extern motor fl;
 extern motor fr;
 extern motor bl;
 extern motor br;
-extern controller Controller1;
+extern controller gamers;
 extern motor_group intake;
 extern digital_out flex;
 

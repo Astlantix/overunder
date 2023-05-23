@@ -58,6 +58,10 @@ void pre_auton(void) {
 
 
 
+void disabled() {
+
+}
+
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
