@@ -1,12 +1,25 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       coole                                                     */
-/*    Created:      5/8/2023, 5:11:51 PM                                      */
-/*    Description:  V5 project                                                */
+/*    Author:       VEX                                                       */
+/*    Created:      Thu Sep 26 2019                                           */
+/*    Description:  Competition Template                                      */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// fl                   motor         1               
+// fr                   motor         2               
+// bl                   motor         3               
+// br                   motor         4               
+// Controller1          controller                    
+// intake               motor_group   6, 5            
+// flex                 digital_out   A               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+#include "vex.h"
 
 using namespace vex;
 
@@ -26,6 +39,8 @@ competition Competition;
 /*---------------------------------------------------------------------------*/
 
 void pre_auton(void) {
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
 
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
