@@ -27,3 +27,12 @@ void Left(double joe) {
     bl.spinFor(fwd,joe,deg,false);
     br.spinFor(rev,joe,deg);
 }
+
+//Right function
+void Right(double joe) {
+    fl.spinFor(fwd,joe,deg,false);
+    fr.spinFor(rev,joe,deg,false);
+    bl.spinFor(rev,joe,deg,false);
+    br.spinFor(fwd,joe,deg);
+}
+
