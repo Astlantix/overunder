@@ -1,6 +1,5 @@
 #include "vex.h"
 
-using namespace vex;
 //degrees to inches value for auton functions
 double dti = 23;
 
