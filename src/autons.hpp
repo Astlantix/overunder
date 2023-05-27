@@ -34,4 +34,3 @@ void Right(double joe) {
     bl.spinFor(rev,joe,deg,false);
     br.spinFor(fwd,joe,deg);
 }
-
