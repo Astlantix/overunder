@@ -9,6 +9,8 @@ extern motor fl;
 extern motor fr;
 extern motor bl;
 extern motor br;
+extern motor ml;
+extern motor mr;
 extern controller gamers;
 extern motor_group intake;
 extern digital_out flex;

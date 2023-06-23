@@ -119,6 +119,17 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void dtcode(double x, double y) {
+  double rightspeed = (gamers.Axis3.position() * y) + (gamers.Axis4.position() * -x); //calculate the right speed
+  double leftspeed = (gamers.Axis3.position() * y) - (gamers.Axis4.position() * -x); //calculate the left speed
+  fl.spin(forward, leftspeed, percent); //set the left motor speed
+  ml.spin(forward,leftspeed,percent); //set the left motor speed
+  bl.spin(forward, leftspeed, percent); //set the left motor speed
+  fr.spin(forward, rightspeed, percent); //set the right motor speed
+  mr.spin(forward,rightspeed,percent); //set the right motor speed
+  br.spin(forward, rightspeed, percent); //set the right motor speed
+}
+
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
