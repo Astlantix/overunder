@@ -34,3 +34,15 @@ void Right(double joe) {
     bl.spinFor(reverse,joe,degrees,false);
     br.spinFor(fwd,joe,degrees);
 }
+
+void auton1() {
+
+}
+
+void auton2() {
+
+}
+
+void auton3() {
+    
+}

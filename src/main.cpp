@@ -58,15 +58,55 @@ void pre_auton(void) {
 
 int numofautons = 3;
 
+void printing(std::string text) {
+  gamers.Screen.clearScreen();
+  gamers.Screen.setCursor(1,1);
+  gamers.Screen.print(text.c_str());
+}
+
 
 void autonslctr() {
-
+  int auton = 1;
+  if(auton < 1) {
+    auton = numofautons;
+  }
+  if(auton > numofautons) {
+    auton = 1;
+  }
+  if(auton == 1) {
+    printing("Auton 1");
+  }
+  if(auton == 2) {
+    printing("Auton 2");
+  }
+  if(auton == 3) {
+    printing("Auton 3");
+  }
+  if(gamers.ButtonRight.pressing()) {
+    auton++;
+    wait(200,msec);
+  }
+  else if(gamers.ButtonLeft.pressing()) {
+    auton--;
+    wait(200,msec);
+  }
 }
 
 void autonomous(void) {
 
   // ..........................................................................
   // Insert autonomous user code here.
+  
+  if(auton == 1) {
+    auton1();
+  }
+  if(auton == 2) {
+    auton2();
+  }
+  if(auton == 3) {
+    auton3();
+  }
+
   // ..........................................................................
 }
 

@@ -2,14 +2,8 @@ using namespace vex;
 
 extern brain Brain;
 
-<<<<<<< HEAD
 
 // define your global instances of motors and other devices here
-extern motor fr;
-extern motor fl;
-extern motor br;
-extern motor bl;
-=======
 // VEXcode devices
 extern motor fl;
 extern motor fr;
@@ -25,4 +19,3 @@ extern digital_out flex;
  * This should be called at the start of your int main function.
  */
 void  vexcodeInit( void );
->>>>>>> 3acfd3635d33b937b9cbffc14abd59a0f0684397
