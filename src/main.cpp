@@ -64,9 +64,8 @@ void printing(std::string text) {
   gamers.Screen.print(text.c_str());
 }
 
-
+int auton = 1;
 void autonslctr() {
-  int auton = 1;
   if(auton < 1) {
     auton = numofautons;
   }
@@ -96,7 +95,7 @@ void autonomous(void) {
 
   // ..........................................................................
   // Insert autonomous user code here.
-  
+
   if(auton == 1) {
     auton1();
   }
