@@ -44,6 +44,8 @@ void pre_auton(void) {
   vexcodeInit();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
+  xpos.resetRotation();
+  ypos.resetRotation();
 }
 
 /*---------------------------------------------------------------------------*/
