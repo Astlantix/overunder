@@ -99,10 +99,10 @@ void autonomous(void) {
   if(auton == 1) {
     auton1();
   }
-  if(auton == 2) {
+  else if(auton == 2) {
     auton2();
   }
-  if(auton == 3) {
+  else if(auton == 3) {
     auton3();
   }
 

@@ -18,7 +18,9 @@ controller gamers = controller(primary);
 motor intakeMotorA = motor(PORT6, ratio18_1, false);
 motor intakeMotorB = motor(PORT5, ratio18_1, false);
 motor_group intake = motor_group(intakeMotorA, intakeMotorB);
-digital_out flex = digital_out(Brain.ThreeWirePort.A);
+digital_out flex = digital_out(Brain.ThreeWirePort.E);
+encoder xpos = encoder(Brain.ThreeWirePort.A);
+encoder ypos = encoder(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
