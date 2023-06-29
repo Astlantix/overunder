@@ -50,3 +50,68 @@ void travel(double xcor, double ycor) {
   turn(angleDiff);
   fwdrev(distance);
 }
+
+
+/*#include "vex.h"
+
+void odometry() {}
+
+double x = GPST.xPosition(inches);
+double y = GPST.yPosition(inches);
+void travel(double xcor, double ycor) {
+    double dist = sqrt(pow(xcor - x, 2) + pow(ycor - y, 2));
+    double angle = atan2(ycor - y, xcor - x);
+    while (dist > 0.5) {
+        double x = GPST.xPosition(inches);
+        double y = GPST.yPosition(inches);
+        double dist = sqrt(pow(xcor - x, 2) + pow(ycor - y, 2));
+        double angle = atan2(ycor - y, xcor - x);
+        double theta = GPST.heading(degrees);
+        double error = angle - theta;
+        double turn = error * 0.5;
+        double speed = dist * 0.5;
+        if (speed > 100) {
+            speed = 100;
+        }
+        if (speed < -100) {
+            speed = -100;
+        }
+        if (turn > 100) {
+            turn = 100;
+        }
+        if (turn < -100) {
+            turn = -100;
+        }
+        if (error > 180) {
+            error = error - 360;
+        }
+        if (error < -180) {
+            error = error + 360;
+        }
+        if (error > 0) {
+            if (error < 90) {
+                fl.spin(forward, speed + turn, percent);
+                bl.spin(forward, speed + turn, percent);
+                fr.spin(forward, speed - turn, percent);
+                br.spin(forward, speed - turn, percent);
+            } else {
+                fl.spin(forward, speed - turn, percent);
+                bl.spin(forward, speed - turn, percent);
+                fr.spin(forward, speed + turn, percent);
+                br.spin(forward, speed + turn, percent);
+            }
+        } else {
+            if (error > -90) {
+                fl.spin(forward, speed - turn, percent);
+                bl.spin(forward, speed - turn, percent);
+                fr.spin(forward, speed + turn, percent);
+                br.spin(forward, speed + turn, percent);
+            } else {
+                fl.spin(forward, speed + turn, percent);
+                bl.spin(forward, speed + turn, percent);
+                fr.spin(forward, speed - turn, percent);
+                br.spin(forward, speed - turn, percent);
+            }
+        }
+    }
+}*/
