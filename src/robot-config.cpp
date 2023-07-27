@@ -21,6 +21,7 @@ motor_group intake = motor_group(intakeMotorA, intakeMotorB);
 digital_out flex = digital_out(Brain.ThreeWirePort.E);
 encoder xpos = encoder(Brain.ThreeWirePort.A);
 encoder ypos = encoder(Brain.ThreeWirePort.C);
+inertial inert = inertial(PORT10);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

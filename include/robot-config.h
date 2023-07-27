@@ -16,6 +16,7 @@ extern motor_group intake;
 extern digital_out flex;
 extern encoder xpos;
 extern encoder ypos;
+extern inertial inert;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
