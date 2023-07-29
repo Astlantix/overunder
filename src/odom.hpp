@@ -31,6 +31,8 @@ void fwdrev (double joey) {
     double joe = joey * dti;
     fl.spinFor(fwd,joe,degrees,false);
     fr.spinFor(fwd,joe,degrees,false);
+    ml.spinFor(fwd,joe,degrees,false);
+    mr.spinFor(fwd,joe,degrees,false);
     bl.spinFor(fwd,joe,degrees,false);
     br.spinFor(fwd,joe,degrees);
 }
