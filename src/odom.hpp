@@ -1,73 +1,74 @@
 #include "vex.h"
 
-const double circ = (3.25 * atan(1) * 4)/36000; // circumference of the wheel
+const double π = atan(1) * 4;
 
-double xPosition = 0;
-double yPosition = 0;
+const double circ = (3.25 * π)/36000; // circumference of the wheel
+
+double xpos = 0;
+double ypos = 0;
 
 void odometry() {
 
-    double leftPrevious = lef.position(degrees);
-    double rightPrevious = rig.position(degrees);
-    double sidePrevious = side.position(degrees);
-    double anglePrevious = 0;
+    double lprev = lef.position(degrees);
+    double rprev = rig.position(degrees);
+    double sprev = side.position(degrees);
+    double angprev = 0;
     //double inertialPrevious = inertial.rotation(degrees);
 
-    double leftDistance = 1.75;
-    double rightDistance = 1.75;
-    double sideDistance = 1.75;
+    double ldist = 1.75;
+    double rdist = 1.75;
+    double sdist = 1.75;
 
     while (1) {
         
-        double deltaLeft = lef.position(degrees) - leftPrevious;
-        double deltaRight = rig.position(degrees) - rightPrevious;
-        double deltaSide = side.position(degrees) - sidePrevious;
-        //double deltaInertial = inertial.rotation(degrees) - inertialPrevious;
+        double ΔLeft = lef.position(degrees) - lprev;
+        double ΔRight = rig.position(degrees) - rprev;
+        double ΔSide = side.position(degrees) - sprev;
+        //double ΔInertial = inertial.rotation(degrees) - inertialPrevious;
 
-        deltaLeft *= circ;
-        deltaRight *= circ;
-        deltaSide *= circ;
-        //deltaInertial *= atan(1) * 4 / 18000;
+        ΔLeft *= circ;
+        ΔRight *= circ;
+        ΔSide *= circ;
+        //ΔInertial *= π / 18000;
 
-        double angleChange = (deltaLeft - deltaRight) / (deltaLeft + deltaRight);
-        //double angleChange = deltaInertial;
+        double angchange = (ΔLeft - ΔRight) / (ΔLeft + ΔRight);
+        //double angchange = ΔInertial;
 
-        double localDeltaX;
-        double localDeltaY;
+        double locΔX;
+        double locΔY;
         
-        if(angleChange==0) {
-            localDeltaX = deltaSide;
-            localDeltaY = deltaRight;
+        if(angchange==0) {
+            locΔX = ΔSide;
+            locΔY = ΔRight;
         }
 
         else {
-            double radiusFront = deltaLeft / angleChange - leftDistance;
-            double radiusSide = deltaRight / angleChange - sideDistance;
+            double radiusFront = ΔLeft / angchange - ldist;
+            double radiusSide = ΔRight / angchange - sdist;
 
-            localDeltaX = 2 * radiusSide * sin(angleChange / 2);
-            localDeltaY = 2 * radiusFront * sin(angleChange / 2);
+            locΔX = 2 * radiusSide * sin(angchange / 2);
+            locΔY = 2 * radiusFront * sin(angchange / 2);
         }
 
         //#1
-        double distance = sqrt(localDeltaX * localDeltaX + localDeltaY * localDeltaY);
-        xPosition += distance * cos(atan(localDeltaY / localDeltaX) - anglePrevious - angleChange / 2);
-        yPosition += distance * sin(atan(localDeltaY / localDeltaX) - anglePrevious - angleChange / 2);
+        double distance = sqrt(locΔX * locΔX + locΔY * locΔY);
+        xpos += distance * cos(atan(locΔY / locΔX) - angprev - angchange / 2);
+        ypos += distance * sin(atan(locΔY / locΔX) - angprev - angchange / 2);
 
         //#2
         /*
-        xPosition += localDeltaX * sin(anglePrevious + angleChange / 2) + localDeltaY * cose(anglePrevious + angleChange / 2);
-        yPosition += localDeltaX * cos(anglePrevious + angleChange / 2) - localDeltaY * sin(anglePrevious + angleChange / 2);
+        xpos += locΔX * sin(angprev + angchange / 2) + locΔY * cose(angprev + angchange / 2);
+        ypos += locΔX * cos(angprev + angchange / 2) - locΔY * sin(angprev + angchange / 2);
         */
 
-        leftPrevious = lef.position(degrees);
-        rightPrevious = rig.position(degrees);
-        sidePrevious = side.position(degrees);
+        lprev = lef.position(degrees);
+        rprev = rig.position(degrees);
+        sprev = side.position(degrees);
         //inertialPrevious = inertial.rotation(degrees);
-        anglePrevious += angleChange;
+        angprev += angchange;
 
         wait(10, msec);
 
     }
     
-
 }
