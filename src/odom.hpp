@@ -7,9 +7,9 @@ double yPosition = 0;
 
 void odometry() {
 
-    double leftPrevious = xpos.position(degrees);
-    double rightPrevious = ypos.position(degrees);
-    double sidePrevious = rot.position(degrees);
+    double leftPrevious = lef.position(degrees);
+    double rightPrevious = rig.position(degrees);
+    double sidePrevious = side.position(degrees);
     double anglePrevious = 0;
     //double inertialPrevious = inertial.rotation(degrees);
 
@@ -19,9 +19,9 @@ void odometry() {
 
     while (1) {
         
-        double deltaLeft = xpos.position(degrees) - leftPrevious;
-        double deltaRight = ypos.position(degrees) - rightPrevious;
-        double deltaSide = rot.position(degrees) - sidePrevious;
+        double deltaLeft = lef.position(degrees) - leftPrevious;
+        double deltaRight = rig.position(degrees) - rightPrevious;
+        double deltaSide = side.position(degrees) - sidePrevious;
         //double deltaInertial = inertial.rotation(degrees) - inertialPrevious;
 
         deltaLeft *= circ;
@@ -59,9 +59,9 @@ void odometry() {
         yPosition += localDeltaX * cos(anglePrevious + angleChange / 2) - localDeltaY * sin(anglePrevious + angleChange / 2);
         */
 
-        leftPrevious = xpos.position(degrees);
-        rightPrevious = ypos.position(degrees);
-        sidePrevious = rot.position(degrees);
+        leftPrevious = lef.position(degrees);
+        rightPrevious = rig.position(degrees);
+        sidePrevious = side.position(degrees);
         //inertialPrevious = inertial.rotation(degrees);
         anglePrevious += angleChange;
 
