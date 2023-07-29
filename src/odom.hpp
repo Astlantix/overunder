@@ -7,13 +7,41 @@ const double circ = (3.25 * π)/36000; // circumference of the wheel
 double xpos = 0;
 double ypos = 0;
 
+double dti;
+
+//turning
+void turn (double joe) {
+    double turning = inert.rotation(degrees) + joe;
+    while (inert.rotation(degrees) < turning) {
+        fl.spin(fwd);
+        fr.spin(reverse);
+        bl.spin(fwd);
+        br.spin(reverse);
+    }
+    while (inert.rotation(degrees) > turning) {
+        fl.spin(reverse);
+        fr.spin(fwd);
+        bl.spin(reverse);
+        br.spin(fwd);
+    }
+}
+
+//moving
+void fwdrev (double joey) {
+    double joe = joey * dti;
+    fl.spinFor(fwd,joe,degrees,false);
+    fr.spinFor(fwd,joe,degrees,false);
+    bl.spinFor(fwd,joe,degrees,false);
+    br.spinFor(fwd,joe,degrees);
+}
+
 void odometry() {
 
     double lprev = lef.position(degrees);
     double rprev = rig.position(degrees);
     double sprev = side.position(degrees);
     double angprev = 0;
-    //double inertialPrevious = inertial.rotation(degrees);
+    //double iprev = inertial.rotation(degrees);
 
     double ldist = 1.75;
     double rdist = 1.75;
@@ -21,33 +49,33 @@ void odometry() {
 
     while (1) {
         
-        double ΔLeft = lef.position(degrees) - lprev;
-        double ΔRight = rig.position(degrees) - rprev;
-        double ΔSide = side.position(degrees) - sprev;
-        //double ΔInertial = inertial.rotation(degrees) - inertialPrevious;
+        double Δleft = lef.position(degrees) - lprev;
+        double Δright = rig.position(degrees) - rprev;
+        double Δside = side.position(degrees) - sprev;
+        //double Δi = inertial.rotation(degrees) - iprev;
 
-        ΔLeft *= circ;
-        ΔRight *= circ;
-        ΔSide *= circ;
+        Δleft *= circ;
+        Δright *= circ;
+        Δside *= circ;
         //ΔInertial *= π / 18000;
 
-        double angchange = (ΔLeft - ΔRight) / (ΔLeft + ΔRight);
+        double angchange = (Δleft - Δright) / (Δleft + Δright);
         //double angchange = ΔInertial;
 
         double locΔX;
         double locΔY;
         
         if(angchange==0) {
-            locΔX = ΔSide;
-            locΔY = ΔRight;
+            locΔX = Δside;
+            locΔY = Δright;
         }
 
         else {
-            double radiusFront = ΔLeft / angchange - ldist;
-            double radiusSide = ΔRight / angchange - sdist;
+            double radf = Δleft / angchange - ldist;
+            double rads = Δright / angchange - sdist;
 
-            locΔX = 2 * radiusSide * sin(angchange / 2);
-            locΔY = 2 * radiusFront * sin(angchange / 2);
+            locΔX = 2 * rads * sin(angchange / 2);
+            locΔY = 2 * radf * sin(angchange / 2);
         }
 
         //#1
@@ -64,11 +92,27 @@ void odometry() {
         lprev = lef.position(degrees);
         rprev = rig.position(degrees);
         sprev = side.position(degrees);
-        //inertialPrevious = inertial.rotation(degrees);
+        //iprev = inertial.rotation(degrees);
         angprev += angchange;
 
         wait(10, msec);
 
     }
     
+}
+
+//Pure Pursuit
+void travel(double x, double y) {
+    //distance from current point to target point
+    double dist = sqrt((x - xpos) * (x - xpos) + (y - ypos) * (y - ypos));
+    //angle from current point to target point
+    double ang = atan2(y - ypos, x - xpos);
+    //angle from current point to target point relative to robot
+    double relang = ang - inert.rotation(degrees);
+    //angle from current point to target point relative to robot in degrees
+    double relangdeg = relang * 180 / π;
+    //turning to correct angle to be facing target point
+    turn(relangdeg);
+    //moving to target point
+    fwdrev(dist);
 }

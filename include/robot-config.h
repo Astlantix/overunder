@@ -14,10 +14,10 @@ extern motor mr;
 extern controller gamers;
 extern motor_group intake;
 extern digital_out flex;
-extern encoder lef;
-extern encoder rig;
+extern rotation lef;
+extern rotation rig;
 extern inertial inert;
-extern encoder side;
+extern rotation side;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

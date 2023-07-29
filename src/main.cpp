@@ -21,6 +21,7 @@
 
 #include "vex.h"
 #include "autons.hpp"
+#include "odom.hpp"
 
 using namespace vex;
 
@@ -44,8 +45,6 @@ void pre_auton(void) {
   vexcodeInit();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
-  xpos.resetRotation();
-  ypos.resetRotation();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -57,6 +56,9 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
+
+
+bool a = 0;
 
 int numofautons = 3;
 
@@ -134,11 +136,35 @@ void dtcode(double x, double y) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  while (1) {
+
+  while (!a) {
+    // go to auton position
+    autonslctr();
+    if(gamers.ButtonB.pressing()) {
+      a = 1;
+      wait(200,msec);
+    }
+
+    if(gamers.ButtonA.pressing()) {
+      if(auton == 1) {
+        go1();
+      }
+      else if(auton == 2) {
+        go2();
+      }
+      else if(auton == 3) {
+        go3();
+      }
+      wait(200,msec);
+    }
+
+  }
+
+  while (a) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-
+    dtcode(1,1);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.

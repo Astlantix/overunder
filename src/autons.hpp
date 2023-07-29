@@ -1,5 +1,5 @@
 #include "vex.h"
-#include "odometry.hpp"
+#include "odom.hpp"
 
 //degrees to inches value for auton functions
 double dti = 23;
@@ -66,25 +66,38 @@ void Right(double joe) {
     br.spinFor(fwd,joe,degrees);
 }
 
-void auton1() {
+void go1 () {
+    
+}
+
+void go2 () {
+    
+}
+
+void go3 () {
+    
+}
+
+void auton1 () {
 
     setbrake();
 
     setcoast();
-
+    a = 1;
 }
 
-void auton2() {
+void auton2 () {
 
     setbrake();
 
     setcoast();
+    a = 1;
 }
 
-void auton3() {
+void auton3 () {
     
     setbrake();
 
     setcoast();
-
+    a = 1;
 }
