@@ -21,7 +21,6 @@
 
 #include "vex.h"
 #include "autons.hpp"
-#include "odom.hpp"
 
 using namespace vex;
 
@@ -58,14 +57,14 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 
-bool a = 0;
+
 
 int numofautons = 3;
 
 void printing(std::string text) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
-  gamers.Screen.print(text.c_str());
+  //gamers.Screen.print(text);
 }
 
 int auton = 1;

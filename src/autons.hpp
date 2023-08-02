@@ -1,8 +1,9 @@
 #include "vex.h"
 #include "odom.hpp"
 
-//degrees to inches value for auton functions
-double dti = 23;
+
+
+bool a = 0;
 
 //stop is hold
 void sethold() {

@@ -10,7 +10,7 @@ double ypos = 0;
 double dti;
 
 //turning
-void turn (double joe) {
+void dturn (double joe) {
     double turning = inert.rotation(degrees) + joe;
     while (inert.rotation(degrees) < turning) {
         fl.spin(fwd);
@@ -114,7 +114,7 @@ void travel(double x, double y) {
     //angle from current point to target point relative to robot in degrees
     double relangdeg = relang * 180 / π;
     //turning to correct angle to be facing target point
-    turn(relangdeg);
+    dturn(relangdeg);
     //moving to target point
     fwdrev(dist);
 }
