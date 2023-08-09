@@ -43,7 +43,7 @@ void odometry() {
     double rprev = rig.position(degrees);
     double sprev = side.position(degrees);
     double angprev = 0;
-    //double iprev = inertial.rotation(degrees);
+    //double iprev = inert.rotation(degrees);
 
     double ldist = 1.75;
     double rdist = 1.75;
@@ -54,15 +54,15 @@ void odometry() {
         double Δleft = lef.position(degrees) - lprev;
         double Δright = rig.position(degrees) - rprev;
         double Δside = side.position(degrees) - sprev;
-        //double Δi = inertial.rotation(degrees) - iprev;
+        //double Δi = inert.rotation(degrees) - iprev;
 
         Δleft *= circ;
         Δright *= circ;
         Δside *= circ;
-        //ΔInertial *= π / 18000;
+        //Δinert *= π / 18000;
 
         double angchange = (Δleft - Δright) / (Δleft + Δright);
-        //double angchange = ΔInertial;
+        //double angchange = Δinert;
 
         double locΔX;
         double locΔY;
@@ -94,7 +94,7 @@ void odometry() {
         lprev = lef.position(degrees);
         rprev = rig.position(degrees);
         sprev = side.position(degrees);
-        //iprev = inertial.rotation(degrees);
+        //iprev = inert.rotation(degrees);
         angprev += angchange;
 
         wait(10, msec);
