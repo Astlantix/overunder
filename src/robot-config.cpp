@@ -8,20 +8,18 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor fl = motor(PORT1, ratio18_1, false);
-motor fr = motor(PORT2, ratio18_1, false);
-motor bl = motor(PORT3, ratio18_1, false);
-motor br = motor(PORT4, ratio18_1, false);
-motor ml = motor(PORT7, ratio18_1, false);
-motor mr = motor(PORT8, ratio18_1, false);
+motor fl = motor(PORT7, ratio18_1, true);
+motor fr = motor(PORT4, ratio18_1, false);
+motor bl = motor(PORT10, ratio18_1, true);
+motor br = motor(PORT2, ratio18_1, false);
+motor ml = motor(PORT9, ratio18_1, true);
+motor mr = motor(PORT5, ratio18_1, false);
 controller gamers = controller(primary);
-motor intakeMotorA = motor(PORT6, ratio18_1, false);
-motor intakeMotorB = motor(PORT5, ratio18_1, false);
-motor_group intake = motor_group(intakeMotorA, intakeMotorB);
+motor intake = motor(PORT1, ratio18_1, false);
 digital_out flex = digital_out(Brain.ThreeWirePort.A);
 rotation lef = rotation(PORT13, false);
 rotation rig = rotation(PORT12, false);
-inertial inert = inertial(PORT10);
+inertial inert = inertial(PORT14);
 rotation side = rotation(PORT11, false);
 
 // VEXcode generated functions

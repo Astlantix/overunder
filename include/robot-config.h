@@ -12,7 +12,7 @@ extern motor br;
 extern motor ml;
 extern motor mr;
 extern controller gamers;
-extern motor_group intake;
+extern motor intake;
 extern digital_out flex;
 extern rotation lef;
 extern rotation rig;
