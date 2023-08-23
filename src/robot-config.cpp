@@ -20,7 +20,8 @@ digital_out flex = digital_out(Brain.ThreeWirePort.A);
 rotation lef = rotation(PORT13, false);
 rotation rig = rotation(PORT12, false);
 inertial inert = inertial(PORT14);
-rotation side = rotation(PORT11, false);
+rotation side = rotation(PORT11
+, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
