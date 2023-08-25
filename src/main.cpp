@@ -143,6 +143,8 @@ void dtcode(double x, double y) {
   br.spin(forward, rightspeed, percent); //set the right motor speed
 }
 
+bool a = 0;
+int b = 0;
 void usercontrol(void) {
    //User control code here, inside the loop
 
@@ -177,6 +179,39 @@ void usercontrol(void) {
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
+
+    if(b==0) {
+      if(gamers.ButtonR1.pressing()) {
+       intake.spin(forward,100,percent);
+       b = 1;
+      }
+      else if(gamers.ButtonR2.pressing()) {
+        intake.spin(reverse,100,percent);
+        b = 2;
+      }
+    }
+    else if(b==1) {
+      if(gamers.ButtonR1.pressing()) {
+        intake.stop(coast);
+        b = 0;
+      }
+      else if(gamers.ButtonR2.pressing()) {
+        intake.spin(reverse,100,percent);
+      }
+    }
+    else if(b==2) {
+      if(gamers.ButtonR2.pressing()) {
+        intake.stop(coast);
+        b = 0;
+      }
+      else if(gamers.ButtonR1.pressing()) {
+        intake.spin(forward,100,percent);
+        b = 1;
+      }
+    }
+    
+    
+
     // ........................................................................
 
     wait(20, msec); // Sleep the task for a short amount of time to
