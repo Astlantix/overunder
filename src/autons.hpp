@@ -3,7 +3,7 @@
 
 
 
-bool a = 0;
+bool c = 0;
 
 //stop is hold
 void sethold() {
@@ -94,7 +94,7 @@ void auton1 () {
     setbrake();
 
     setcoast();
-    a = 1;
+    c = 1;
 }
 
 void auton2 () {
@@ -102,7 +102,7 @@ void auton2 () {
     setbrake();
 
     setcoast();
-    a = 1;
+    c = 1;
 }
 
 void auton3 () {
@@ -110,5 +110,5 @@ void auton3 () {
     setbrake();
 
     setcoast();
-    a = 1;
+    c = 1;
 }
