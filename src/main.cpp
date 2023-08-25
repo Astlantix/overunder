@@ -210,7 +210,17 @@ void usercontrol(void) {
       }
     }
 
-    
+    if(gamers.ButtonA.pressing()) {
+      intake.spin(reverse,100,percent);
+      wait(200,msec);
+      flex.set(true);
+      wait(200,msec);
+    }
+    else {
+      flex.set(false);
+      intake.stop(coast);
+      b = 0;
+    }
 
     // ........................................................................
 
