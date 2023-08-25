@@ -24,6 +24,16 @@
 
 using namespace vex;
 
+/*   __   ______     __    ________    __   ____      
+ /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
+/\ \L\ \ \ \__/ /\ \/\ \\/___//'/'/\ \/\ \ \ \L\ \  
+\ \___, \ \___``\ \ \ \ \   /' /' \ \ \ \ \ \  _ <' 
+ \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
+      \ \_\ \____/\ \____/\_/       \ \____/\ \____/
+       \/_/\/___/  \/___/\//         \/___/  \/___/ 
+                                                    
+*/
+
 // A global instance of competition
 competition Competition;
 
@@ -134,9 +144,9 @@ void dtcode(double x, double y) {
 }
 
 void usercontrol(void) {
-  // User control code here, inside the loop
+   //User control code here, inside the loop
 
-  /*while (!a) {
+  while (!a) {
     // go to auton position
     autonslctr();
     if(gamers.ButtonB.pressing()) {
@@ -157,9 +167,9 @@ void usercontrol(void) {
       wait(200,msec);
     }
 
-  }*/
+  }
 
- // while (a) {
+   while (a) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -171,7 +181,7 @@ void usercontrol(void) {
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
-  //}
+  }
 }
 
 //

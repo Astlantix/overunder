@@ -7,32 +7,42 @@ bool a = 0;
 
 //stop is hold
 void sethold() {
-  ml.stop(hold);
-  mr.stop(hold);
-  fr.stop(hold);
-  fl.stop(hold);
-  bl.stop(hold);
-  br.stop(hold);
+  ml.setStopping(hold);
+  mr.setStopping(hold);
+  fr.setStopping(hold);
+  fl.setStopping(hold);
+  bl.setStopping(hold);
+  br.setStopping(hold);
 }
 
 //stop is coast
 void setcoast() {
-  ml.stop(coast);
-  mr.stop(coast);
-  fr.stop(coast);
-  fl.stop(coast);
-  bl.stop(coast);
-  br.stop(coast);
+  ml.setStopping(coast);
+  mr.setStopping(coast);
+  fr.setStopping(coast);
+  fl.setStopping(coast);
+  bl.setStopping(coast);
+  br.setStopping(coast);
 }
 
 //stop is brake
 void setbrake() {
-  ml.stop(brake);
-  mr.stop(brake);
-  fr.stop(brake);
-  fl.stop(brake);
-  bl.stop(brake);
-  br.stop(brake);
+  ml.setStopping(brake);
+  mr.setStopping(brake);
+  fr.setStopping(brake);
+  fl.setStopping(brake);
+  bl.setStopping(brake);
+  br.setStopping(brake);
+}
+
+//stop
+void stoop() {
+  ml.stop();
+  mr.stop();
+  fr.stop();
+  fl.stop();
+  bl.stop();
+  br.stop();
 }
 
 //Forward function
