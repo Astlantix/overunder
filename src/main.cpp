@@ -71,10 +71,10 @@ void pre_auton(void) {
 
 int numofautons = 3;
 
-void printing(std::string text) {
+void printing(std::string string) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
-  //gamers.Screen.print(text);
+  gamers.Screen.print(string.c_str());
 }
 
 int auton = 1;
