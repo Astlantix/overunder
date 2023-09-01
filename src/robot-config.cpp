@@ -17,6 +17,7 @@ motor mr = motor(PORT5, ratio18_1, false);
 controller gamers = controller(primary);
 motor intake = motor(PORT1, ratio18_1, false);
 digital_out flex = digital_out(Brain.ThreeWirePort.A);
+digital_out muscle = digital_out(Brain.ThreeWirePort.B);
 rotation lef = rotation(PORT13, false);
 rotation rig = rotation(PORT12, false);
 inertial inert = inertial(PORT14);

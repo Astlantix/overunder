@@ -11,12 +11,15 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // fl                   motor         1               
-// fr                   motor         2               
+// fr                   motor         2       
+// ml                   motor         9
+// mr                   motor         10        
 // bl                   motor         3               
 // br                   motor         4               
-// Controller1          controller                    
-// intake               motor_group   6, 5            
-// flex                 digital_out   A               
+// gamers               controller                    
+// intake               motor         6         
+// flex                 digital_out   A    
+// muscle               digital_out   B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -210,14 +213,22 @@ void usercontrol(void) {
       }
     }
 
+    if(gamers.ButtonL1.pressing()) {
+      flex.set(true);
+      muscle.set(true);
+      wait(200,msec);
+    }
+    else if(gamers.ButtonL2.pressing()) {
+      flex.set(false);
+      muscle.set(false);
+      wait(200,msec);
+    }
+
     if(gamers.ButtonA.pressing()) {
       intake.spin(reverse,100,percent);
       wait(200,msec);
-      flex.set(true);
-      wait(200,msec);
     }
     else {
-      flex.set(false);
       intake.stop(coast);
       b = 0;
     }
