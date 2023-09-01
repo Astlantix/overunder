@@ -138,12 +138,12 @@ void autonomous(void) {
 void dtcode(double x, double y) {
   double rightspeed = (gamers.Axis3.position() * y) + (gamers.Axis4.position() * -x); //calculate the right speed
   double leftspeed = (gamers.Axis3.position() * y) - (gamers.Axis4.position() * -x); //calculate the left speed
-  fl.spin(forward, leftspeed, percent); //set the left motor speed
-  ml.spin(forward,leftspeed,percent); //set the left motor speed
-  bl.spin(forward, leftspeed, percent); //set the left motor speed
-  fr.spin(forward, rightspeed, percent); //set the right motor speed
-  mr.spin(forward,rightspeed,percent); //set the right motor speed
-  br.spin(forward, rightspeed, percent); //set the right motor speed
+  fl.spin(fwd, leftspeed, pct); //set the left motor speed
+  ml.spin(fwd,leftspeed,pct); //set the left motor speed
+  bl.spin(fwd, leftspeed, pct); //set the left motor speed
+  fr.spin(fwd, rightspeed, pct); //set the right motor speed
+  mr.spin(fwd,rightspeed,pct); //set the right motor speed
+  br.spin(fwd, rightspeed, pct); //set the right motor speed
 }
 
 bool a = 0;
@@ -185,11 +185,11 @@ void usercontrol(void) {
 
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
-       intake.spin(forward,100,percent);
+       intake.spin(fwd,100,pct);
        b = 1;
       }
       else if(gamers.ButtonR2.pressing()) {
-        intake.spin(reverse,100,percent);
+        intake.spin(reverse,100,pct);
         b = 2;
       }
     }
@@ -199,7 +199,7 @@ void usercontrol(void) {
         b = 0;
       }
       else if(gamers.ButtonR2.pressing()) {
-        intake.spin(reverse,100,percent);
+        intake.spin(reverse,100,pct);
       }
     }
     else if(b==2) {
@@ -208,7 +208,7 @@ void usercontrol(void) {
         b = 0;
       }
       else if(gamers.ButtonR1.pressing()) {
-        intake.spin(forward,100,percent);
+        intake.spin(fwd,100,pct);
         b = 1;
       }
     }
@@ -225,7 +225,7 @@ void usercontrol(void) {
     }
 
     if(gamers.ButtonA.pressing()) {
-      intake.spin(reverse,100,percent);
+      intake.spin(reverse,100,pct);
       wait(200,msec);
     }
     else {
