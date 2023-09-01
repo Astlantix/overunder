@@ -186,29 +186,36 @@ void usercontrol(void) {
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
        intake.spin(fwd,100,pct);
+       wait(200,msec);
        b = 1;
       }
       else if(gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
+        wait(200,msec);
         b = 2;
       }
     }
     else if(b==1) {
       if(gamers.ButtonR1.pressing()) {
         intake.stop(coast);
+        wait(200,msec);
         b = 0;
       }
       else if(gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
+        wait(200,msec);
+        b = 2;
       }
     }
     else if(b==2) {
       if(gamers.ButtonR2.pressing()) {
         intake.stop(coast);
+        wait(200,msec);
         b = 0;
       }
       else if(gamers.ButtonR1.pressing()) {
         intake.spin(fwd,100,pct);
+        wait(200,msec);
         b = 1;
       }
     }
@@ -225,10 +232,6 @@ void usercontrol(void) {
     }
 
     if(gamers.ButtonA.pressing()) {
-      intake.spin(reverse,100,pct);
-      wait(200,msec);
-    }
-    else {
       intake.stop(coast);
       b = 0;
     }
