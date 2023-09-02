@@ -11,19 +11,12 @@ double dti;
 
 //turning
 void dturn (double joe) {
-    double turning = inert.rotation(degrees) + joe;
-    while (inert.rotation(degrees) < turning) {
-        fl.spin(fwd);
-        fr.spin(reverse);
-        bl.spin(fwd);
-        br.spin(reverse);
-    }
-    while (inert.rotation(degrees) > turning) {
-        fl.spin(reverse);
-        fr.spin(fwd);
-        bl.spin(reverse);
-        br.spin(fwd);
-    }
+    fl.spinFor(joe,degrees,false);
+    fr.spinFor(-joe,degrees,false);
+    ml.spinFor(joe,degrees,false);
+    mr.spinFor(-joe,degrees,false);
+    bl.spinFor(joe,degrees,false);
+    br.spinFor(-joe,degrees);
 }
 
 //moving
@@ -107,12 +100,8 @@ void odometry() {
 void travel(double x, double y) {
     //distance from current point to target point
     double dist = sqrt((x - xpos) * (x - xpos) + (y - ypos) * (y - ypos));
-    //angle from current point to target point
-    double ang = atan2(y - ypos, x - xpos);
-    //angle from current point to target point relative to robot
-    double relang = ang - inert.rotation(degrees);
-    //angle from current point to target point relative to robot in degrees
-    double relangdeg = relang * 180 / π;
+    //angle from current point to target point in degrees
+    double relangdeg = atan((y - ypos) / (x - xpos)) * 180 / π;
     //turning to correct angle to be facing target point
     dturn(relangdeg);
     //moving to target point
