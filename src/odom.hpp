@@ -41,34 +41,34 @@ void odometry() {
 
     double lprev = lef.position(degrees);
     double rprev = rig.position(degrees);
-    //double sprev = side.position(degrees);
+    double sprev = side.position(degrees);
     double angprev = 0;
-    double iprev = inert.rotation(degrees);
+    //double iprev = inert.rotation(degrees);
 
     double ldist = 1.75;
     double rdist = 1.75;
-    //double sdist = 1.75;
+    double sdist = 1.75;
 
     while (1) {
         
         double Δleft = lef.position(degrees) - lprev;
         double Δright = rig.position(degrees) - rprev;
-        //double Δside = side.position(degrees) - sprev;
-        double Δi = inert.rotation(degrees) - iprev;
+        double Δside = side.position(degrees) - sprev;
+        //double Δi = inert.rotation(degrees) - iprev;
 
         Δleft *= circ;
         Δright *= circ;
-        //Δside *= circ;
-        Δi *= π / 18000;
+        Δside *= circ;
+        //Δi *= π / 18000;
 
-        //double angchange = (Δleft - Δright) / (Δleft + Δright);
-        double angchange = Δi;
+        double angchange = (Δleft - Δright) / (Δleft + Δright);
+        //double angchange = Δi;
 
         double locΔX;
         double locΔY;
         
         if(angchange==0) {
-            locΔX = Δi;
+            locΔX = Δside;
             locΔY = Δright;
         }
 
@@ -82,8 +82,8 @@ void odometry() {
 
         //#1
         double distance = sqrt(locΔX * locΔX + locΔY * locΔY);
-        xpos += distance * cos(atan(locΔY / locΔX) - iprev - Δi / 2);
-        ypos += distance * sin(atan(locΔY / locΔX) - iprev - Δi / 2);
+        xpos += distance * cos(atan(locΔY / locΔX) - angprev - angchange / 2);
+        ypos += distance * sin(atan(locΔY / locΔX) - angprev - angchange / 2);
 
         //#2
         /*
@@ -93,8 +93,8 @@ void odometry() {
 
         lprev = lef.position(degrees);
         rprev = rig.position(degrees);
-        //sprev = side.position(degrees);
-        iprev = inert.rotation(degrees);
+        sprev = side.position(degrees);
+        //iprev = inert.rotation(degrees);
         angprev += angchange;
 
         wait(10, msec);
