@@ -17,7 +17,6 @@ extern digital_out flex;
 extern digital_out muscle;
 extern rotation lef;
 extern rotation rig;
-extern inertial inert;
 extern rotation side;
 
 /**

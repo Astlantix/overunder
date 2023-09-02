@@ -20,7 +20,6 @@ digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
 rotation lef = rotation(PORT13, false);
 rotation rig = rotation(PORT12, false);
-inertial inert = inertial(PORT14);
 rotation side = rotation(PORT11, false);
 
 // VEXcode generated functions
