@@ -30,6 +30,7 @@ void fwdrev (double joey) {
     br.spinFor(fwd,joe,degrees);
 }
 
+//odometry
 void odometry() {
 
     double lprev = lef.position(degrees);
