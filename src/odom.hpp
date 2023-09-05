@@ -88,8 +88,8 @@ void odometry() {
         lprev = lef.position(degrees);
         rprev = rig.position(degrees);
         sprev = side.position(degrees);
-        //iprev = inert.rotation(degrees);
         angprev += angchange;
+        //iprev = inert.rotation(degrees);
 
         wait(10, msec);
 
