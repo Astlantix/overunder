@@ -13,6 +13,7 @@ extern motor ml;
 extern motor mr;
 extern controller gamers;
 extern motor intake;
+extern motor pull;
 extern digital_out flex;
 extern digital_out muscle;
 extern rotation lef;
