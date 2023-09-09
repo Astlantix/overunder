@@ -55,8 +55,8 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  muscle.set(true);
-  flex.set(false);
+  muscle.set(1);
+  flex.set(0);
   setcoast();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -225,14 +225,14 @@ void usercontrol(void) {
     }
 
     if(gamers.ButtonL1.pressing()) {
-      flex.set(true);
+      flex.set(1);
       wait(200,msec);
-      flex.set(false);
+      flex.set(0);
       wait(200,msec);
     }
 
     if(gamers.ButtonL2.pressing()) {
-      muscle.set(false);
+      muscle.set(0);
     }
 
     if(gamers.ButtonA.pressing()) {
@@ -263,7 +263,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
-  while (true) {
+  while (1) {
     wait(100, msec);
   }
 }
