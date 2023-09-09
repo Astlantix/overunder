@@ -228,6 +228,7 @@ void usercontrol(void) {
       flex.set(true);
       wait(200,msec);
       flex.set(false);
+      wait(200,msec);
     }
 
     if(gamers.ButtonL2.pressing()) {
@@ -236,6 +237,10 @@ void usercontrol(void) {
 
     if(gamers.ButtonA.pressing()) {
       pull.spin(fwd,100,pct);
+    }
+
+    if(gamers.ButtonB.pressing()) {
+      pull.spin(reverse,100,pct);
     }
 
 
