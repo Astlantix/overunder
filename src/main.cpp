@@ -233,7 +233,11 @@ void usercontrol(void) {
       muscle.set(false);
     }
 
-    
+    if(gamers.ButtonA.pressing()) {
+      pull.spin(fwd,100,pct);
+    }
+
+
 
     // ........................................................................
 
