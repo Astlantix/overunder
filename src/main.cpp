@@ -213,8 +213,7 @@ void usercontrol(void) {
     else if(b==2) {
       if(gamers.ButtonR2.pressing()) {
         intake.stop(coast);
-        wait(200,msec);
-        b = 0;
+3        b = 0;
       }
       else if(gamers.ButtonR1.pressing()) {
         intake.spin(fwd,100,pct);
