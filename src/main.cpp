@@ -92,10 +92,10 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("Auton 1");
+    printing("Left AWP");
   }
   if(auton == 2) {
-    printing("Auton 2");
+    printing("Right AWP");
   }
   if(auton == 3) {
     printing("Auton 3");

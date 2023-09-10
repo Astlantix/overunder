@@ -93,6 +93,18 @@ void auton1 () {
 
     setbrake();
 
+    For(6);
+    intake.spin(reverse,100,pct);
+    wait(500,msec);
+    intake.stop();
+    Left(90);
+    For(36);
+    Right(90);
+    intake.spin(forward,100,pct);
+    flex.set(1);
+    wait(500,msec);
+    flex.set(0);
+
     setcoast();
     c = 1;
 }
@@ -100,6 +112,18 @@ void auton1 () {
 void auton2 () {
 
     setbrake();
+
+    For(6);
+    intake.spin(reverse,100,pct);
+    wait(500,msec);
+    intake.stop();
+    Right(90);
+    For(36);
+    Left(90);
+    intake.spin(forward,100,pct);
+    flex.set(1);
+    wait(500,msec);
+    flex.set(0);    
 
     setcoast();
     c = 1;
