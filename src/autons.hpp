@@ -135,17 +135,9 @@ void auton2 () {
 
     setbrake();
 
-    For(6);
-    intake.spin(reverse,100,pct);
-    wait(500,msec);
-    intake.stop();
-    Right(90);
-    For(36);
+    travel(36,5);
     Left(90);
-    intake.spin(forward,100,pct);
-    flex.set(1);
-    wait(500,msec);
-    flex.set(0);    
+    shoot();
 
     setcoast();
     c = 1;
