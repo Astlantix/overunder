@@ -89,21 +89,35 @@ void go3 () {
     
 }
 
+void shoot() {
+  intake.spin(fwd,100,pct);
+  wait(100,msec);
+  flex.set(1);
+  wait(500,msec);
+  flex.set(0);
+  intake.stop();
+}
+
 void auton1 () {
 
     setbrake();
 
-    For(6);
+    travel(-36,5);
+    Right(90);
+    shoot();
+    Rev(36);
+    travel(-36,54);
+    Right(90);
     intake.spin(reverse,100,pct);
     wait(500,msec);
-    intake.stop();
-    Left(90);
-    For(36);
+    Rev(40);
+    travel(-36,5);
     Right(90);
-    intake.spin(forward,100,pct);
-    flex.set(1);
-    wait(500,msec);
-    flex.set(0);
+    shoot();
+    Rev(36);
+    travel(-36,-54);
+    travel(-5,-54);
+    pull.spinFor(fwd,360,degrees);
 
     setcoast();
     c = 1;
