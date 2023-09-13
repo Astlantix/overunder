@@ -243,7 +243,11 @@ void usercontrol(void) {
       pull.spin(reverse,100,pct);
     }
 
-
+    gamers.Screen.clearScreen();
+    gamers.Screen.setCursor(1,1);
+    gamers.Screen.print(intake.temperature(celsius));
+    gamers.Screen.setCursor(2,1);
+    gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
 
     // ........................................................................
 
