@@ -32,7 +32,7 @@ void fwdrev (double joey) {
 
 //odometry
 
-
+void odometry() {
     double lprev = lef.position(degrees);
     double rprev = rig.position(degrees);
     double sprev = side.position(degrees);
@@ -92,7 +92,6 @@ void fwdrev (double joey) {
         //iprev = inert.rotation(degrees);
 
         wait(10, msec);
-
     }
     
 }
