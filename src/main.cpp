@@ -224,23 +224,27 @@ void usercontrol(void) {
       }
     }
 
-    if(gamers.ButtonL1.pressing()) {
+    if(gamers.ButtonY.pressing()) {
       flex.set(1);
       wait(200,msec);
       flex.set(0);
       wait(200,msec);
     }
 
-    if(gamers.ButtonL2.pressing()) {
+    if(gamers.ButtonX.pressing()) {
       muscle.set(0);
     }
 
-    if(gamers.ButtonA.pressing()) {
+    if(gamers.ButtonL1.pressing()) {
       pull.spin(fwd,100,pct);
     }
 
-    if(gamers.ButtonB.pressing()) {
+    if(gamers.ButtonL2.pressing()) {
       pull.spin(reverse,100,pct);
+    }
+
+    if(gamers.ButtonY.pressing()) {
+      muscle.set(1);
     }
 
     gamers.Screen.clearScreen();
