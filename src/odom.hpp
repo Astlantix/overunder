@@ -31,7 +31,6 @@ void fwdrev (double joey) {
 }
 
 //odometry
-
 void odometry() {
     double lprev = lef.position(degrees);
     double rprev = rig.position(degrees);
