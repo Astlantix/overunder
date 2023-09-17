@@ -92,13 +92,13 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("Left AWP");
+    printing("Right AWP");
   }
   if(auton == 2) {
-    printing("Right");
+    printing("Left AWP");
   }
   if(auton == 3) {
-    printing("Auton 3");
+    printing("Left get triballs");
   }
   if(gamers.ButtonRight.pressing()) {
     auton++;
