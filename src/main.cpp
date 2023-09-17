@@ -230,6 +230,7 @@ void usercontrol(void) {
       wait(200,msec);
       flex.set(0);
       wait(200,msec);
+      b = 2;
     }
 
     if(gamers.ButtonX.pressing()) {
