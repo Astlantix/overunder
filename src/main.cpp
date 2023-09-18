@@ -155,13 +155,14 @@ void usercontrol(void) {
    //User control code here, inside the loop
 
   while (!a) {
-    // go to auton position
+    // select auton
     autonslctr();
     if(gamers.ButtonB.pressing()) {
       a = 1;
       wait(200,msec);
     }
 
+    // going to starting position
     if(gamers.ButtonA.pressing()) {
       if(auton == 1) {
         go1();
