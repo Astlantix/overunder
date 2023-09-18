@@ -85,6 +85,8 @@ void Right(double joe) {
     br.spinFor(fwd,joe,degrees);
 }
 
+
+//going to starting position from an easily accessible position
 void go1 () {
     
 }
@@ -97,6 +99,7 @@ void go3 () {
     
 }
 
+
 void shoot() {
   intake.spin(fwd,100,pct);
   wait(100,msec);
@@ -106,6 +109,8 @@ void shoot() {
   intake.stop();
 }
 
+
+//Right side AWP
 void auton1 () {
 
     setbrake();
@@ -131,6 +136,7 @@ void auton1 () {
     c = 1;
 }
 
+//Left Side AWP
 void auton2 () {
 
     setbrake();
@@ -143,6 +149,8 @@ void auton2 () {
     c = 1;
 }
 
+
+//Left Side Getting as many tri-balls as possible
 void auton3 () {
     
     setbrake();
