@@ -188,6 +188,7 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
 
+    //toggle intake
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
        intake.spin(fwd,100,pct);
@@ -225,6 +226,7 @@ void usercontrol(void) {
       }
     }
 
+    //puncher and outtake same time
     if(gamers.ButtonY.pressing()) {
       intake.spin(reverse,100,pct);
       flex.set(1);
@@ -234,6 +236,7 @@ void usercontrol(void) {
       b = 2;
     }
 
+    //clamp and pulling
     if(gamers.ButtonX.pressing()) {
       muscle.set(0);
     }
@@ -246,10 +249,12 @@ void usercontrol(void) {
       pull.spin(reverse,100,pct);
     }
 
-    if(gamers.ButtonY.pressing()) {
+    if(gamers.ButtonA.pressing()) {
       muscle.set(1);
     }
 
+
+    //printing intake and drivetrain temperature
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
     gamers.Screen.print(intake.temperature(celsius));
