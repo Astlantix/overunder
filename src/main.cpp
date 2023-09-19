@@ -260,6 +260,10 @@ void usercontrol(void) {
     gamers.Screen.print(intake.temperature(celsius));
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
+    gamers.Screen.setCursor(3,1);
+    gamers.Screen.print(xpos);
+    gamers.Screen.setCursor(4,1);
+    gamers.Screen.print(ypos);
 
     // ........................................................................
 
