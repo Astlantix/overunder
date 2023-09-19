@@ -16,9 +16,9 @@ extern motor intake;
 extern motor pull;
 extern digital_out flex;
 extern digital_out muscle;
-extern rotation lef;
-extern rotation rig;
-extern rotation side;
+extern encoder lef;
+extern encoder rig;
+extern encoder side;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

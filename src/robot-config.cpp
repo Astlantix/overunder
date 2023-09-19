@@ -19,9 +19,9 @@ motor intake = motor(PORT18, ratio18_1, false);
 motor pull = motor(PORT11, ratio6_1, false);
 digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
-rotation lef = rotation(PORT20, false);
-rotation rig = rotation(PORT21, false);
-rotation side = rotation(PORT19, false);
+encoder lef = encoder(Brain.ThreeWirePort.G);
+encoder rig = encoder(Brain.ThreeWirePort.E);
+encoder side = encoder(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
