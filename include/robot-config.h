@@ -16,8 +16,8 @@ extern motor intake;
 extern motor pull;
 extern digital_out flex;
 extern digital_out muscle;
-extern encoder lef;
-extern encoder rig;
+extern rotation lef;
+extern rotation rig;
 extern encoder side;
 
 /**
