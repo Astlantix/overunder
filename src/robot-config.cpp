@@ -8,14 +8,14 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor fl = motor(PORT12, ratio18_1, true);
-motor fr = motor(PORT1, ratio18_1, false);
+motor fl = motor(PORT17, ratio18_1, true);
+motor fr = motor(PORT12, ratio18_1, false);
 motor bl = motor(PORT4, ratio18_1, false);
 motor br = motor(PORT5, ratio18_1, true);
 motor ml = motor(PORT10, ratio18_1, false);
 motor mr = motor(PORT7, ratio18_1, true);
 controller gamers = controller(primary);
-motor intake = motor(PORT18, ratio18_1, false);
+motor intake = motor(PORT20, ratio18_1, false);
 motor pull = motor(PORT11, ratio6_1, false);
 digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
