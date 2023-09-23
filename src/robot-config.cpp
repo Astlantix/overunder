@@ -19,8 +19,8 @@ motor intake = motor(PORT18, ratio18_1, false);
 motor pull = motor(PORT11, ratio6_1, false);
 digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
-encoder lef = encoder(Brain.ThreeWirePort.G);
-encoder rig = encoder(Brain.ThreeWirePort.E);
+rotation lef = rotation(PORT18, true);
+rotation rig = rotation(PORT2, false);
 encoder side = encoder(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
