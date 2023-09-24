@@ -18,7 +18,7 @@ extern digital_out flex;
 extern digital_out muscle;
 extern rotation lef;
 extern rotation rig;
-extern encoder side;
+extern rotation side;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
