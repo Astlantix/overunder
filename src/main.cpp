@@ -230,9 +230,9 @@ void usercontrol(void) {
     if(gamers.ButtonY.pressing()) {
       intake.spin(reverse,100,pct);
       flex.set(1);
-      wait(200,msec);
+      wait(100,msec);
       flex.set(0);
-      wait(200,msec);
+      wait(100,msec);
       b = 2;
     }
 
