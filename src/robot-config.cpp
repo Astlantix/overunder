@@ -21,7 +21,7 @@ digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
 rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
-encoder side = encoder(Brain.ThreeWirePort.C);
+rotation side = rotation(PORT3, false)
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
