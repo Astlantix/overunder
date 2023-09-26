@@ -22,6 +22,7 @@ digital_out muscle = digital_out(Brain.ThreeWirePort.B);
 rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
+digital_out wings = digital_out(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
