@@ -266,7 +266,7 @@ void usercontrol(void) {
       cata.spin(fwd,100,pct);
     }
     else {
-      cata.stop(coast);
+      cata.stop(brake);
     }
 
     if(gamers.ButtonB.pressing()) {
