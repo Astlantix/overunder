@@ -151,6 +151,8 @@ void dtcode(double x, double y) {
 
 bool a = 0;
 int b = 0;
+bool stupid = 0;
+bool dumb = 0;
 void usercontrol(void) {
    //User control code here, inside the loop
 
@@ -253,6 +255,32 @@ void usercontrol(void) {
       muscle.set(1);
     }
 
+    if(gamers.Axis2.position() < -10) {
+      stupid = 1;
+    }
+    else if(gamers.Axis2.position() > 10) {
+      stupid = 0;
+    }
+
+    if(stupid) {
+      cata.spin(fwd,100,pct);
+    }
+    else {
+      cata.stop(coast);
+    }
+
+    if(gamers.ButtonB.pressing()) {
+      if(!dumb) {
+        sethold();
+        wait(200,msec);
+        dumb = 1;
+      }
+      else {
+        setcoast();
+        wait(200,msec);
+        dumb = 0;
+      }
+    }
 
     //printing intake and drivetrain temperature
     gamers.Screen.clearScreen();

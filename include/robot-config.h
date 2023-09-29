@@ -20,6 +20,7 @@ extern rotation lef;
 extern rotation rig;
 extern rotation side;
 extern digital_out wings;
+extern motor cata;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
