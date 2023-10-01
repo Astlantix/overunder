@@ -23,7 +23,7 @@ rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 digital_out wings = digital_out(Brain.ThreeWirePort.C);
-motor cata = motor(PORT1, ratio6_1, true);
+motor cata = motor(PORT1, ratio36_1, true);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
