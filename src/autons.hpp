@@ -46,20 +46,23 @@ void stoop() {
 }
 
 //Forward function
-void For(double joe, double joey) {
-    fl.spin(fwd,joe,pct);
-
+void For(double joe) {
+    fl.spinFor(fwd,joe,degrees,false);
+    fr.spinFor(fwd,joe,degrees,false);
+    ml.spinFor(fwd,joe,degrees,false);
+    mr.spinFor(fwd,joe,degrees,false);
+    bl.spinFor(fwd,joe,degrees,false);
+    br.spinFor(fwd,joe,degrees);
 }
 
 //Backward function
-void Rev(double joe, double joey) {
-    fl.spin(reverse,joe,pct);
-    fr.spin(reverse,joe,pct);
-    ml.spin(reverse,joe,pct);
-    mr.spin(reverse,joe,pct);
-    bl.spin(reverse,joe,pct);
-    br.spin(reverse,joe,pct);
-    wait(joey,msec);
+void Rev(double joe) {
+    fl.spinFor(reverse,joe,degrees,false);
+    fr.spinFor(reverse,joe,degrees,false);
+    ml.spinFor(reverse,joe,degrees,false);
+    mr.spinFor(reverse,joe,degrees,false);
+    bl.spinFor(reverse,joe,degrees,false);
+    br.spinFor(reverse,joe,degrees);
 }
 
 //Left function
@@ -112,15 +115,33 @@ void auton1 () {
 
     setbrake();
 
+    travel(-36,5);
+    Right(90);
+    shoot();
+    Rev(36);
+    travel(-36,54);
+    Right(90);
+    intake.spin(reverse,100,pct);
+    wait(500,msec);
+    Rev(40);
+    travel(-36,5);
+    Right(90);
+    shoot();
+    Rev(36);
+    travel(-36,-54);
+    travel(-5,-54);
+    pull.spinFor(fwd,360,degrees);
+
     setcoast();
     c = 1;
 }
 
 //Left Side AWP
 void auton2 () {
-    setcoast();
 
-    fl.spin(fwd,100,pct);
+    setbrake();
+
+    //For(200);
 
     setcoast();
     c = 1;
@@ -131,7 +152,6 @@ void auton2 () {
 void auton3 () {
     
     setbrake();
-    cata.spin(fwd,25,pct);
 
     setcoast();
     c = 1;
