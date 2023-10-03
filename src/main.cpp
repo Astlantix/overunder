@@ -189,7 +189,9 @@ void usercontrol(void) {
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
-
+    if(gamers.ButtonB.pressing()) {
+      gamers.rumble(rumbleLong);
+    }
     //toggle intake
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
