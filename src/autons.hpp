@@ -141,7 +141,7 @@ void auton2 () {
 
     setbrake();
 
-    //For(200);
+    ;
 
     setcoast();
     c = 1;
@@ -152,6 +152,8 @@ void auton2 () {
 void auton3 () {
     
     setbrake();
+
+    cata.spin(fwd,100,pct);
 
     setcoast();
     c = 1;
