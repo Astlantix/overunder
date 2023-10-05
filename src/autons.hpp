@@ -148,12 +148,12 @@ void auton2 () {
 }
 
 
-//Left Side Getting as many tri-balls as possible
+//Left Side Getting as many tri-ball  s as possible
 void auton3 () {
     
     setbrake();
 
-    cata.spin(fwd,25,pct);
+    cata.spin(fwd,75,pct);
 
     setcoast();
     c = 1;
