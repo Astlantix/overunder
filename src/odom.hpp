@@ -54,7 +54,7 @@ void odometry() {
         Δside *= circ; //change in side position in inches
         //Δi *= π / 18000; //change in angle in radians
 
-        double angchange = (Δleft - Δright) / (Δleft + Δright); //change in angle
+        double angchange = (Δleft - Δright) / (ldist + rdist); //change in angle
         //double angchange = Δi; //change in angle
 
         double locΔX;
@@ -77,7 +77,7 @@ void odometry() {
 
         //#1 calculating new position
 
-        double distance = sqrt(locΔX * locΔX + locΔY * locΔY); //distance traveled
+        double distance = sqrt((locΔX * locΔX) + (locΔY * locΔY)); //distance traveled
         xpos += distance * cos(atan(locΔY / locΔX) - angprev - angchange / 2); //new x position
         ypos += distance * sin(atan(locΔY / locΔX) - angprev - angchange / 2); //new y position
 
