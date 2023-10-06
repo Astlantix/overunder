@@ -189,9 +189,16 @@ void usercontrol(void) {
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
-    if(gamers.ButtonB.pressing()) {
-      gamers.rumble(rumbleLong);
+    
+
+    //wings make me go fly
+    if(gamers.Axis1.position() > 10) {
+      wings.set(1);
     }
+    else if(gamers.Axis1.position() < -10) {
+      wings.set(0);
+    }
+
     //toggle intake
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
