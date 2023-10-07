@@ -282,11 +282,13 @@ void usercontrol(void) {
       if(!dumb) {
         sethold();
         wait(200,msec);
+        gamers.rumble(rumbleLong);
         dumb = 1;
       }
       else {
         setcoast();
         wait(200,msec);
+        gamers.rumble(rumblePulse);
         dumb = 0;
       }
     }

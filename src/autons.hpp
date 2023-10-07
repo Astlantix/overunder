@@ -115,22 +115,7 @@ void auton1 () {
 
     setbrake();
 
-    travel(-36,5);
-    Right(90);
-    shoot();
-    Rev(36);
-    travel(-36,54);
-    Right(90);
-    intake.spin(reverse,100,pct);
-    wait(500,msec);
-    Rev(40);
-    travel(-36,5);
-    Right(90);
-    shoot();
-    Rev(36);
-    travel(-36,-54);
-    travel(-5,-54);
-    pull.spinFor(fwd,360,degrees);
+    For(1000);
 
     setcoast();
     c = 1;
