@@ -85,6 +85,14 @@ void Right(double joe) {
     br.spinFor(reverse,joe,degrees);
 }
 
+void setv(double joe) {
+    fl.setVelocity(joe,pct);
+    fr.setVelocity(joe,pct);
+    ml.setVelocity(joe,pct);
+    mr.setVelocity(joe,pct);
+    bl.setVelocity(joe,pct);
+    br.setVelocity(joe,pct);
+}
 
 //going to starting position from an easily accessible position
 void go1 () {
@@ -114,10 +122,11 @@ void shoot() {
 void auton1 () {
 
     setbrake();
+    setv(75);
 
     For(1000);
     wait(200,msec);
-    Right(1000);
+    Right(450);
     intake.spin(reverse,100,pct);
     For(200);
     intake.stop();
