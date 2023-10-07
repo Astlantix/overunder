@@ -124,7 +124,7 @@ void auton1 () {
     setbrake();
     setv(75);
 
-    For(2500);
+    For(1750);
     wait(200,msec);
     Right(300);
     intake.spin(reverse,100,pct);
@@ -134,10 +134,8 @@ void auton1 () {
     Rev(400);
     intake.stop();
     wait(200,msec);
-    Rev(300);
-    wait(200,msec);
     Left(300);
-    Rev(2500);
+    Rev(1750);
     Left(150);
     Rev(1200);
     cata.spin(forward,75,pct);
