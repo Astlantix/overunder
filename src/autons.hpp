@@ -71,7 +71,7 @@ void Left(double joe) {
     fr.spinFor(fwd,joe,degrees,false);
     ml.spinFor(reverse,joe,degrees,false);
     mr.spinFor(fwd,joe,degrees,false);
-    bl.spinFor(fwd,joe,degrees,false);
+    bl.spinFor(reverse,joe,degrees,false);
     br.spinFor(reverse,joe,degrees);
 }
 
