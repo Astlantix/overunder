@@ -118,6 +118,16 @@ void auton1 () {
     For(1000);
     wait(200,msec);
     Right(1000);
+    intake.spin(reverse,100,pct);
+    For(200);
+    intake.stop();
+    wait(200,msec);
+    Rev(200);
+    wait(200,msec);
+    Right(1000);
+    For(1000);
+    Right(100);
+    For(400);
 
     setcoast();
     c = 1;
