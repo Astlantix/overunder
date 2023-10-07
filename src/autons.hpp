@@ -134,7 +134,7 @@ void auton1 () {
     Rev(400);
     intake.stop();
     wait(200,msec);
-    Rev(400);
+    Rev(300);
     wait(200,msec);
     Left(300);
     Rev(2500);
