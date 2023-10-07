@@ -139,6 +139,11 @@ void auton1 () {
     Left(150);
     Rev(1200);
     cata.spin(forward,75,pct);
+    wait(6,sec);
+    cata.stop();
+    wait(200,msec);
+    Left(150);
+    For(1500);
 
     setcoast();
     c = 1;
