@@ -134,7 +134,7 @@ void auton1 () {
     wait(200,msec);
     Rev(200);
     wait(200,msec);
-    Right(300));
+    Right(300);
     For(2250);
     Right(300);
     For(1200);
