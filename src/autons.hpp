@@ -79,10 +79,10 @@ void Left(double joe) {
 void Right(double joe) {
     fl.spinFor(fwd,joe,degrees,false);
     fr.spinFor(reverse,joe,degrees,false);
-    ml.spinFor(reverse,joe,degrees,false);
-    mr.spinFor(fwd,joe,degrees,false);
-    bl.spinFor(reverse,joe,degrees,false);
-    br.spinFor(fwd,joe,degrees);
+    ml.spinFor(fwd,joe,degrees,false);
+    mr.spinFor(reverse,joe,degrees,false);
+    bl.spinFor(fwd,joe,degrees,false);
+    br.spinFor(reverse,joe,degrees);
 }
 
 
@@ -116,6 +116,8 @@ void auton1 () {
     setbrake();
 
     For(1000);
+    wait(200,msec);
+    Right(1000);
 
     setcoast();
     c = 1;
