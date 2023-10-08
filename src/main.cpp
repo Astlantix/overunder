@@ -272,7 +272,7 @@ void usercontrol(void) {
     }
 
     if(stupid) {
-      cata.spin(fwd,75,pct);
+      cata.spin(fwd,50,pct);
     }
     else {
       cata.stop(brake);
@@ -300,9 +300,7 @@ void usercontrol(void) {
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
-    gamers.Screen.print(xpos);
-    gamers.Screen.setCursor(4,1);
-    gamers.Screen.print(ypos);
+    gamers.Screen.print(cata.temperature(celsius));
 
     // ........................................................................
 
