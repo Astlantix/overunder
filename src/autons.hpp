@@ -122,9 +122,9 @@ void shoot() {
 void auton1 () {
 
     setbrake();
-    setv(75);
+    setv(100);
 
-    For(1750);
+  /* For(1750);
     wait(200,msec);
     Right(300);
     intake.spin(reverse,100,pct);
@@ -143,7 +143,9 @@ void auton1 () {
     cata.stop();
     wait(200,msec);
     Left(150);
-    For(1500);
+    For(1500);*/
+    Rev(1200);
+    For(1000);
 
     setcoast();
     c = 1;
