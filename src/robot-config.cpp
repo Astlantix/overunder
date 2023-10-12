@@ -17,13 +17,13 @@ motor mr = motor(PORT7, ratio18_1, true);
 controller gamers = controller(primary);
 motor intake = motor(PORT16, ratio18_1, false);
 motor pull = motor(PORT11, ratio36_1, false);
-digital_out flex = digital_out(Brain.ThreeWirePort.A);
 digital_out muscle = digital_out(Brain.ThreeWirePort.B);
 rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 digital_out wings = digital_out(Brain.ThreeWirePort.C);
 motor cata = motor(PORT1, ratio36_1, true);
+limit ballin = limit(Brain.ThreeWirePort.D);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

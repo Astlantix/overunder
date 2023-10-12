@@ -14,13 +14,13 @@ extern motor mr;
 extern controller gamers;
 extern motor intake;
 extern motor pull;
-extern digital_out flex;
 extern digital_out muscle;
 extern rotation lef;
 extern rotation rig;
 extern rotation side;
 extern digital_out wings;
 extern motor cata;
+extern limit ballin;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

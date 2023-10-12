@@ -108,14 +108,6 @@ void go3 () {
 }
 
 
-void shoot() {
-  intake.spin(fwd,100,pct);
-  wait(100,msec);
-  flex.set(1);
-  wait(500,msec);
-  flex.set(0);
-  intake.stop();
-}
 
 
 //Right side AWP
@@ -144,7 +136,7 @@ void auton1 () {
     wait(200,msec);
     Left(150);
     For(1500);*/
-    Rev(1200);
+    Rev(2400);
     For(1000);
 
     setcoast();

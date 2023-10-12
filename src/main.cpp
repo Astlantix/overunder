@@ -56,7 +56,6 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   muscle.set(1);
-  flex.set(0);
   setcoast();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -185,7 +184,7 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.4,0.95);
+    dtcode(0.4,1.5);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
@@ -223,6 +222,11 @@ void usercontrol(void) {
         wait(200,msec);
         b = 2;
       }
+      else if(ballin.pressing()) {
+        intake.stop(coast);
+        wait(200,msec);
+        b = 0;
+      }
     }
     else if(b==2) {
       if(gamers.ButtonR2.pressing()) {
@@ -237,15 +241,6 @@ void usercontrol(void) {
       }
     }
 
-    //puncher and outtake same time
-    if(gamers.ButtonY.pressing()) {
-      intake.spin(reverse,100,pct);
-      flex.set(1);
-      wait(100,msec);
-      flex.set(0);
-      wait(100,msec);
-      b = 2;
-    }
 
     //clamp and pulling
     if(gamers.ButtonX.pressing()) {
