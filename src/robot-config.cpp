@@ -22,6 +22,7 @@ rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 digital_out wings = digital_out(Brain.ThreeWirePort.C);
+digital_out fly = digital_out(Brain.ThreeWirePort.A);
 motor cata = motor(PORT1, ratio36_1, true);
 limit ballin = limit(Brain.ThreeWirePort.D);
 
