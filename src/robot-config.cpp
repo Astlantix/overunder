@@ -24,7 +24,7 @@ rotation side = rotation(PORT3, false);
 digital_out wings = digital_out(Brain.ThreeWirePort.A);
 digital_out fly = digital_out(Brain.ThreeWirePort.B);
 motor cata = motor(PORT1, ratio36_1, true);
-limit ballin = limit(Brain.ThreeWirePort.D);
+limit ballin = limit(Brain.ThreeWirePort.E);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
