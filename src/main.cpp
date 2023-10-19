@@ -269,7 +269,7 @@ void usercontrol(void) {
     }
 
     if(stupid) {
-      cata.spin(fwd,50,pct);
+      cata.spin(fwd,100,pct);
     }
     else {
       cata.stop(brake);
