@@ -17,13 +17,13 @@ motor mr = motor(PORT7, ratio18_1, true);
 controller gamers = controller(primary);
 motor intake = motor(PORT16, ratio18_1, false);
 motor pull = motor(PORT11, ratio36_1, false);
-digital_out muscle = digital_out(Brain.ThreeWirePort.C);
+digital_out muscle = digital_out(Brain.ThreeWirePort.G);
 rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
-digital_out wings = digital_out(Brain.ThreeWirePort.A);
-digital_out fly = digital_out(Brain.ThreeWirePort.B);
-motor cata = motor(PORT1, ratio36_1, true);
+pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
+pneumatics fly = pneumatics(Brain.ThreeWirePort.C);
+motor cata = motor(PORT1, ratio36_1, false);
 limit ballin = limit(Brain.ThreeWirePort.E);
 
 // VEXcode generated functions

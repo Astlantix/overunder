@@ -18,8 +18,8 @@ extern digital_out muscle;
 extern rotation lef;
 extern rotation rig;
 extern rotation side;
-extern digital_out wings;
-extern digital_out fly;
+extern pneumatics wings;
+extern pneumatics fly;
 extern motor cata;
 extern limit ballin;
 

@@ -192,10 +192,12 @@ void usercontrol(void) {
 
     //wings make me go fly
     if(gamers.Axis1.position() > 10) {
-      wings.set(1);
+      wings.open();
+      fly.open();
     }
     else if(gamers.Axis1.position() < -10) {
-      wings.set(0);
+      wings.close();
+      fly.close();
     }
 
     //toggle intake
