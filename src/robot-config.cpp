@@ -11,7 +11,7 @@ brain  Brain;
 motor fl = motor(PORT17, ratio18_1, false);
 motor fr = motor(PORT12, ratio18_1, true);
 motor bl = motor(PORT4, ratio18_1, false);
-motor br = motor(PORT5, ratio18_1, true);
+motor br = motor(PORT1, ratio18_1, true);
 motor ml = motor(PORT10, ratio18_1, false);
 motor mr = motor(PORT7, ratio18_1, true);
 controller gamers = controller(primary);
@@ -23,7 +23,7 @@ rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
 pneumatics fly = pneumatics(Brain.ThreeWirePort.C);
-motor cata = motor(PORT1, ratio36_1, false);
+motor cata = motor(PORT5, ratio36_1, false);
 limit ballin = limit(Brain.ThreeWirePort.E);
 
 // VEXcode generated functions

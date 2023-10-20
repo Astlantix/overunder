@@ -107,7 +107,7 @@ void auton1 () {
     Rev(22);
     For(15);
     Left(55);
-    
+
     setcoast();
     c = 1;
 }
@@ -117,8 +117,12 @@ void auton2 () {
 
     setbrake();
     setv(100);
+    For(42);
+    wings.close();
+    Right(90);
+    intake.spin(reverse,100,pct);
     For(24);
-    
+    intake.stop(coast);
 
     setcoast();
     c = 1;
