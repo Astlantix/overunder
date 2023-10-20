@@ -92,7 +92,7 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("LAWP");
+    printing("L AWP");
   }
   if(auton == 2) {
     printing("RAWP");

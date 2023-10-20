@@ -47,42 +47,42 @@ void stoop() {
 
 //Forward function
 void For(double joe) {
-    fl.spinFor(fwd,joe,degrees,false);
-    fr.spinFor(fwd,joe,degrees,false);
-    ml.spinFor(fwd,joe,degrees,false);
-    mr.spinFor(fwd,joe,degrees,false);
-    bl.spinFor(fwd,joe,degrees,false);
-    br.spinFor(fwd,joe,degrees);
+    fl.spinFor(fwd,joe*36,degrees,false);
+    fr.spinFor(fwd,joe*36,degrees,false);
+    ml.spinFor(fwd,joe*36,degrees,false);
+    mr.spinFor(fwd,joe*36,degrees,false);
+    bl.spinFor(fwd,joe*36,degrees,false);
+    br.spinFor(fwd,joe*36,degrees);
 }
 
 //Backward function
 void Rev(double joe) {
-    fl.spinFor(reverse,joe,degrees,false);
-    fr.spinFor(reverse,joe,degrees,false);
-    ml.spinFor(reverse,joe,degrees,false);
-    mr.spinFor(reverse,joe,degrees,false);
-    bl.spinFor(reverse,joe,degrees,false);
-    br.spinFor(reverse,joe,degrees);
+    fl.spinFor(reverse,joe*36,degrees,false);
+    fr.spinFor(reverse,joe*36,degrees,false);
+    ml.spinFor(reverse,joe*36,degrees,false);
+    mr.spinFor(reverse,joe*36,degrees,false);
+    bl.spinFor(reverse,joe*36,degrees,false);
+    br.spinFor(reverse,joe*36,degrees);
 }
 
 //Left function
 void Left(double joe) {
-    fl.spinFor(reverse,joe,degrees,false);
-    fr.spinFor(fwd,joe,degrees,false);
-    ml.spinFor(reverse,joe,degrees,false);
-    mr.spinFor(fwd,joe,degrees,false);
-    bl.spinFor(reverse,joe,degrees,false);
-    br.spinFor(reverse,joe,degrees);
+    fl.spinFor(reverse,joe*3.3515,degrees,false);
+    fr.spinFor(fwd,joe*3.3515,degrees,false);
+    ml.spinFor(reverse,joe*3.3515,degrees,false);
+    mr.spinFor(fwd,joe*3.3515,degrees,false);
+    bl.spinFor(reverse,joe*3.3515,degrees,false);
+    br.spinFor(reverse,joe*3.3515,degrees);
 }
 
 //Right function
 void Right(double joe) {
-    fl.spinFor(fwd,joe*3.703703703703,degrees,false);
-    fr.spinFor(reverse,joe*3.703703703703,degrees,false);
-    ml.spinFor(fwd,joe*3.703703703703,degrees,false);
-    mr.spinFor(reverse,joe*3.703703703703,degrees,false);
-    bl.spinFor(fwd,joe*3.703703703703,degrees,false);
-    br.spinFor(reverse,joe*3.703703703703,degrees);
+    fl.spinFor(fwd,joe*3.3515,degrees,false);
+    fr.spinFor(reverse,joe*3.3515,degrees,false);
+    ml.spinFor(fwd,joe*3.3515,degrees,false);
+    mr.spinFor(reverse,joe*3.3515,degrees,false);
+    bl.spinFor(fwd,joe*3.3515,degrees,false);
+    br.spinFor(reverse,joe*3.3515,degrees);
 }
 
 void setv(double joe) {
@@ -99,9 +99,12 @@ void setv(double joe) {
 void auton1 () {
 
     setbrake();
-    setv(100);
-    wings.close();
-    Right(1000);
+    setv(70);
+    fly.close();
+    Rev(15);
+    Right(45);
+    fly.open();
+    Rev(24);
     setcoast();
     c = 1;
 }
@@ -110,7 +113,8 @@ void auton1 () {
 void auton2 () {
 
     setbrake();
-    Right(90);
+    setv(100);
+    For(24);
     
 
     setcoast();
