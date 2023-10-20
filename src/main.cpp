@@ -170,7 +170,7 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.4,1.5);
+    dtcode(0.7,1.5);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
@@ -286,7 +286,7 @@ void usercontrol(void) {
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(cata.temperature(celsius));
-    gamers.Screen.setCursor(4,1);
+    gamers.Screen.setCursor(3,5);
     gamers.Screen.print(mode.c_str());
 
     
