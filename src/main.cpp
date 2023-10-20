@@ -170,7 +170,7 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.42,2);
+    dtcode(0.7,2);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
