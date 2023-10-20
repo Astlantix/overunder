@@ -102,9 +102,12 @@ void auton1 () {
     setv(70);
     fly.close();
     Rev(15);
-    Right(45);
+    Right(60);
     fly.open();
-    Rev(24);
+    Rev(22);
+    For(15);
+    Left(55);
+    
     setcoast();
     c = 1;
 }
