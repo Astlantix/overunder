@@ -54,8 +54,7 @@ competition Competition;
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  muscle.set(1);
+  vexcodeInit(); 
   setcoast();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -152,6 +151,7 @@ bool a = 0;
 int b = 0;
 bool stupid = 0;
 bool dumb = 0;
+std::string mode = "coast";
 void usercontrol(void) {
    //User control code here, inside the loop
 
@@ -162,23 +162,7 @@ void usercontrol(void) {
       a = 1;
       wait(200,msec);
     }
-
-    // going to starting position
-    if(gamers.ButtonA.pressing()) {
-      if(auton == 1) {
-        go1();
-      }
-      else if(auton == 2) {
-        go2();
-      }
-      else if(auton == 3) {
-        go3();
-      }
-      wait(200,msec);
-    }
-
   }
-
    while (a) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -280,12 +264,14 @@ void usercontrol(void) {
         sethold();
         wait(200,msec);
         gamers.rumble(rumbleLong);
+        mode = "hold";
         dumb = 1;
       }
       else {
         setcoast();
         wait(200,msec);
         gamers.rumble(rumblePulse);
+        mode = "coast";
         dumb = 0;
       }
     }
@@ -298,6 +284,10 @@ void usercontrol(void) {
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(cata.temperature(celsius));
+    gamers.Screen.setCursor(4,1);
+    gamers.Screen.print(mode.c_str());
+
+    
 
     // ........................................................................
 
