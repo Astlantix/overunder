@@ -56,6 +56,8 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit(); 
   setcoast();
+  wings.open();
+  fly.open();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -90,10 +92,10 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("RAWP");
+    printing("LAWP");
   }
   if(auton == 2) {
-    printing("Left AWP");
+    printing("RAWP");
   }
   if(auton == 3) {
     printing("Left get triballs");

@@ -77,12 +77,12 @@ void Left(double joe) {
 
 //Right function
 void Right(double joe) {
-    fl.spinFor(fwd,joe,degrees,false);
-    fr.spinFor(reverse,joe,degrees,false);
-    ml.spinFor(fwd,joe,degrees,false);
-    mr.spinFor(reverse,joe,degrees,false);
-    bl.spinFor(fwd,joe,degrees,false);
-    br.spinFor(reverse,joe,degrees);
+    fl.spinFor(fwd,joe*3.703703703703,degrees,false);
+    fr.spinFor(reverse,joe*3.703703703703,degrees,false);
+    ml.spinFor(fwd,joe*3.703703703703,degrees,false);
+    mr.spinFor(reverse,joe*3.703703703703,degrees,false);
+    bl.spinFor(fwd,joe*3.703703703703,degrees,false);
+    br.spinFor(reverse,joe*3.703703703703,degrees);
 }
 
 void setv(double joe) {
@@ -94,51 +94,14 @@ void setv(double joe) {
     br.setVelocity(joe,pct);
 }
 
-//going to starting position from an easily accessible position
-void go1 () {
-    
-}
-
-void go2 () {
-    
-}
-
-void go3 () {
-    
-}
-
-
-
 
 //Right side AWP
 void auton1 () {
 
     setbrake();
     setv(100);
-
-  /* For(1750);
-    wait(200,msec);
-    Right(300);
-    intake.spin(reverse,100,pct);
-    wait(200,msec);
-    For(400);
-    wait(1,sec);
-    Rev(400);
-    intake.stop();
-    wait(200,msec);
-    Left(300);
-    Rev(1750);
-    Left(150);
-    Rev(1200);
-    cata.spin(forward,75,pct);
-    wait(6,sec);
-    cata.stop();
-    wait(200,msec);
-    Left(150);
-    For(1500);*/
-    Rev(2400);
-    For(1000);
-
+    wings.close();
+    Right(1000);
     setcoast();
     c = 1;
 }
@@ -147,7 +110,7 @@ void auton1 () {
 void auton2 () {
 
     setbrake();
-
+    Right(90);
     
 
     setcoast();
