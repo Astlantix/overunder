@@ -170,21 +170,12 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.7,1.5);
+    dtcode(0.42,2);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     
 
-    //wings make me go fly
-    if(gamers.Axis1.position() > 10) {
-      wings.open();
-      fly.open();
-    }
-    else if(gamers.Axis1.position() < -10) {
-      wings.close();
-      fly.close();
-    }
 
     //toggle intake
     if(b==0) {
@@ -236,11 +227,13 @@ void usercontrol(void) {
     }
 
     if(gamers.ButtonL1.pressing()) {
-      pull.spin(fwd,100,pct);
+      wings.open();
+      fly.open();
     }
 
     if(gamers.ButtonL2.pressing()) {
-      pull.spin(reverse,100,pct);
+      wings.close();
+      fly.close();
     }
 
     if(gamers.ButtonA.pressing()) {
