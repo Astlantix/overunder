@@ -120,7 +120,7 @@ void auton1 () {
 void auton2 () {
 
     setbrake();
-    setv(100);
+    setv(80);
     For(48);
     wings.close();
     Right(90);
@@ -130,7 +130,7 @@ void auton2 () {
     intake.stop(coast);
     wings.open();
     Rev(24);
-    Right(95);
+    Right(120);
     intake.spin(fwd,100,pct);
     For(20);
     wait(200,msec);
