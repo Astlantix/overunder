@@ -132,10 +132,10 @@ void auton2 () {
     Rev(24);
     Right(120);
     intake.spin(fwd,100,pct);
-    For(20);
+    For(22);
     wait(200,msec);
     intake.stop(coast);
-    Rev(20);
+    Rev(22);
     Right(230);
     For(24);
     Right(20);

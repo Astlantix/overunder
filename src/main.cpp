@@ -95,7 +95,7 @@ void autonslctr() {
     printing("LAWP");
   }
   if(auton == 2) {
-    printing("RAWP");
+    printing("R AWP");
   }
   if(auton == 3) {
     printing("Left get triballs");
