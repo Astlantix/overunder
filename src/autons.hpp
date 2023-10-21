@@ -141,7 +141,6 @@ void auton2 () {
     intake.spin(reverse,100,pct);
     wait(200,msec);
     intake.stop(coast);
-    
 
 
     setcoast();
