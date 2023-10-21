@@ -139,11 +139,34 @@ void auton2 () {
     Right(230);
     For(24);
     Right(20);
-    For(24);
+    For(22);
     intake.spin(reverse,100,pct);
     wait(200,msec);
     intake.stop(coast);
-
+    Rev(22);
+    Left(90);
+    intake.spin(fwd,100,pct);
+    For(7.5);
+    wait(200,msec);
+    Rev(7.5);
+    Right(90);
+    For(22);
+    intake.spin(reverse,100,pct);
+    wait(200,msec);
+    intake.stop(coast);
+    Rev(44);
+    Left(90);
+    intake.spin(fwd,100,pct);
+    For(7.5);
+    wait(200,msec);
+    Rev(7.5);
+    intake.stop(coast);
+    Right(90);
+    For(22);
+    intake.spin(reverse,100,pct);
+    wait(200,msec);
+    intake.stop(coast);
+    Rev(10);
 
     setcoast();
     c = 1;
