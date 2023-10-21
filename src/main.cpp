@@ -92,10 +92,10 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("L AWP");
+    printing("LAWP");
   }
   if(auton == 2) {
-    printing("RAWP");
+    printing("R AWP");
   }
   if(auton == 3) {
     printing("Left get triballs");
