@@ -124,7 +124,7 @@ void auton2 () {
     For(44);
     Right(90);
     intake.spin(reverse,100,pct);
-    For(2);
+    For(20);
     wait(200,msec);
     intake.stop(coast);
     Rev(24);
