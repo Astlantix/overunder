@@ -121,10 +121,10 @@ void auton2 () {
 
     setbrake();
     setv(80);
-    For(48);
+    For(44);
     Right(90);
     intake.spin(reverse,100,pct);
-    For(24);
+    For(2);
     wait(200,msec);
     intake.stop(coast);
     Rev(24);
