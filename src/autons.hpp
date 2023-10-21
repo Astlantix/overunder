@@ -135,6 +135,7 @@ void auton2 () {
     For(20);
     wait(200,msec);
     intake.stop(coast);
+    Rev(20);
     Right(200);
     For(24);
     Right(20);
