@@ -130,7 +130,7 @@ void auton2 () {
     intake.stop(coast);
     wings.open();
     Rev(24);
-    Right(110);
+    Right(95);
     intake.spin(fwd,100,pct);
     For(20);
     wait(200,msec);
