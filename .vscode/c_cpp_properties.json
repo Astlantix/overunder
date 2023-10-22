@@ -17,11 +17,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${vex_sdkIncludes}",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/include"
+                "${vex_sdkIncludes}"
             ],
-            "compilerPath": "c:/Users/Redwood Robotics/AppData/Roaming/Code - Insiders/User/globalStorage/vexrobotics.vexcode/tools/cpp/toolchain_win32/clang/bin/clang",
+            "compilerPath": "${vex_sdkIncludes}",
             "cStandard": "gnu99",
             "cppStandard": "gnu++11",
             "intelliSenseMode": "windows-clang-x86",
