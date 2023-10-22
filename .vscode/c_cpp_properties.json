@@ -1,50 +1,52 @@
 {
-	"env": {
-		"vex_compilerPath": "${config:vexrobotics.vexcode.Cpp.Toolchain.Path}\\clang\\bin\\clang",
-		"vex_sdkPath": "${config:vexrobotics.vexcode.Cpp.Sdk.Home}\\V5\\V5_20220726_10_00_00\\vexv5",
-		"vex_gcc": "${vex_sdkPath}/gcc/include/c++/4.9.3",
-		"vex_sdkIncludes": [
-			"${vex_sdkPath}/clang/8.0.0/include/**",
-			"${vex_gcc}/**",
-			"${vex_gcc}/arm-none-eabi/armv7-arm/thumb",
-			"${vex_sdkPath}/gcc/include",
-			"${vex_sdkPath}/include/**",
-			"${workspaceFolder}/include/**",
-			"${workspaceFolder}/src/**"
-		]
-	},
-	"configurations": [
-		{
-			"name": "Win32",
-			"includePath": [
-				"${vex_sdkIncludes}"
-			],
-			"compilerPath": "${vex_compilerPath}",
-			"cStandard": "gnu99",
-			"cppStandard": "gnu++11",
-			"intelliSenseMode": "windows-clang-x86",
-			"configurationProvider": "ms-vscode.makefile-tools"
-		},
-		{
-			"name": "Mac",
-			"includePath": [
-				"${vex_sdkIncludes}"
-			],
-			"compilerPath": "${vex_compilerPath}",
-			"cStandard": "gnu99",
-			"cppStandard": "gnu++11",
-			"intelliSenseMode": "macos-clang-x86"
-		},
-		{
-			"name": "Linux",
-			"includePath": [
-				"${vex_sdkIncludes}"
-			],
-			"compilerPath": "",
-			"cStandard": "gnu99",
-			"cppStandard": "gnu++11",
-			"intelliSenseMode": "linux-clang-x86"
-		}
-	],
-	"version": 4
+    "env": {
+        "vex_compilerPath": "${config:vexrobotics.vexcode.Cpp.Toolchain.Path}\\clang\\bin\\clang",
+        "vex_sdkPath": "${config:vexrobotics.vexcode.Cpp.Sdk.Home}\\V5\\V5_20220726_10_00_00\\vexv5",
+        "vex_gcc": "${vex_sdkPath}/gcc/include/c++/4.9.3",
+        "vex_sdkIncludes": [
+            "${vex_sdkPath}/clang/8.0.0/include/**",
+            "${vex_gcc}/**",
+            "${vex_gcc}/arm-none-eabi/armv7-arm/thumb",
+            "${vex_sdkPath}/gcc/include",
+            "${vex_sdkPath}/include/**",
+            "${workspaceFolder}/include/**",
+            "${workspaceFolder}/src/**"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${vex_sdkIncludes}",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include"
+            ],
+            "compilerPath": "c:/Users/Redwood Robotics/AppData/Roaming/Code - Insiders/User/globalStorage/vexrobotics.vexcode/tools/cpp/toolchain_win32/clang/bin/clang",
+            "cStandard": "gnu99",
+            "cppStandard": "gnu++11",
+            "intelliSenseMode": "windows-clang-x86",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${vex_sdkIncludes}"
+            ],
+            "compilerPath": "${vex_compilerPath}",
+            "cStandard": "gnu99",
+            "cppStandard": "gnu++11",
+            "intelliSenseMode": "macos-clang-x86"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${vex_sdkIncludes}"
+            ],
+            "compilerPath": "",
+            "cStandard": "gnu99",
+            "cppStandard": "gnu++11",
+            "intelliSenseMode": "linux-clang-x86"
+        }
+    ],
+    "version": 4
 }
