@@ -105,7 +105,7 @@ void autonslctr() {
     wait(200,msec);
   }
   else if(gamers.ButtonLeft.pressing()) {
-    auton--;
+    auton--;                        
     wait(200,msec);
   }
 }
