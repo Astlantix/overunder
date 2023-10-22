@@ -95,7 +95,7 @@ void autonslctr() {
     printing("LAWP");
   }
   if(auton == 2) {
-    printing("R AWP");
+    printing("RAWP");
   }
   if(auton == 3) {
     printing("Left get triballs");
@@ -170,7 +170,7 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.7,2);
+    dtcode(0.5,2);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
@@ -181,41 +181,41 @@ void usercontrol(void) {
     if(b==0) {
       if(gamers.ButtonR1.pressing()) {
        intake.spin(fwd,100,pct);
-       wait(200,msec);
+       wait(2,msec);
        b = 1;
       }
       else if(gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
-        wait(200,msec);
+        wait(2,msec);
         b = 2;
       }
     }
     else if(b==1) {
       if(gamers.ButtonR1.pressing()) {
         intake.stop(coast);
-        wait(200,msec);
+        wait(2,msec);
         b = 0;
       }
       else if(gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
-        wait(200,msec);
+        wait(2,msec);
         b = 2;
       }
       else if(ballin.pressing()) {
         intake.stop(coast);
-        wait(200,msec);
+        wait(2,msec);
         b = 0;
       }
     }
     else if(b==2) {
       if(gamers.ButtonR2.pressing()) {
         intake.stop(coast);
-        wait(200,msec);
+        wait(2,msec);
         b = 0;
       }
       else if(gamers.ButtonR1.pressing()) {
         intake.spin(fwd,100,pct);
-        wait(200,msec);
+        wait(2,msec);
         b = 1;
       }
     }
