@@ -22,7 +22,7 @@ rotation lef = rotation(PORT18, true);
 rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics fly = pneumatics(Brain.ThreeWirePort.C);
+pneumatics fly = pneumatics(Brain.ThreeWirePort.H);
 motor cata = motor(PORT17, ratio36_1, false);
 limit ballin = limit(Brain.ThreeWirePort.E);
 
