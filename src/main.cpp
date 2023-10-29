@@ -152,6 +152,7 @@ void dtcode(double x, double y) {
 bool a = 0;
 int b = 0;
 bool stupid = 0;
+bool mode = 1;
 bool dumb = 0;
 std::string mode = "coast";
 void usercontrol(void) {
@@ -170,7 +171,12 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    dtcode(0.34,2);
+    if(mode) {
+      dtcode(0.34,2);
+    }
+    else if(!mode) {
+      dtcode(0.34,-2);
+    }
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
@@ -237,7 +243,7 @@ void usercontrol(void) {
     }
 
     if(gamers.ButtonA.pressing()) {
-      muscle.set(1);
+      mode = !mode;
     }
 
     if(gamers.Axis2.position() < -10) {
