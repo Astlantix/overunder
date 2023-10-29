@@ -95,7 +95,7 @@ void setv(double joe) {
 }
 
 
-//Right side AWP
+//left side AWP
 void auton1 () {
 
     setbrake();
@@ -116,7 +116,7 @@ void auton1 () {
     c = 1;
 }
 
-//Left Side AWP
+//right Side AWP
 void auton2 () {
 
     setbrake();
@@ -171,7 +171,7 @@ void auton2 () {
 }
 
 
-//Left Side Getting as many tri-ball  s as possible
+//right Side Getting as many tri-balls as possible
 void auton3 () {
     
     setbrake();
