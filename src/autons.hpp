@@ -119,7 +119,7 @@ void auton2 () {
     setbrake();
     setv(80);
     wings.close();
-    For(30);
+    For(48);
     Right(90);
     intake.spin(reverse,100,pct);
     For(20);
@@ -141,7 +141,7 @@ void auton2 () {
 
     setcoast();
     c = 1;
-}
+} 
 
 
 //right Side Getting as many tri-balls as possible
