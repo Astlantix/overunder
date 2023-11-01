@@ -144,4 +144,4 @@ void auton2 () {
 } 
 
 
-//right Sid
+//right side get triballs
