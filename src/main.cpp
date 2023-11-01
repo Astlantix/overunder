@@ -37,6 +37,12 @@ using namespace vex;
                                                     
 */
 
+
+/*
+
+
+
+*/
 // A global instance of competition
 competition Competition;
 
@@ -98,7 +104,11 @@ void autonslctr() {
     printing("RAWP");
   }
   if(auton == 3) {
-    printing("Left get triballs");
+    gamers.Screen.clearScreen();
+    gamers.Screen.setCursor(1,1);
+    gamers.Screen.print("  O  ");
+    gamers.Screen.print(" /|\\ ");
+    gamers.Screen.print(" / \\ ");
   }
   if(gamers.ButtonRight.pressing()) {
     auton++;
