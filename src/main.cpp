@@ -106,8 +106,10 @@ void autonslctr() {
   if(auton == 3) {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
-    gamers.Screen.print("  O  ");
+    gamers.Screen.print(" O  ");
+    gamers.Screen.setCursor(2,1);
     gamers.Screen.print(" /|\\ ");
+    gamers.Screen.setCursor(3,1);
     gamers.Screen.print(" / \\ ");
   }
   if(gamers.ButtonRight.pressing()) {
