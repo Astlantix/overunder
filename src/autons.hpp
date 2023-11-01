@@ -144,15 +144,4 @@ void auton2 () {
 } 
 
 
-//right Side Getting as many tri-balls as possible
-void auton3 () {
-    
-    setbrake();
-
-    Right(90);
-    wait(200,msec);
-    Rev(24);
-
-    setcoast();
-    c = 1;
-}
+//right Sid
