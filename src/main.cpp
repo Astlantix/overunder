@@ -122,7 +122,7 @@ void autonomous(void) {
     auton2();
   }
   else if(auton == 3) {
-    auton3();
+    
   }
 
   // ..........................................................................
@@ -285,7 +285,7 @@ void usercontrol(void) {
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(cata.temperature(celsius));
-    gamers.Screen.setCursor(3,5);
+    gamers.Screen.setCursor(3,6);
     gamers.Screen.print(mode.c_str());
 
     
