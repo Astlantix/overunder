@@ -254,7 +254,7 @@ void usercontrol(void) {
       fly.close();
     }
 
-    if(gamers.ButtonA.pressing()) {
+    if(gamers.ButtonB.pressing()) {
       modes = !modes;
     }
 
@@ -272,7 +272,7 @@ void usercontrol(void) {
       cata.stop(brake);
     }
 
-    if(gamers.ButtonB.pressing()) {
+    if(gamers.ButtonA.pressing()) {
       if(!dumb) {
         sethold();
         wait(200,msec);
