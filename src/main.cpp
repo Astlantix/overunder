@@ -98,7 +98,7 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("LAWP");
+    printing("L AWP");
   }
   if(auton == 2) {
     printing("RAWP");
@@ -240,9 +240,7 @@ void usercontrol(void) {
 
 
     //clamp and pulling
-    if(gamers.ButtonX.pressing()) {
-      muscle.set(0);
-    }
+ 
 
     if(gamers.ButtonL1.pressing()) {
       wings.open();

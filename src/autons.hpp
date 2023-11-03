@@ -99,7 +99,7 @@ void setv(double joe) {
 void auton1 () {
 
     setbrake();
-    setv(25);
+    setv(50);
     fly.close();
     wait(200,msec);
     Rev(15);
