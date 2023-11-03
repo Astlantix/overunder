@@ -119,7 +119,7 @@ void auton2 () {
     setbrake();
     setv(80);
     wings.close();
-    For(48);
+    For(45);
     Right(90);
     intake.spin(reverse,100,pct);
     For(20);
