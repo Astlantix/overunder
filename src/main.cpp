@@ -150,15 +150,30 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+double currentLeftSpeed = 0;
+double currentRightSpeed = 0;
+double rampRate = 0.05; // Adjust this value to control the smoothness
+
 void dtcode(double x, double y) {
-  double rightspeed = (gamers.Axis3.position() * y) + (gamers.Axis4.position() * -x); //calculate the right speed
-  double leftspeed = (gamers.Axis3.position() * y) - (gamers.Axis4.position() * -x); //calculate the left speed
-  fl.spin(fwd, leftspeed, pct); //set the left motor speed
-  ml.spin(fwd,leftspeed,pct); //set the left motor speed
-  bl.spin(fwd, leftspeed, pct); //set the left motor speed
-  fr.spin(fwd, rightspeed, pct); //set the right motor speed
-  mr.spin(fwd,rightspeed,pct); //set the right motor speed
-  br.spin(fwd, rightspeed, pct); //set the right motor speed
+  double desiredRightSpeed = (gamers.Axis3.position() * y) + (gamers.Axis4.position() * -x);
+  double desiredLeftSpeed = (gamers.Axis3.position() * y) - (gamers.Axis4.position() * -x);
+
+  if (desiredRightSpeed > currentRightSpeed)
+    currentRightSpeed += rampRate;
+  else if (desiredRightSpeed < currentRightSpeed)
+    currentRightSpeed -= rampRate;
+
+  if (desiredLeftSpeed > currentLeftSpeed)
+    currentLeftSpeed += rampRate;
+  else if (desiredLeftSpeed < currentLeftSpeed)
+    currentLeftSpeed -= rampRate;
+
+  fl.spin(fwd, currentLeftSpeed, pct);
+  ml.spin(fwd, currentLeftSpeed, pct);
+  bl.spin(fwd, currentLeftSpeed, pct);
+  fr.spin(fwd, currentRightSpeed, pct);
+  mr.spin(fwd, currentRightSpeed, pct);
+  br.spin(fwd, currentRightSpeed, pct);
 }
 
 bool a = 0;

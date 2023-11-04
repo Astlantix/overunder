@@ -163,4 +163,5 @@ void auton3() {
     cata.spin(fwd,100,pct);
     wait(30,sec);
     cata.stop(coast);
+    
 }
