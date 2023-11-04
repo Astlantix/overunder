@@ -104,7 +104,7 @@ void auton1 () {
     wait(200,msec);
     Rev(15);
     wait(20,msec);
-    Right(150);
+    Right(75);
     wait(200,msec);
     wait(200,msec);
     setv(100);
@@ -163,5 +163,5 @@ void auton3() {
     cata.spin(fwd,100,pct);
     wait(30,sec);
     cata.stop(coast);
-    
+
 }
