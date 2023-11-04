@@ -199,10 +199,10 @@ void usercontrol(void) {
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
     if(modes) {
-      dtcode(0.34,2);
+      dtcode(0.27,2);
     }
     else if(!modes) {
-      dtcode(0.34,-2);
+      dtcode(0.37,-2);
     }
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
