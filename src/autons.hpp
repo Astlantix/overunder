@@ -119,29 +119,36 @@ void auton2 () {
     setbrake();
     setv(75);
     wings.close();
-    For(45);
+    For(48);
+    wait(200,msec);
     Right(90);
     intake.spin(reverse,100,pct);
-    For(20);
+    For(10);
     wait(200,msec);
     wings.open();
     intake.stop(coast);
+    wait(200,msec);
     Rev(24);
-    Right(180);
+    wait(200,msec);
+    Right(195);
+    wait(200,msec);
     intake.spin(fwd,100,pct);
-    For(22);
+    wait(200,msec);
+    For(18);
     wait(200,msec);
     intake.stop(coast);
     Rev(22);
+    wait(200,msec);
     Right(180);
-    For(24);
+    wait(200,msec);
+    For(20);
     intake.spin(reverse,100,pct);
     wait(200,msec);
     intake.stop(coast);
     Rev(24);
-    Right(165);
+    Right(150);
     intake.spin(fwd,100,pct);
-    For(25);
+    For(23);
     wait(200,msec);
     intake.stop(coast);
     Rev(25);
@@ -157,11 +164,6 @@ void auton2 () {
 
 //skills
 void auton3() {
-    setbrake();
-    setv(75);
-    Rev(15);
-    cata.spin(fwd,100,pct);
-    wait(30,sec);
-    cata.stop(coast);
+    Right(90);
 
 }
