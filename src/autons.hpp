@@ -155,4 +155,12 @@ void auton2 () {
 } 
 
 
-//right side get triballs
+//skills
+void auton3() {
+    setbrake();
+    setv(75);
+    Rev(15);
+    cata.spin(fwd,100,pct);
+    wait(30,sec);
+    cata.stop(coast);
+}
