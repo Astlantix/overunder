@@ -123,11 +123,11 @@ void auton2 () {
     wait(200,msec);
     Right(90);
     intake.spin(reverse,100,pct);
-    For(7);
+    For(12);
     wait(200,msec);
     wings.open();
     wait(200,msec);
-    /*Rev(24);
+    Rev(24);
     intake.stop(coast);
     wait(200,msec);
     Right(195);
@@ -141,7 +141,7 @@ void auton2 () {
     wait(200,msec);
     Right(180);
     wait(200,msec);
-    For(20);
+    For(18);
     intake.spin(reverse,100,pct);
     wait(200,msec);
     Rev(24);
@@ -157,7 +157,7 @@ void auton2 () {
     For(5);
     Rev(10);
     intake.stop(coast);
-    For(24);*/
+    For(24);
     setcoast();
     c = 1;
 } 
