@@ -104,8 +104,7 @@ void auton1 () {
     wait(200,msec);
     Rev(15);
     wait(20,msec);
-    Right(75);
-    wait(200,msec);
+    Right(49);
     wait(200,msec);
     setv(100);
     Rev(22);
@@ -150,7 +149,6 @@ void auton2 () {
     intake.spin(fwd,100,pct);
     For(23);
     wait(200,msec);
-    Rev(25);
     intake.stop(coast);
     Left(165+90);
     intake.spin(reverse,100,pct);
