@@ -163,6 +163,29 @@ void auton2 () {
 
 //skills
 void auton3() {
-    Right(90);
+    ml.spin(fwd,100,pct);
+    wait(1,sec);
+    ml.stop(coast);
+    wait(1,sec);
+    mr.spin(fwd,100,pct);
+    wait(1,sec);
+    mr.stop(coast);
+    wait(1,sec);
+    fr.spin(fwd,100,pct);
+    wait(1,sec);
+    fr.stop(coast);
+    wait(1,sec);
+    fl.spin(fwd,100,pct);
+    wait(1,sec);
+    fl.stop(coast);
+    wait(1,sec);
+    bl.spin(fwd,100,pct);
+    wait(1,sec);
+    bl.stop(coast);
+    wait(1,sec);
+    br.spin(fwd,100,pct);
+    wait(1,sec);
+    br.stop(coast);
+    wait(1,sec);
 
 }

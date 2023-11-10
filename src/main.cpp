@@ -98,7 +98,7 @@ void autonslctr() {
     auton = 1;
   }
   if(auton == 1) {
-    printing("LA WP");
+    printing("LAWP");
   }
   if(auton == 2) {
     printing("RAWP");
@@ -153,9 +153,9 @@ void autonomous(void) {
 // Adjust this value to control the smoothness
 
 void dtcode(double x, double y) {
-  double rightspeed = (gamers.Axis3.position() * y) + (gamers.Axis4.position() * -x);
-  double leftspeed = (gamers.Axis3.position() * y) - (gamers.Axis4.position() * -x);
-
+  double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
+  double leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
+  double rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
 
   fl.spin(fwd, leftspeed, pct);
   ml.spin(fwd, leftspeed, pct);
