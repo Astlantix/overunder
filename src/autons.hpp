@@ -5,6 +5,14 @@
 
 bool c = 0;
 
+void mspin(motor m, double v) {
+    m.spin(fwd,v,pct);
+}
+
+void mstop(motor m) {
+    m.stop(coast);
+}
+
 //stop is hold
 void sethold() {
   ml.setStopping(hold);
@@ -121,7 +129,7 @@ void auton2 () {
     For(51);
     wait(200,msec);
     Right(90);
-    intake.spin(reverse,100,pct);
+    mspin(intake,-100);
     For(12);
     wait(200,msec);
     wings.open();
@@ -131,30 +139,30 @@ void auton2 () {
     wait(200,msec);
     Right(195);
     wait(200,msec);
-    intake.spin(fwd,100,pct);
+    mspin(intake,100);
     wait(200,msec);
     For(18);
     wait(200,msec);
     Rev(22);
-    intake.stop(coast);
+    mstop(intake);
     wait(200,msec);
     Right(180);
     wait(200,msec);
     For(18);
-    intake.spin(reverse,100,pct);
+    mspin(intake,-100);
     wait(200,msec);
     Rev(24);
-    intake.stop(coast);
+    mstop(intake);
     Right(120);
-    intake.spin(fwd,100,pct);
+    mspin(intake, 100);
     For(23);
     wait(200,msec);
-    intake.stop(coast);
+    mstop(intake);
     Left(165+90);
-    intake.spin(reverse,100,pct);
+    mspin(intake,-100);
     For(5);
     Rev(10);
-    intake.stop(coast);
+    mstop(intake);
     For(24);
     setcoast();
     c = 1;
