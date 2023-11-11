@@ -84,7 +84,7 @@ void odometry() {
         //#2 calculating new position
 
         /*
-        xpos += locΔX * sin(angprev + angchange / 2) + locΔY * cose(angprev + angchange / 2);
+        xpos += locΔX * sin(angprev + angchange / 2) + locΔY * cos(angprev + angchange / 2);
         ypos += locΔX * cos(angprev + angchange / 2) - locΔY * sin(angprev + angchange / 2);
         */
 
