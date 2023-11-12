@@ -23,7 +23,7 @@ rotation rig = rotation(PORT2, false);
 rotation side = rotation(PORT3, false);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H);
-motor cata = motor(PORT17, ratio36_1, false);
+motor cata = motor(PORT17, ratio6_1, false);
 limit ballin = limit(Brain.ThreeWirePort.E);
 
 // VEXcode generated functions

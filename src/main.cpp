@@ -153,10 +153,19 @@ void autonomous(void) {
 // Adjust this value to control the smoothness
 
 void dtcode(double x, double y) {
-  double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
-  double leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
-  double rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
 
+  double rightspeed, leftspeed;
+
+  if (fabs(gamers.Axis3.position()) < 10 && fabs(gamers.Axis4.position()) > 10) {
+    // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
+    leftspeed = gamers.Axis4.position() * x;
+    rightspeed = gamers.Axis4.position() * -x;
+  }
+  else {
+    double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
+    leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
+    rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
+  }
   fl.spin(fwd, leftspeed, pct);
   ml.spin(fwd, leftspeed, pct);
   bl.spin(fwd, leftspeed, pct);
@@ -271,7 +280,7 @@ void usercontrol(void) {
       cata.spin(fwd,100,pct);
     }
     else {
-      cata.stop(brake);
+      cata.stop(coast);
     }
 
     if(gamers.ButtonA.pressing()) {
