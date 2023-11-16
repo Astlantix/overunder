@@ -166,12 +166,8 @@ void dtcode(double x, double y) {
     leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
     rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
   }
-  fl.spin(fwd, leftspeed, pct);
-  ml.spin(fwd, leftspeed, pct);
-  bl.spin(fwd, leftspeed, pct);
-  fr.spin(fwd, rightspeed, pct);
-  mr.spin(fwd, rightspeed, pct);
-  br.spin(fwd, rightspeed, pct);
+  L.spin(fwd,leftspeed,pct);
+  R.spin(fwd,rightspeed,pct);
 }
 
 bool a = 0;

@@ -11,6 +11,8 @@ extern motor bl;
 extern motor br;
 extern motor ml;
 extern motor mr;
+extern motor_group L;
+extern motor_group R;
 extern controller gamers;
 extern motor intake;
 extern motor pull;
