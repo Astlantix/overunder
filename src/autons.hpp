@@ -5,12 +5,27 @@
 
 bool c = 0;
 
-void mspin(motor m, double v) {
-    m.spin(fwd,v,pct);
+//intake stuff
+void take(int joe) {
+    if(joe==0) {
+        intake.stop(coast);
+    }
+    else if(joe==1) {
+        intake.spin(fwd,100,pct);
+    }
+    else if(joe==2) {
+        intake.spin(reverse,100,pct);
+    }
 }
 
-void mstop(motor m) {
-    m.stop(coast);
+//flywheel stuff
+void fly() {
+    if(c==0) {
+        cata.spin(fwd,3600,rpm);
+    }
+    else if(c==1) {
+        cata.stop(coast);
+    }
 }
 
 //stop is hold
@@ -129,7 +144,7 @@ void auton2 () {
     For(51);
     wait(200,msec);
     Right(90);
-    mspin(intake,-100);
+    take(2);
     For(12);
     wait(200,msec);
     wings.open();
@@ -139,30 +154,30 @@ void auton2 () {
     wait(200,msec);
     Right(195);
     wait(200,msec);
-    mspin(intake,100);
+    take(1);
     wait(200,msec);
     For(18);
     wait(200,msec);
     Rev(22);
-    mstop(intake);
+    take(0);
     wait(200,msec);
     Right(180);
     wait(200,msec);
     For(18);
-    mspin(intake,-100);
+    take(2);
     wait(200,msec);
     Rev(24);
-    mstop(intake);
+    take(0);
     Right(120);
-    mspin(intake, 100);
+    take(1);
     For(23);
     wait(200,msec);
-    mstop(intake);
+    take(0);
     Left(165+90);
-    mspin(intake,-100);
+    take(2);
     For(5);
     Rev(10);
-    mstop(intake);
+    take(0);
     For(24);
     setcoast();
     c = 1;
