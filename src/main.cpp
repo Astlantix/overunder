@@ -277,7 +277,7 @@ void usercontrol(void) {
     }
 
     if(stupid) {
-      cata.spin(fwd,100,pct);
+      cata.spin(fwd,3600,rpm);
     }
     else {
       cata.stop(coast);
