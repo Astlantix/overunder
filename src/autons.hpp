@@ -19,7 +19,7 @@ void take(int joe) {
 }
 
 //flywheel stuff
-void fly() {
+void flies() {
     if(c==0) {
         cata.spin(fwd,3600,rpm);
     }
