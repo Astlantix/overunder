@@ -2,11 +2,24 @@
 
 using namespace vex;
 
+/*
+Set all gains to zero.
 
+Increase kP until the response to a step input (like a sudden change in target distance) is steady oscillation. Steady oscillation means the robot moves back and forth around the target distance without settling down.
+
+Set kP to about half of the value causing steady oscillation.
+
+Increase kD until any overshoot is acceptable. Overshoot is when the robot moves past the target distance before coming back. Increasing kD will reduce the overshoot, but making kD too large can lead to a sluggish response.
+
+Increase kI until the robot reaches the target distance in a reasonable time during steady state. Steady state is when the robot is not being subjected to any disturbances or changes in the target distance. Be careful with increasing kI, as too large a value can cause instability.
+
+*/
 // PID constants
 double kP = 0.0;
 double kI = 0.0;
 double kD = 0.0;
+
+
 
 // PID variables
 double integral = 0;
