@@ -28,16 +28,16 @@ void flies() {
     }
 }
 
-//stop is hold
-void sethold() {
-    R.setStopping(hold);
-    L.setStopping(hold);
-}
-
-//stop is coast
 void setcoast() {
     R.setStopping(coast);
     L.setStopping(coast);
+}
+
+//haha i dont need these bc pid and inertial oh god scary
+/*//stop is hold
+void sethold() {
+    R.setStopping(hold);
+    L.setStopping(hold);
 }
 
 //stop is brake
@@ -80,70 +80,19 @@ void setv(double joe) {
     L.setVelocity(joe,pct);
     R.setVelocity(joe,pct);
 }
-
+*/
 
 //left side AWP
 void auton1 () {
 
-    setbrake();
-    setv(50);
-    fly.close();
-    wait(200,msec);
-    Rev(15);
-    wait(20,msec);
-    Right(49);
-    wait(200,msec);
-    setv(100);
-    Rev(22);
-    setcoast();
-    c = 1;
+    travel(0,0);
+
 }
 
 //right Side AWP
 void auton2 () {
 
-    setbrake();
-    setv(75);
-    wings.close();
-    For(51);
-    wait(200,msec);
-    Right(90);
-    take(2);
-    For(12);
-    wait(200,msec);
-    wings.open();
-    wait(200,msec);
-    Rev(24);
-    intake.stop(coast);
-    wait(200,msec);
-    Right(195);
-    wait(200,msec);
-    take(1);
-    wait(200,msec);
-    For(18);
-    wait(200,msec);
-    Rev(22);
-    take(0);
-    wait(200,msec);
-    Right(180);
-    wait(200,msec);
-    For(18);
-    take(2);
-    wait(200,msec);
-    Rev(24);
-    take(0);
-    Right(120);
-    take(1);
-    For(23);
-    wait(200,msec);
-    take(0);
-    Left(165+90);
-    take(2);
-    For(5);
-    Rev(10);
-    take(0);
-    For(24);
-    setcoast();
+
     c = 1;
 } 
 
