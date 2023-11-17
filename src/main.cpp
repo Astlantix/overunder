@@ -170,7 +170,7 @@ void dtcode(double x, double y) {
   R.spin(fwd,rightspeed,pct);
 }
 
-bool a = 0;
+
 int b = 0;
 bool stupid = 0;
 bool modes = 1;

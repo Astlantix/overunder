@@ -3,7 +3,7 @@
 
 
 
-bool c = 0;
+bool a = 0;
 
 //intake stuff
 void take(int joe) {
@@ -19,7 +19,7 @@ void take(int joe) {
 }
 
 //flywheel stuff
-void flies() {
+void flies(bool c) {
     if(c==0) {
         cata.spin(fwd,3600,rpm);
     }
@@ -88,13 +88,14 @@ void auton1 () {
 
     travel(0,0);
 
+    a = 1;
 }
 
 //right Side AWP
 void auton2 () {
 
 
-    c = 1;
+    a = 1;
 } 
 
 
