@@ -33,13 +33,14 @@ void setcoast() {
     L.setStopping(coast);
 }
 
-//haha i dont need these bc pid and inertial oh god scary
-/*//stop is hold
+//stop is hold
 void sethold() {
     R.setStopping(hold);
     L.setStopping(hold);
 }
 
+//haha i dont need these bc pid and inertial oh god scary
+/*
 //stop is brake
 void setbrake() {
     R.setStopping(brake);
