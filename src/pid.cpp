@@ -25,22 +25,22 @@ double kD = 0.0;
 
 
 // PID variables
-double integral = 0;
-double derivative = 0;
-double error = 0;
-double lastError = 0;
-double integralLimit = 20;
+double integral = 0; //integral is the sum of all errors 
+double derivative = 0; //derivative is the difference between the current error and the last error
+double error = 0; //error is the difference between the target distance and the current distance
+double lastError = 0; //lastError is the error from the last time the function was called
+double integralLimit = 20; //integralLimit is the maximum value of the integral
 
 // Orientation PID constants
-double kP_orient = 0.0;
-double kI_orient = 0.0;
-double kD_orient = 0.0;
+double kP_orient = 0.0; //kP is the constant for proportional control
+double kI_orient = 0.0; //kI is the constant for integral control
+double kD_orient = 0.0; //kD is the constant for derivative control
 
 // Orientation PID variables
-double integral_orient = 0;
-double derivative_orient = 0;
-double error_orient = 0;
-double lastError_orient = 0;
+double integral_orient = 0; //integral is the sum of all errors
+double derivative_orient = 0; //derivative is the difference between the current error and the last error
+double error_orient = 0; //error is the difference between the target orientation and the current orientation
+double lastError_orient = 0; //lastError is the error from the last time the function was called
 
 void drivetrainPID(double targetDistance, double targetOrientation, double distanceSensorValue, double orientationSensorValue) {
     // Calculate distance error
@@ -78,8 +78,8 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
     double output_orient = kP_orient * error_orient + kI_orient * integral_orient + kD_orient * derivative_orient;
 
     // Control motors
-    double leftMotorSpeed = output - output_orient;
-    double rightMotorSpeed = output + output_orient;
+    double leftMotorSpeed = output + output_orient;
+    double rightMotorSpeed = output - output_orient;
 
     // Set motor speeds...
     L.spin(fwd, leftMotorSpeed, pct);
