@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "pid.hpp"
 
 using namespace vex;
 
