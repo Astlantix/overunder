@@ -86,7 +86,8 @@ void setv(double joe) {
 //left side AWP
 void auton1 () {
 
-    travel(0,0);
+    travel(72,90);
+    
 
     a = 1;
 }
