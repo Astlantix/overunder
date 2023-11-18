@@ -2,6 +2,8 @@
 
 using namespace vex;
 
+double π = atan(1) * 4;
+
 /*
 Set all gains to zero.
 
@@ -85,7 +87,7 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
 
 void travel(double distance, double angle) {
     // Get current distance sensor value
-    double currentDistance = D.position(turns) * 4;
+    double currentDistance = D.position(turns) * 3.25;
 
     // Get current orientation sensor value
     double currentOrientation = inert.yaw();
