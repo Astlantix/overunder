@@ -17,7 +17,7 @@ extern controller gamers;
 extern motor intake;
 extern motor pull;
 extern digital_out muscle;
-extern encoder D;
+extern rotation D;
 extern inertial inert;
 extern pneumatics wings;
 extern pneumatics fly;
