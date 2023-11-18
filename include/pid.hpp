@@ -13,6 +13,8 @@ extern double kI_orient;
 extern double kD_orient;
 
 // Declare your functions
-double calculate_pid(double error, double error_orient);
+void drivetrainPID(double error, double error_orient);
+
+void travel(double distance, double angle);
 
 #endif // PID_HPP
