@@ -87,7 +87,7 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
 
 void travel(double distance, double angle) {
     // Get current distance sensor value
-    double currentDistance = D.position(turns) * 3.25;
+    double currentDistance = D.position(turns) * π * 3.25;
 
     // Get current orientation sensor value
     double currentOrientation = inert.yaw();
@@ -95,7 +95,7 @@ void travel(double distance, double angle) {
     // Move forward
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
-        currentDistance = D.position(turns) *4;
+        currentDistance = D.position(turns) * π * 3.25;
     }
 
     // Turn
@@ -107,6 +107,6 @@ void travel(double distance, double angle) {
     // Move forward again
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
-        currentDistance = D.position(turns) *4;
+        currentDistance = D.position(turns) * π * 3.25;
     }
 }
