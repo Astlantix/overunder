@@ -326,4 +326,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
+  while(1) {
+    wait(100,msec);
+  }
 }
