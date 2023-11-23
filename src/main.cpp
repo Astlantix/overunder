@@ -91,19 +91,19 @@ void printing(std::string strin) {
 
 int auton = 1;
 void autonslctr() {
-  if(auton < 1) {
+  if (auton < 1) {
     auton = numofautons;
   }
-  if(auton > numofautons) {
+  if (auton > numofautons) {
     auton = 1;
   }
-  if(auton == 1) {
+  if (auton == 1) {
     printing("LAWP");
   }
-  if(auton == 2) {
+  if (auton == 2) {
     printing("RAWP");
   }
-  if(auton == 3) {
+  if (auton == 3) {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
     gamers.Screen.print("  O  ");
@@ -112,11 +112,10 @@ void autonslctr() {
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(" / \\ ");
   }
-  if(gamers.ButtonRight.pressing()) {
+  if (gamers.ButtonRight.pressing()) {
     auton++;
     wait(200,msec);
-  }
-  else if(gamers.ButtonLeft.pressing()) {
+  } else if (gamers.ButtonLeft.pressing()) {
     auton--;                        
     wait(200,msec);
   }
@@ -127,13 +126,11 @@ void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
 
-  if(auton == 1) {
+  if (auton == 1) {
     auton1();
-  }
-  else if(auton == 2) {
+  } else if (auton == 2) {
     auton2();
-  }
-  else if(auton == 3) {
+  } else if( auton == 3) {
     auton3();
   }
 
@@ -160,8 +157,7 @@ void dtcode(double x, double y) {
     // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
     leftspeed = gamers.Axis4.position() * x;
     rightspeed = gamers.Axis4.position() * -x;
-  }
-  else {
+  } else {
     double avgSpeed = ((abs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
     leftspeed = avgSpeed + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
     rightspeed = avgSpeed - (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
@@ -182,7 +178,7 @@ void usercontrol(void) {
   while (!a) {
     // select auton
     autonslctr();
-    if(gamers.ButtonB.pressing()) {
+    if (gamers.ButtonB.pressing()) {
       a = 1;
       wait(200,msec);
     }
@@ -192,10 +188,9 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     //(turn,fwdrev)
-    if(modes) {
+    if (modes) {
       dtcode(0.27,2);
-    }
-    else if(!modes) {
+    } else if (!modes) {
       dtcode(0.27,-2);
     }
     // ........................................................................
@@ -205,42 +200,34 @@ void usercontrol(void) {
 
 
     //toggle intake
-    if(b==0) {
-      if(gamers.ButtonR1.pressing()) {
+    if (b==0) {
+      if (gamers.ButtonR1.pressing()) {
        intake.spin(fwd,100,pct);
        wait(2,msec);
        b = 1;
-      }
-      else if(gamers.ButtonR2.pressing()) {
+      } else if (gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
         wait(2,msec);
         b = 2;
       }
-    }
-    else if(b==1) {
+    } else if (b==1) {
       if(gamers.ButtonR1.pressing()) {
         intake.stop(coast);
         wait(2,msec);
         b = 0;
-      }
-      else if(gamers.ButtonR2.pressing()) {
+      } else if (gamers.ButtonR2.pressing()) {
         intake.spin(reverse,100,pct);
         wait(2,msec);
         b = 2;
       }
-      else if(ballin.pressing()) {
-        intake.stop(coast);
-        wait(2,msec);
-        b = 0;
-      }
     }
-    else if(b==2) {
-      if(gamers.ButtonR2.pressing()) {
+    else if (b==2) {
+      if (gamers.ButtonR2.pressing()) {
         intake.stop(coast);
         wait(2,msec);
         b = 0;
       }
-      else if(gamers.ButtonR1.pressing()) {
+      else if (gamers.ButtonR1.pressing()) {
         intake.spin(fwd,100,pct);
         wait(2,msec);
         b = 1;
@@ -251,43 +238,40 @@ void usercontrol(void) {
     //clamp and pulling
  
 
-    if(gamers.ButtonL1.pressing()) {
+    if (gamers.ButtonL1.pressing()) {
       wings.open();
       fly.open();
     }
 
-    if(gamers.ButtonL2.pressing()) {
+    if (gamers.ButtonL2.pressing()) {
       wings.close();
       fly.close();
     }
 
-    if(gamers.ButtonB.pressing()) {
+    if (gamers.ButtonB.pressing()) {
       modes = !modes;
     }
 
-    if(gamers.Axis2.position() < -10) {
+    if (gamers.Axis2.position() < -10) {
       stupid = 1;
-    }
-    else if(gamers.Axis2.position() > 10) {
+    } else if( gamers.Axis2.position() > 10) {
       stupid = 0;
     }
 
-    if(stupid) {
+    if (stupid) {
       cata.spin(fwd,3600,rpm);
-    }
-    else {
+    } else {
       cata.stop(coast);
     }
 
-    if(gamers.ButtonA.pressing()) {
-      if(!dumb) {
+    if (gamers.ButtonA.pressing()) {
+      if (!dumb) {
         sethold();
         wait(200,msec);
         gamers.rumble(rumbleLong);
         mode = "hold";
         dumb = 1;
-      }
-      else {
+      } else {
         setcoast();
         wait(200,msec);
         gamers.rumble(rumblePulse);
@@ -326,7 +310,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
-  while(1) {
+  while (1) {
     wait(100,msec);
   }
 }
