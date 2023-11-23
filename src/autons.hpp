@@ -8,21 +8,18 @@ bool a = 0;
 void take(int joe) {
     if(joe==0) {
         intake.stop(coast);
-    }
-    else if(joe==1) {
+    } else if (joe==1) {
         intake.spin(fwd,100,pct);
-    }
-    else if(joe==2) {
+    } else if (joe==2) {
         intake.spin(reverse,100,pct);
     }
 }
 
 //flywheel stuff
 void flies(bool c) {
-    if(c==0) {
+    if (c==0) {
         cata.spin(fwd,3600,rpm);
-    }
-    else if(c==1) {
+    } else if (c==1) {
         cata.stop(coast);
     }
 }
