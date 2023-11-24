@@ -173,7 +173,7 @@ bool modes = 1;
 bool dumb = 0;
 std::string mode = "coast";
 void usercontrol(void) {
-   //User control code here, inside the loop
+  //User control code here, inside the loop
 
   while (!a) {
     // select auton
@@ -183,7 +183,7 @@ void usercontrol(void) {
       wait(200,msec);
     }
   }
-   while (a) {
+  while (a) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -220,14 +220,12 @@ void usercontrol(void) {
         wait(2,msec);
         b = 2;
       }
-    }
-    else if (b==2) {
+    } else if (b==2) {
       if (gamers.ButtonR2.pressing()) {
         intake.stop(coast);
         wait(2,msec);
         b = 0;
-      }
-      else if (gamers.ButtonR1.pressing()) {
+      } else if (gamers.ButtonR1.pressing()) {
         intake.spin(fwd,100,pct);
         wait(2,msec);
         b = 1;
@@ -236,8 +234,6 @@ void usercontrol(void) {
 
 
     //clamp and pulling
- 
-
     if (gamers.ButtonL1.pressing()) {
       wings.open();
       fly.open();
