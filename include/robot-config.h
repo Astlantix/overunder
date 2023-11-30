@@ -15,14 +15,13 @@ extern motor_group L;
 extern motor_group R;
 extern controller gamers;
 extern motor intake;
-extern motor pull;
 extern digital_out muscle;
 extern rotation D;
 extern inertial inert;
 extern pneumatics wings;
 extern pneumatics fly;
 extern motor cata;
-extern limit ballin;
+extern motor flywheel;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
