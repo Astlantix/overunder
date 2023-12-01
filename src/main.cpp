@@ -10,6 +10,7 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
+// gamers               controller        
 // fl                   motor         1               
 // fr                   motor         2       
 // ml                   motor         9
@@ -18,11 +19,13 @@
 // br                   motor         4    
 // L                    motor_group   
 // R                    motor_group
-// flywheel             motor         12        
-// gamers               controller                    
-// intake               motor         6         
+// intake               motor         6   
+// D                    rotation      16
+// inert                inertial      11                       
 // wings                pneumatics    A    
 // fly                  pneumatics    B
+// cata                 motor         13
+// flywheel             motor         12   
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"

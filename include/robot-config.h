@@ -5,6 +5,7 @@ extern brain Brain;
 
 // define your global instances of motors and other devices here
 // VEXcode devices
+extern controller gamers;
 extern motor fl;
 extern motor fr;
 extern motor bl;
@@ -13,9 +14,7 @@ extern motor ml;
 extern motor mr;
 extern motor_group L;
 extern motor_group R;
-extern controller gamers;
 extern motor intake;
-extern digital_out muscle;
 extern rotation D;
 extern inertial inert;
 extern pneumatics wings;

@@ -8,6 +8,7 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
+controller gamers = controller(primary);
 motor fl = motor(PORT10, ratio18_1, true);
 motor fr = motor(PORT1, ratio18_1, false);
 motor bl = motor(PORT7, ratio18_1, true);
@@ -16,9 +17,7 @@ motor ml = motor(PORT5, ratio18_1, false);
 motor mr = motor(PORT4, ratio18_1, true);
 motor_group L = motor_group(ml, bl, fl);
 motor_group R = motor_group(mr, br, fr);
-controller gamers = controller(primary);
 motor intake = motor(PORT18, ratio18_1, false);
-digital_out muscle = digital_out(Brain.ThreeWirePort.G);
 rotation D = rotation(PORT6, false);
 inertial inert = inertial(PORT3);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
