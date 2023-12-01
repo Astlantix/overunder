@@ -15,11 +15,14 @@
 // ml                   motor         9
 // mr                   motor         10        
 // bl                   motor         3               
-// br                   motor         4               
+// br                   motor         4    
+// L                    motor_group   
+// R                    motor_group
+// flywheel             motor         12        
 // gamers               controller                    
 // intake               motor         6         
-// flex                 digital_out   A    
-// muscle               digital_out   B
+// wings                pneumatics    A    
+// fly                  pneumatics    B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
