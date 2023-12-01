@@ -2,7 +2,7 @@
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
 /*    Author:       VEX                                                       */
-/*    Created:      Thu Sep 26 2019                                           */
+/*    Created:      Fri Dec 1 2023                                            */
 /*    Description:  Competition Template                                      */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
@@ -10,22 +10,22 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// gamers               controller        
-// fl                   motor         1               
-// fr                   motor         2       
+// gamers               controller
+// fl                   motor         1
+// fr                   motor         2
 // ml                   motor         9
-// mr                   motor         10        
-// bl                   motor         3               
-// br                   motor         4    
-// L                    motor_group   
+// mr                   motor         10
+// bl                   motor         3
+// br                   motor         4
+// L                    motor_group
 // R                    motor_group
-// intake               motor         6   
+// intake               motor         6
 // D                    rotation      16
-// inert                inertial      11                       
-// wings                pneumatics    A    
+// inert                inertial      11
+// wings                pneumatics    A
 // fly                  pneumatics    B
 // cata                 motor         13
-// flywheel             motor         12   
+// flywheel             motor         12
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -43,12 +43,6 @@ using namespace vex;
                                                     
 */
 
-
-/*
-
-
-
-*/
 // A global instance of competition
 competition Competition;
 
@@ -122,7 +116,6 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     
-
     //(turn,fwdrev)
     if (modes) {
       dtcode(0.27,2);
@@ -137,17 +130,16 @@ void usercontrol(void) {
     gamers.ButtonL1.pressed(wingactiona);
     gamers.ButtonL2.pressed(wingactionb);
 
-    if (gamers.ButtonB.pressing()) {
-      modes = !modes;
-    }
+    //change modes
+    if (gamers.ButtonB.pressing()) modes = !modes;
 
+    //other stuff
     liftoff();
     catamoving();
     modechange();
     tempcheck();
     intakecontrol();
     // ........................................................................
-
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
@@ -161,7 +153,5 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
-  while (1) {
-    wait(100,msec);
-  }
+  while (1) wait(100,msec);
 }
