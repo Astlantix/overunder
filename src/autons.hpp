@@ -1,39 +1,11 @@
 #include "vex.h"
+#include "functions.hpp"
 #include "pid.hpp"
 
 
 bool a = 0;
 
-//intake stuff
-void take(int joe) {
-    if(joe==0) {
-        intake.stop(coast);
-    } else if (joe==1) {
-        intake.spin(fwd,100,pct);
-    } else if (joe==2) {
-        intake.spin(reverse,100,pct);
-    }
-}
 
-//flywheel stuff
-void flies(bool c) {
-    if (c==0) {
-        cata.spin(fwd,3600,rpm);
-    } else if (c==1) {
-        cata.stop(coast);
-    }
-}
-
-void setcoast() {
-    R.setStopping(coast);
-    L.setStopping(coast);
-}
-
-//stop is hold
-void sethold() {
-    R.setStopping(hold);
-    L.setStopping(hold);
-}
 
 //haha i dont need these bc pid and inertial oh god scary
 /*
