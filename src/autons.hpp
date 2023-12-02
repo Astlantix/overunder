@@ -29,20 +29,20 @@ void For(double joe) {
 
 //Backward function
 void Rev(double joe) {
-    L.spinFor(reverse,joe*24,degrees,false);
-    R.spinFor(reverse,joe*24,degrees);
+    L.spinFor(rev,joe*24,degrees,false);
+    R.spinFor(rev,joe*24,degrees);
 }
 
 //Left function
 void Left(double joe) {
-    L.spinFor(reverse,joe*2,degrees,false);
+    L.spinFor(rev,joe*2,degrees,false);
     R.spinFor(fwd,joe*2,degrees);
 }
 
 //Right function
 void Right(double joe) {
     L.spinFor(fwd,joe*2,degrees,false);
-    R.spinFor(reverse,joe*2,degrees);
+    R.spinFor(rev,joe*2,degrees);
 }
 
 void setv(double joe) {

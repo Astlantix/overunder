@@ -6,7 +6,8 @@ using code = vision::code;
 
 // A global instance of brain used for printing to the V5 Brain screen
 brain  Brain;
-
+//custom gear ratio hehehe
+const gearSetting vex::ratio1_1 = gearSetting::ratio1_1;
 // VEXcode device constructors
 controller gamers = controller(primary);
 motor fl = motor(PORT10, ratio18_1, true);
@@ -23,7 +24,7 @@ inertial inert = inertial(PORT3);
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H);
 motor cata = motor(PORT17, ratio36_1, false);
-motor flywheel = motor(PORT12, ratio6_1, false);
+motor flywheel = motor(PORT12, ratio1_1, false);
 
 
 // VEXcode generated functions
@@ -35,6 +36,6 @@ bool RemoteControlCodeEnabled = true;
  * 
  * This should be called at the start of your int main function.
  */
-void vexcodeInit( void ) {
-  // nothing to initialize
-}
+void vexcodeInit(void) {
+    gamers.rumble(rumblePulse);
+};

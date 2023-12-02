@@ -14,11 +14,11 @@ void msp(motor m, bool x = 1, double speed = 100) {
     if (x) {
         m.spin(fwd,speed,pct);
     } else {
-        m.spin(reverse,speed,pct);
+        m.spin(rev,speed,pct);
     }
 }
 //coast motor
-void msc(motor m) { m.stop(coast);}
+void msc(motor m) {m.stop(coast);}
 // ........................................................................
 
 //wings stuff
@@ -47,7 +47,7 @@ void intakecontrol() {
        wait(2,msec);
        b = 1;
       } else if (gamers.ButtonR2.pressing()) {
-        intake.spin(reverse,100,pct);
+        intake.spin(rev,100,pct);
         wait(2,msec);
         b = 2;
       }
@@ -57,7 +57,7 @@ void intakecontrol() {
         wait(2,msec);
         b = 0;
       } else if (gamers.ButtonR2.pressing()) {
-        intake.spin(reverse,100,pct);
+        intake.spin(rev,100,pct);
         wait(2,msec);
         b = 2;
       }
