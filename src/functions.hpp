@@ -179,21 +179,18 @@ void autonslctr() {
 
 //changind modes
 void modechange() {
-  if (gamers.ButtonA.pressing()) {
-    if (changemode) {
-      sethold();
-      wait(20,msec);
-      gamers.rumble(rumbleLong);
-      mode = "hold";
-      changemode = 0;
-    } else {
-      setcoast();
-      wait(20,msec);
-      gamers.rumble(rumblePulse);
-      mode = "coast";
-      changemode = 1;
-    }
-  }    
+  if (changemode) {
+    sethold();
+    wait(20,msec);
+    gamers.rumble(rumbleLong);
+    mode = "hold";
+  } else {
+    setcoast();
+    wait(20,msec);
+    gamers.rumble(rumblePulse);
+    mode = "coast";
+  }
+  changemode = !changemode;
 }
 
 //catapult movement

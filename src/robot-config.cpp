@@ -10,12 +10,12 @@ brain  Brain;
 const gearSetting vex::ratio1_1 = gearSetting::ratio1_1;
 // VEXcode device constructors
 controller gamers = controller(primary); //amzing controller
-motor fl = motor(PORT15, ratio18_1, 0); //front left
-motor fr = motor(PORT17, ratio18_1, 1); //front right
-motor bl = motor(PORT5, ratio18_1, 0); //back left
-motor br = motor(PORT10, ratio18_1, 1); //back right
-motor ml = motor(PORT7, ratio18_1, 1); //middle left
-motor mr = motor(PORT4, ratio18_1, 0); //middle right
+motor fl = motor(PORT15, ratio18_1, 1); //front left
+motor fr = motor(PORT17, ratio18_1, 0); //front right
+motor bl = motor(PORT5, ratio18_1, 1); //back left
+motor br = motor(PORT10, ratio18_1, 0); //back right
+motor ml = motor(PORT7, ratio18_1, 0); //middle left
+motor mr = motor(PORT4, ratio18_1, 1); //middle right
 motor_group L = motor_group(ml, bl, fl); //left motors
 motor_group R = motor_group(mr, br, fr); //right motors
 motor intake = motor(PORT18, ratio18_1, 0); //very cool intake

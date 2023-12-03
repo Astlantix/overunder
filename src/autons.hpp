@@ -94,5 +94,4 @@ void auton3() {
     wait(1,sec);
     br.stop(coast);
     wait(1,sec);
-
 }

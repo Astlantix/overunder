@@ -118,9 +118,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.27,2);
-    } else if (!modes) {
       dtcode(0.27,-2);
+    } else if (!modes) {
+      dtcode(0.27,2);
     }
 
     //toggle flywheel
@@ -130,17 +130,19 @@ void usercontrol(void) {
     gamers.ButtonL1.pressed(wingactiona);
     gamers.ButtonL2.pressed(wingactionb);
 
-    //change modes
+    //change brake modes
     if (gamers.ButtonB.pressing()) modes = !modes;
+
+    //change driving modes
+    gamers.ButtonA.pressed(modechange);
 
     //other stuff
     liftoff();
     catamoving();
-    modechange();
     tempcheck();
     intakecontrol();
     // ........................................................................
-    wait(20, msec); // Sleep the task for a short amount of time to
+    wait(20,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }
@@ -150,6 +152,8 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
+  Competition.disable(autonslctr);
+  
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
