@@ -9,27 +9,27 @@ brain  Brain;
 //custom gear ratio hehehe
 const gearSetting vex::ratio1_1 = gearSetting::ratio1_1;
 // VEXcode device constructors
-controller gamers = controller(primary);
-motor fl = motor(PORT10, ratio18_1, true);
-motor fr = motor(PORT1, ratio18_1, false);
-motor bl = motor(PORT7, ratio18_1, true);
-motor br = motor(PORT2, ratio18_1, false);
-motor ml = motor(PORT5, ratio18_1, false);
-motor mr = motor(PORT4, ratio18_1, true);
-motor_group L = motor_group(ml, bl, fl);
-motor_group R = motor_group(mr, br, fr);
-motor intake = motor(PORT18, ratio18_1, false);
-rotation D = rotation(PORT6, false);
-inertial inert = inertial(PORT3);
-pneumatics wings = pneumatics(Brain.ThreeWirePort.A);
-pneumatics fly = pneumatics(Brain.ThreeWirePort.H);
-motor cata = motor(PORT17, ratio36_1, false);
-motor flywheel = motor(PORT12, ratio1_1, false);
+controller gamers = controller(primary); //amzing controller
+motor fl = motor(PORT10, ratio18_1, 1); //front left
+motor fr = motor(PORT1, ratio18_1, 0); //front right
+motor bl = motor(PORT7, ratio18_1, 1); //back left
+motor br = motor(PORT2, ratio18_1, 0); //back right
+motor ml = motor(PORT5, ratio18_1, 0); //middle left
+motor mr = motor(PORT4, ratio18_1, 1); //middle right
+motor_group L = motor_group(ml, bl, fl); //left motors
+motor_group R = motor_group(mr, br, fr); //right motors
+motor intake = motor(PORT18, ratio18_1, 0); //very cool intake
+rotation D = rotation(PORT6, 0); //very cool rotation sensors
+inertial inert = inertial(PORT3); //disgusting
+pneumatics wings = pneumatics(Brain.ThreeWirePort.A); //left wing
+pneumatics fly = pneumatics(Brain.ThreeWirePort.H); //right wing
+motor cata = motor(PORT17, ratio36_1, 0); //catapult
+motor flywheel = motor(PORT12, ratio1_1, 0); //VERY COOL FLYWHEEL ON A STICK I MADE MY IDEA MY WORK I BUILT IT ALL ME 3600 RPM DIRECT CUSTOM CARTRIDGE
 
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
-bool RemoteControlCodeEnabled = true;
+bool RemoteControlCodeEnabled = 1;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
