@@ -100,14 +100,22 @@ void liftoff() {
 
 //stop is  coast
 void setcoast() {
-    R.setStopping(coast);
-    L.setStopping(coast);
+  ml.setStopping(coast);
+  mr.setStopping(coast);
+  bl.setStopping(coast);
+  br.setStopping(coast);
+  fl.setStopping(coast);
+  fr.setStopping(coast);
 }
 
 //stop is hold
 void sethold() {
-    R.setStopping(hold);
-    L.setStopping(hold);
+  ml.setStopping(hold);
+  mr.setStopping(hold);
+  bl.setStopping(hold);
+  br.setStopping(hold);
+  fl.setStopping(hold);
+  fr.setStopping(hold);
 }
 // ........................................................................
 
@@ -211,7 +219,7 @@ void tempcheck() {
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
-    gamers.Screen.print("c%f,f%f", cata.temperature(celsius), flywheel.temperature(celsius));
+    gamers.Screen.print(cata.temperature(celsius));
     gamers.Screen.setCursor(3,6);
     gamers.Screen.print(mode.c_str());
 }
