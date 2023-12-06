@@ -132,16 +132,13 @@ void dtcode(double x, double y) {
   double rightspeed, leftspeed;
 
   if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {
-    // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
-    leftspeed = gamers.Axis4.position() * x;
-    rightspeed = gamers.Axis4.position() * -x;
-  } else {
-    double avgSpeed = ((abs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
-    leftspeed = avgSpeed + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
-    rightspeed = avgSpeed - (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
-  }
+  double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
+  double leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) * x > 10 ? gamers.Axis4.position() * x : 0);
+  double rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) * x > 10 ? gamers.Axis4.position() * x : 0);
+
   L.spin(fwd,leftspeed,pct);
   R.spin(fwd,rightspeed,pct);
+  }
 }
 
 //auton stuff

@@ -23,7 +23,7 @@ rotation D = rotation(PORT6, 0); //very cool rotation sensors
 inertial inert = inertial(PORT3); //disgusting
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A); //left wing
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H); //right wing
-motor cata = motor(PORT17, ratio36_1, 0); //catapult
+motor cata = motor(PORT2, ratio36_1, 0); //catapult
 motor flywheel = motor(PORT12, ratio1_1, 0); //VERY COOL FLYWHEEL ON A STICK I MADE MY IDEA MY WORK I BUILT IT ALL ME 3600 RPM DIRECT CUSTOM CARTRIDGE
 
 
