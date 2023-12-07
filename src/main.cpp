@@ -11,20 +11,20 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // gamers               controller
-// fl                   motor         1
-// fr                   motor         2
-// ml                   motor         9
-// mr                   motor         10
-// bl                   motor         3
-// br                   motor         4
+// fl                   motor         15
+// fr                   motor         17
+// ml                   motor         7
+// mr                   motor         4
+// bl                   motor         5
+// br                   motor         10
 // L                    motor_group
 // R                    motor_group
-// intake               motor         6
-// D                    rotation      16
-// inert                inertial      11
+// intake               motor         16
+// D                    rotation      6
+// inert                inertial      3
 // wings                pneumatics    A
 // fly                  pneumatics    B
-// cata                 motor         13
+// cata                 motor         2
 // flywheel             motor         12
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
@@ -63,6 +63,7 @@ void pre_auton(void) {
   vexcodeInit();
   setcoast();
   wingactionb();
+  D.setPosition(0,turns);
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }

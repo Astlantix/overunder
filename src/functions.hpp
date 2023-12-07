@@ -127,18 +127,15 @@ void printing(std::string string) {
 }
 
 //drivecode
-void dtcode(double x, double y) {
+void dtcode(double y, double x) {
+  double speed = (gamers.Axis3.position(pct) + gamers.Axis4.position(pct)) / 2;
+  double turn = gamers.Axis3.position(pct) - gamers.Axis4.position(pct);
 
-  double rightspeed, leftspeed;
+  double leftspeed = speed + turn;
+  double rightspeed = speed - turn;
 
-  if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {
-  double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
-  double leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) * x > 10 ? gamers.Axis4.position() * x : 0);
-  double rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) * x > 10 ? gamers.Axis4.position() * x : 0);
-
-  L.spin(fwd,leftspeed,pct);
-  R.spin(fwd,rightspeed,pct);
-  }
+  L.spin(fwd, leftspeed, pct);
+  R.spin(fwd, rightspeed, pct);
 }
 
 //auton stuff
