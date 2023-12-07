@@ -127,12 +127,15 @@ void printing(std::string string) {
 }
 
 //drivecode
-void dtcode(double y, double x) {
-  double speed = (gamers.Axis3.position(pct) + gamers.Axis4.position(pct)) / 2;
-  double turn = gamers.Axis3.position(pct) - gamers.Axis4.position(pct);
+void dtcode(double a, double z) {
+  double y = gamers.Axis3.position(pct); // Forward & backward
+  double x = gamers.Axis4.position(pct); // Left & right
 
-  double leftspeed = speed + turn;
-  double rightspeed = speed - turn;
+  double v = ((100 - abs(x)) * (y/100) + y)*z; // Calculate the speed for forward & backward
+  double w = ((100 - abs(y)) * (x/100) + x)*a; // Calculate the speed for turning
+
+  double rightspeed = (v-w) / 2;
+  double leftspeed = (v+w) / 2;
 
   L.spin(fwd, leftspeed, pct);
   R.spin(fwd, rightspeed, pct);
