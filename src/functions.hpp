@@ -9,6 +9,7 @@ std::string mode = "coast"; //display mode
 //general stuff
 // ........................................................................
 
+
 //spin motor
 void msp(motor m, bool x = 1, double speed = 100) {
     if (x) {
@@ -127,16 +128,19 @@ void printing(std::string string) {
 }
 
 //drivecode
-void dtcode(double a, double z) {
-  double y = gamers.Axis3.position(pct); // Forward & backward
-  double x = gamers.Axis4.position(pct); // Left & right
+void dtcode(double x, double y) {
+  double rightspeed, leftspeed;
 
-  double v = ((100 - abs(x)) * (y/100) + y)*z; // Calculate the speed for forward & backward
-  double w = ((100 - abs(y)) * (x/100) + x)*a; // Calculate the speed for turning
-
-  double rightspeed = (v-w) / 2;
-  double leftspeed = (v+w) / 2;
-
+  if (fabs(gamers.Axis3.position()) < 10 && fabs(gamers.Axis4.position()) > 10) {
+    // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
+    leftspeed = gamers.Axis4.position() * x;
+    rightspeed = gamers.Axis4.position() * -x;
+  }
+  else {
+    double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
+    leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
+    rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
+  }
   L.spin(fwd, leftspeed, pct);
   R.spin(fwd, rightspeed, pct);
 }

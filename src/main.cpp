@@ -119,9 +119,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.27,-2);
+      dtcode(0.2,2);
     } else if (!modes) {
-      dtcode(0.27,2);
+      dtcode(0.2,-2);
     }
 
     //toggle flywheel
