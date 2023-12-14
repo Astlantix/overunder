@@ -3,15 +3,13 @@
 int b = 0;
 bool catamode = 0; //catapult spin or coast
 bool modes = 1; //reverse or forward
-bool changemode = 0; //toggle coast or hold
-std::string mode = "coast"; //display mode
 
 //general stuff
 // ........................................................................
 
 
-//spin motor
-void msp(motor m, bool x = 1, double speed = 100) {
+//spin motor (motor, dir, speed)
+void msp(motor m, bool x = 0, double speed = 100) {
     if (x) {
         m.spin(fwd,speed,pct);
     } else {
@@ -79,7 +77,7 @@ void intakecontrol() {
 //flywheel stuff
 // ........................................................................
 
-bool airborne = 0; //toggle flywheel
+bool airborne = 1; //toggle flywheel
 //flying
 void flies(bool c = 0) {
     if (c==0) {
@@ -90,8 +88,7 @@ void flies(bool c = 0) {
 }
 //toggle flywheel
 void liftoff() {
-    if (airborne) flies();
-    else flies(1);
+  flies(airborne);
 }
 
 // ........................................................................
@@ -128,6 +125,8 @@ void printing(std::string string) {
 }
 
 //drivecode
+double currentlspeed = 0;
+double currentrspeed = 0;
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
 
@@ -141,8 +140,20 @@ void dtcode(double x, double y) {
     leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
     rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
   }
-  L.spin(fwd, leftspeed, pct);
-  R.spin(fwd, rightspeed, pct);
+// Ramp up or down to the target speeds
+  while (currentlspeed != leftspeed || currentrspeed != rightspeed) {
+    if (currentlspeed < leftspeed) currentlspeed++;
+    else if (currentlspeed > leftspeed) currentlspeed--;
+
+    if (currentrspeed < rightspeed) currentrspeed++;
+    else if (currentrspeed > rightspeed) currentrspeed--;
+
+    L.spin(fwd, currentlspeed, pct);
+    R.spin(fwd, currentrspeed, pct);
+
+    // Delay to allow the motors to catch up
+    wait(20,msec);
+  }
 }
 
 //auton stuff
@@ -180,18 +191,11 @@ void autonslctr() {
 
 //changind modes
 void modechange() {
-  if (changemode) {
+  if (gamers.ButtonB.pressing()) {
     sethold();
-    wait(20,msec);
-    gamers.rumble(rumbleLong);
-    mode = "hold";
   } else {
     setcoast();
-    wait(20,msec);
-    gamers.rumble(rumblePulse);
-    mode = "coast";
   }
-  changemode = !changemode;
 }
 
 //catapult movement
@@ -219,5 +223,4 @@ void tempcheck() {
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(cata.temperature(celsius));
     gamers.Screen.setCursor(3,6);
-    gamers.Screen.print(mode.c_str());
 }

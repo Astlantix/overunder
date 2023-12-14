@@ -13,10 +13,10 @@
 // gamers               controller
 // fl                   motor         15
 // fr                   motor         17
-// ml                   motor         7
-// mr                   motor         4
 // bl                   motor         5
 // br                   motor         10
+// ml                   motor         7
+// mr                   motor         4
 // L                    motor_group
 // R                    motor_group
 // intake               motor         16
@@ -61,6 +61,7 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  setv(100);
   setcoast();
   wingactionb();
   D.setPosition(0,turns);
@@ -104,12 +105,7 @@ void autonomous(void) {
 //user control
 void usercontrol(void) {
   //User control code here, inside the loop
-  while (!a) {
-    // select auton
-    autonslctr();
-    if (gamers.ButtonB.pressing()) a = 1;
-  }
-  while (a) {
+  while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -134,8 +130,7 @@ void usercontrol(void) {
     //change brake modes
     if (gamers.ButtonB.pressing()) modes = !modes;
 
-    //change driving modes
-    gamers.ButtonA.pressed(modechange);
+    modechange();
 
     //other stuff
     liftoff();
@@ -153,7 +148,7 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  //Competition.disable(autonslctr);
+  if (!Competition.isEnabled()) autonslctr();
   
   // Run the pre-autonomous function.
   pre_auton();

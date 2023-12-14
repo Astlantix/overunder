@@ -3,16 +3,11 @@
 #include "pid.hpp"
 
 
-bool a = 0;
 
-
-
-//haha i dont need these bc pid and inertial oh god scary
-/*
 //stop is brake
 void setbrake() {
     R.setStopping(brake);
-    L.setStopping(coast);
+    L.setStopping(brake);
 }
 
 //stop
@@ -49,7 +44,7 @@ void setv(double joe) {
     L.setVelocity(joe,pct);
     R.setVelocity(joe,pct);
 }
-*/
+
 
 //left side AWP
 void auton1 () {
@@ -57,41 +52,46 @@ void auton1 () {
     travel(72,90);
     
 
-    a = 1;
+
 }
 
 //right Side AWP
 void auton2 () {
 
 
-    a = 1;
+    
 } 
 
 
 //skills
 void auton3() {
-    ml.spin(fwd,100,pct);
-    wait(1,sec);
-    ml.stop(coast);
-    wait(1,sec);
-    mr.spin(fwd,100,pct);
-    wait(1,sec);
-    mr.stop(coast);
-    wait(1,sec);
-    fr.spin(fwd,100,pct);
-    wait(1,sec);
-    fr.stop(coast);
-    wait(1,sec);
-    fl.spin(fwd,100,pct);
-    wait(1,sec);
-    fl.stop(coast);
-    wait(1,sec);
-    bl.spin(fwd,100,pct);
-    wait(1,sec);
-    bl.stop(coast);
-    wait(1,sec);
-    br.spin(fwd,100,pct);
-    wait(1,sec);
-    br.stop(coast);
-    wait(1,sec);
+    flies();
+    wait(30,sec);
+    flies(1);
+    //
+    For(100);
+    wingactiona();
+    For(100);
+    wait(200,msec);
+    msp(intake,0);
+    Rev(50);
+    msc(intake);
+    travel(0,90);
+    travel(36,-90);
+    travel(12,-90);
+    For(10);
+    wait(200,msec);
+    Rev(10);
+    wait(200,msec);
+    travel(0,-90);
+    travel(12,90);
+    travel(60,90);
+    travel(12,90);
+    For(10);
+    wait(200,msec);
+    Rev(10);
+    wait(200,msec);
+    travel(0,90);
+    travel(36,0);
+    
 }
