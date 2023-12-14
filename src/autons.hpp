@@ -73,9 +73,7 @@ void auton3() {
     wingactiona();
     For(100);
     wait(200,msec);
-    msp(intake,0);
     Rev(50);
-    msc(intake);
     travel(0,90);
     travel(36,-90);
     travel(12,-90);

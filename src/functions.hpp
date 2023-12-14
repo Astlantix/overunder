@@ -35,43 +35,7 @@ void wingactionb() {
 }
 // ........................................................................
 
-//intake stuff
-// ........................................................................
 
-//toggle intake
-void intakecontrol() {
-    if (b==0) {
-      if (gamers.ButtonR1.pressing()) {
-       intake.spin(fwd,100,pct);
-       wait(2,msec);
-       b = 1;
-      } else if (gamers.ButtonR2.pressing()) {
-        intake.spin(rev,100,pct);
-        wait(2,msec);
-        b = 2;
-      }
-    } else if (b==1) {
-      if(gamers.ButtonR1.pressing()) {
-        intake.stop(coast);
-        wait(2,msec);
-        b = 0;
-      } else if (gamers.ButtonR2.pressing()) {
-        intake.spin(rev,100,pct);
-        wait(2,msec);
-        b = 2;
-      }
-    } else if (b==2) {
-      if (gamers.ButtonR2.pressing()) {
-        intake.stop(coast);
-        wait(2,msec);
-        b = 0;
-      } else if (gamers.ButtonR1.pressing()) {
-        intake.spin(fwd,100,pct);
-        wait(2,msec);
-        b = 1;
-      }
-    }
-}
 // ........................................................................
 
 //flywheel stuff
@@ -90,6 +54,17 @@ void flies(bool c = 0) {
 void liftoff() {
   flies(airborne);
 }
+
+// ........................................................................
+
+//climbing stuff
+// ........................................................................
+
+//lifting stays down or very strong pullup
+void down() {climb.open();}
+
+//im tall
+void up() {climb.open();}
 
 // ........................................................................
 
@@ -217,10 +192,9 @@ void catamoving() {
 void tempcheck() {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
-    gamers.Screen.print(intake.temperature(celsius));
+    gamers.Screen.print(flywheel.temperature(celsius));
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
     gamers.Screen.print(cata.temperature(celsius));
-    gamers.Screen.setCursor(3,6);
 }

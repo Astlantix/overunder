@@ -14,7 +14,7 @@ extern motor ml;
 extern motor mr;
 extern motor_group L;
 extern motor_group R;
-extern motor intake;
+extern pneumatics climb;
 extern rotation D;
 extern inertial inert;
 extern pneumatics wings;

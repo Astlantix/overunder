@@ -65,6 +65,7 @@ void pre_auton(void) {
   setcoast();
   wingactionb();
   D.setPosition(0,turns);
+  climb.close();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -127,6 +128,10 @@ void usercontrol(void) {
     gamers.ButtonL1.pressed(wingactiona);
     gamers.ButtonL2.pressed(wingactionb);
 
+    //lifting
+    gamers.ButtonUp.pressed(up);
+    gamers.ButtonDown.pressed(down);
+
     //change brake modes
     if (gamers.ButtonB.pressing()) modes = !modes;
 
@@ -136,7 +141,6 @@ void usercontrol(void) {
     liftoff();
     catamoving();
     tempcheck();
-    intakecontrol();
     // ........................................................................
     wait(20,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
