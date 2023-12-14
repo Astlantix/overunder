@@ -116,9 +116,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.06,-0.4);
+      dtcode(0.2,-2);
     } else if (!modes) {
-      dtcode(0.06,0.4);
+      dtcode(0.2,2);
     }
 
     //toggle flywheel
@@ -152,7 +152,7 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  if (!Competition.isEnabled()) autonslctr();
+  while (!Competition.isEnabled()) autonslctr();
   
   // Run the pre-autonomous function.
   pre_auton();

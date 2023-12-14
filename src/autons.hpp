@@ -49,7 +49,24 @@ void setv(double joe) {
 //left side AWP
 void auton1 () {
 
-    travel(72,90);
+    fl.spin(fwd);
+    wait(2,sec);
+    fl.stop(coast);
+    br.spin(fwd);
+    wait(2,sec);
+    br.stop(coast);
+    mr.spin(fwd);
+    wait(2,sec);
+    mr.stop(coast);
+    fr.spin(fwd);
+    wait(2,sec);
+    fr.stop(coast);
+    ml.spin(fwd);
+    wait(2,sec);
+    ml.stop(coast);
+    bl.spin(fwd);
+    wait(2,sec);
+    bl.stop(coast);
     
 
 

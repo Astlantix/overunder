@@ -100,8 +100,7 @@ void printing(std::string string) {
 }
 
 //drivecode
-double currentlspeed = 0;
-double currentrspeed = 0;
+
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
 
@@ -109,26 +108,15 @@ void dtcode(double x, double y) {
     // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
     leftspeed = gamers.Axis4.position() * x;
     rightspeed = gamers.Axis4.position() * -x;
-  }
-  else {
+  } else {
     double avgSpeed = ((fabs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
     leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
     rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
   }
-// Ramp up or down to the target speeds
-  while (currentlspeed != leftspeed || currentrspeed != rightspeed) {
-    if (currentlspeed < leftspeed) currentlspeed++;
-    else if (currentlspeed > leftspeed) currentlspeed--;
 
-    if (currentrspeed < rightspeed) currentrspeed++;
-    else if (currentrspeed > rightspeed) currentrspeed--;
-
-    L.spin(fwd, currentlspeed, pct);
-    R.spin(fwd, currentrspeed, pct);
-
-    // Delay to allow the motors to catch up
-    wait(20,msec);
-  }
+  L.spin(fwd, leftspeed, pct);
+  R.spin(fwd, rightspeed, pct);
+  
 }
 
 //auton stuff
