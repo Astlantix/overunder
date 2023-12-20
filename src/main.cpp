@@ -116,9 +116,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.2,-2);
-    } else if (!modes) {
       dtcode(0.2,2);
+    } else if (!modes) {
+      dtcode(0.2,-2);
     }
 
     //toggle flywheel
@@ -142,7 +142,7 @@ void usercontrol(void) {
     catamoving();
     tempcheck();
     // ........................................................................
-    wait(20,msec); // Sleep the task for a short amount of time to
+    wait(10,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }

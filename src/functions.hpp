@@ -180,7 +180,7 @@ void catamoving() {
 void tempcheck() {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
-    gamers.Screen.print(flywheel.temperature(celsius));
+    gamers.Screen.print(modes);
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
