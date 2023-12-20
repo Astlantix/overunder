@@ -121,8 +121,10 @@ void dtcode(double x, double y) {
 
 //auton stuff
 // ........................................................................
-int auton = 1;
-int numofautons = 3;
+
+int auton = 1; //selected auton
+int numofautons = 6; //number of autons
+//auton selector
 void autonslctr() {
   if (auton < 1) {
     auton = numofautons;
@@ -130,17 +132,17 @@ void autonslctr() {
     auton = 1;
   }
   if (auton == 1) {
-    printing("LAWP");
+    printing("drivetrain test");
   } else if (auton == 2) {
     printing("RAWP");
   } else if (auton == 3) {
-    gamers.Screen.clearScreen();
-    gamers.Screen.setCursor(1,1);
-    gamers.Screen.print("  O  ");
-    gamers.Screen.setCursor(2,1);
-    gamers.Screen.print(" /|\\ ");
-    gamers.Screen.setCursor(3,1);
-    gamers.Screen.print(" / \\ ");
+    printing("skills");
+  } else if (auton == 4) {
+    printing("LAWP");
+  } else if (auton == 5) {
+    printing("RNAWP");
+  } else if (auton == 6) {
+    printing("LNAWP");
   }
   if (gamers.ButtonRight.pressing()) {
     auton++;

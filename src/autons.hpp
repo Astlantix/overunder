@@ -46,7 +46,7 @@ void setv(double joe) {
 }
 
 
-//left side AWP
+//drivetrain test
 void auton1 () {
 
     fl.spin(fwd);
@@ -72,7 +72,7 @@ void auton1 () {
 
 }
 
-//right Side AWP
+//Right Side AWP
 void auton2 () {
 
 
@@ -108,5 +108,19 @@ void auton3() {
     wait(200,msec);
     travel(0,90);
     travel(36,0);
+}
+
+//Left Side AWP
+void auton4() {
     
+}
+
+//Right Side No AWP
+void auton5() {
+    
+}
+
+//Left Side No AWP 
+void auton6() {
+
 }

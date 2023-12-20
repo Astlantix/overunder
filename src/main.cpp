@@ -87,8 +87,14 @@ void autonomous(void) {
     auton1();
   } else if (auton == 2) {
     auton2();
-  } else if( auton == 3) {
+  } else if (auton == 3) {
     auton3();
+  } else if (auton == 4) {
+    auton4();
+  } else if (auton == 5) {
+    auton5();
+  } else if (auton == 6) {
+    auton6();
   }
   // ..........................................................................
 }
@@ -152,10 +158,15 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  while (!Competition.isEnabled()) autonslctr();
+  
   
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
-  while (1) wait(100,msec);
+  while (1) {
+    if(Competition.DISABLE) {
+      autonslctr();
+    }
+    wait(10,msec);
+  }
 }
