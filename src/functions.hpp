@@ -141,7 +141,6 @@ void printing(std::string string) {
 }
 
 //drivecode
-
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
 

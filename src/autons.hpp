@@ -48,7 +48,6 @@ void setv(double joe) {
 
 //drivetrain test
 void auton1 () {
-
     fl.spin(fwd);
     wait(2,sec);
     fl.stop(coast);
@@ -67,16 +66,11 @@ void auton1 () {
     bl.spin(fwd);
     wait(2,sec);
     bl.stop(coast);
-    
-
-
 }
 
 //Right Side AWP
 void auton2 () {
 
-
-    
 } 
 
 
