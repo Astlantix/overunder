@@ -77,31 +77,25 @@ void intaking() {
   if (b==0) {
     if (gamers.ButtonR1.pressing()) {
       intake.spin(fwd,100,pct);
-      wait(2,msec);
       b = 1;
     } else if (gamers.ButtonR2.pressing()) {
       intake.spin(rev,100,pct);
-      wait(2,msec);
       b = 2;
     }
   } else if (b==1) {
     if(gamers.ButtonR1.pressing()) {
       intake.stop(coast);
-      wait(2,msec);
       b = 0;
     } else if (gamers.ButtonR2.pressing()) {
       intake.spin(rev,100,pct);
-      wait(2,msec);
       b = 2;
     }
   } else if (b==2) {
     if (gamers.ButtonR2.pressing()) {
       intake.stop(coast);
-      wait(2,msec);
       b = 0;
     } else if (gamers.ButtonR1.pressing()) {
       intake.spin(fwd,100,pct);
-      wait(2,msec);
       b = 1;
     }
   }
@@ -156,7 +150,6 @@ void dtcode(double x, double y) {
 
   L.spin(fwd, leftspeed, pct);
   R.spin(fwd, rightspeed, pct);
-  
 }
 
 //auton stuff
