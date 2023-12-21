@@ -86,10 +86,10 @@ void up() {climb.open();}
 void intaking() {
   if (b==0) {
     if (gamers.ButtonR1.pressing()) {
-      intake.spin(fwd,100,pct);
+      intake.spin(rev,100,pct);
       b = 1;
     } else if (gamers.ButtonR2.pressing()) {
-      intake.spin(rev,100,pct);
+      intake.spin(fwd,100,pct);
       b = 2;
     }
   } else if (b==1) {
@@ -97,7 +97,7 @@ void intaking() {
       intake.stop(coast);
       b = 0;
     } else if (gamers.ButtonR2.pressing()) {
-      intake.spin(rev,100,pct);
+      intake.spin(fwd,100,pct);
       b = 2;
     }
   } else if (b==2) {
@@ -105,7 +105,7 @@ void intaking() {
       intake.stop(coast);
       b = 0;
     } else if (gamers.ButtonR1.pressing()) {
-      intake.spin(fwd,100,pct);
+      intake.spin(rev,100,pct);
       b = 1;
     }
   }
