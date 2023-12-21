@@ -24,7 +24,8 @@ inertial inert = inertial(PORT3); //disgusting
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A); //left wing
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H); //right wing
 motor cata = motor(PORT2, ratio36_1, 0); //catapult
-motor flywheel = motor(PORT12, ratio1_1, 1); //VERY COOL FLYWHEEL ON A STICK I MADE MY IDEA MY WORK I BUILT IT ALL ME 3600 RPM DIRECT CUSTOM CARTRIDGE
+motor intake = motor(PORT12, ratio18_1, 0); //very cool intake
+motor flywheel = motor(PORT13, ratio1_1, 1); //VERY COOL FLYWHEEL ON A STICK I MADE MY IDEA MY WORK I BUILT IT ALL ME 3600 RPM DIRECT CUSTOM CARTRIDGE
 
 
 // VEXcode generated functions

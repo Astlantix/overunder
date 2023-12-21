@@ -20,6 +20,7 @@ extern inertial inert;
 extern pneumatics wings;
 extern pneumatics fly;
 extern motor cata;
+extern motor intake;
 extern motor flywheel;
 
 /**

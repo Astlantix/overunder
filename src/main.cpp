@@ -147,6 +147,7 @@ void usercontrol(void) {
     liftoff();
     catamoving();
     tempcheck();
+    intaking();
     // ........................................................................
     wait(10,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
