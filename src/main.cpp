@@ -48,7 +48,7 @@ competition Competition;
 
 // define your global instances of motors and other devices here
 
-/*---------------------------------------------------------------------------*/
+/*---------------------s------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
 /*  You may want to perform some actions before the competition starts.      */
