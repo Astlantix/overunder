@@ -24,6 +24,7 @@ extern motor_group L;
 extern motor_group R;
 extern pneumatics climb;
 extern rotation D;
+extern rotation E;
 extern inertial inert;
 extern pneumatics wings;
 extern pneumatics fly;

@@ -83,7 +83,7 @@ void pre_auton(void) {
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
-  if (auton == 1) {
+ /*if (auton == 1) {
     auton1();
   } else if (auton == 2) {
     auton2();
@@ -95,7 +95,7 @@ void autonomous(void) {
     auton5();
   } else if (auton == 6) {
     auton6();
-  }
+  }*/
   // ..........................................................................
 }
 
@@ -149,7 +149,7 @@ void usercontrol(void) {
     tempcheck();
     intaking();
     // ........................................................................
-    wait(10,msec); // Sleep the task for a short amount of time to
+    wait(11,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }

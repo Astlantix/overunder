@@ -147,7 +147,6 @@ void printing(std::string string) {
 //drivecode
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
-
   if (fabs(gamers.Axis3.position()) < 10 && fabs(gamers.Axis4.position()) > 10) {
     // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
     leftspeed = gamers.Axis4.position() * x;
@@ -157,7 +156,8 @@ void dtcode(double x, double y) {
     leftspeed = avgSpeed + (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
     rightspeed = avgSpeed - (fabs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
   }
-
+  if (leftspeed > 85) leftspeed = 85;
+  if (rightspeed > 85) rightspeed = 85;
   L.spin(fwd, leftspeed, pct);
   R.spin(fwd, rightspeed, pct);
 }
