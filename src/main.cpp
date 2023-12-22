@@ -65,6 +65,7 @@ void pre_auton(void) {
   setcoast();
   wingactionb();
   D.setPosition(0,turns);
+  E.setPosition(0,turns);
   climb.close();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -109,10 +110,15 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+bool a = 0;
 //user control
 void usercontrol(void) {
   //User control code here, inside the loop
-  while (1) {
+  while (!a) {
+    autonslctr();
+    if (gamers.ButtonB.pressing()) a = 1;
+  }
+  while (a) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -149,7 +155,7 @@ void usercontrol(void) {
     tempcheck();
     intaking();
     // ........................................................................
-    wait(11,msec); // Sleep the task for a short amount of time to
+    wait(10,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }

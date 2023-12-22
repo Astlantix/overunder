@@ -147,6 +147,10 @@ void sethold() {
 void printing(std::string string) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
+  gamers.Screen.print("--------------------");
+  gamers.Screen.setCursor(4,1);
+  gamers.Screen.print("--------------------");
+  gamers.Screen.setCursor(2,1);
   gamers.Screen.print(string.c_str());
 }
 

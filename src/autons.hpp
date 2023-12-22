@@ -25,27 +25,27 @@ void stoop() {
 }
 
 //Forward function
-void For(double joe) {
-    L.spinFor(fwd,joe*24,degrees,false);
-    R.spinFor(fwd,joe*24,degrees);
+void For(double joe, double adjust = 24) {
+    L.spinFor(fwd,joe*adjust,degrees,false);
+    R.spinFor(fwd,joe*adjust,degrees);
 }
 
 //Backward function
-void Rev(double joe) {
-    L.spinFor(rev,joe*24,degrees,false);
-    R.spinFor(rev,joe*24,degrees);
+void Rev(double joe, double adjust = 24) {
+    L.spinFor(rev,joe*adjust,degrees,false);
+    R.spinFor(rev,joe*adjust,degrees);
 }
 
 //Left function
-void Left(double joe) {
-    L.spinFor(rev,joe*2,degrees,false);
-    R.spinFor(fwd,joe*2,degrees);
+void Left(double joe, double adjust = 2) {
+    L.spinFor(rev,joe*adjust,degrees,false);
+    R.spinFor(fwd,joe*adjust,degrees);
 }
 
 //Right function
-void Right(double joe) {
-    L.spinFor(fwd,joe*2,degrees,false);
-    R.spinFor(rev,joe*2,degrees);
+void Right(double joe, double adjust = 2) {
+    L.spinFor(fwd,joe*adjust,degrees,false);
+    R.spinFor(rev,joe*adjust,degrees);
 }
 
 void setv(double joe) {
@@ -78,6 +78,53 @@ void auton1 () {
 
 //Right Side AWP
 void auton2 () {
+    /*
+    
+    */
+    For(100);
+    wings.open();
+    Right(90);
+    msp(intake,1);
+    For(10);
+    wait(200,msec);
+    msc(intake);
+    wait(20,msec);
+    Rev(10);
+    wings.close();
+    Right(180);
+    msp(intake);
+    For(25);
+    wait(20,msec);
+    msc(intake);
+    wait(20,msec);
+    Rev(10);
+    Right(180);
+    msp(intake,1);
+    For(25);
+    wait(200,msec);
+    msc(intake);
+    wait(20,msec);
+    Rev(10);
+    Right(135);
+    msp(intake);
+    For(12);
+    wait(20,msec);
+    msc(intake);
+    wait(20,msec);
+    Left(180);
+    For(12);
+    wait(20,msec);
+    Right(45);
+    msp(intake,1);
+    For(10);
+    wait(200,msec);
+    msc(intake);
+    wait(20,msec);
+    Rev(10);
+    Right(180);
+    For(100);
+    Left(90);
+    Rev(50);
 
 } 
 
