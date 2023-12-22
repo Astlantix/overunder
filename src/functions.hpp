@@ -88,25 +88,31 @@ void intaking() {
     if (gamers.ButtonR1.pressing()) {
       intake.spin(rev,100,pct);
       b = 1;
+      wait(200,msec);
     } else if (gamers.ButtonR2.pressing()) {
       intake.spin(fwd,100,pct);
       b = 2;
+      wait(200,msec);
     }
   } else if (b==1) {
     if(gamers.ButtonR1.pressing()) {
       intake.stop(coast);
       b = 0;
+      wait(200,msec);
     } else if (gamers.ButtonR2.pressing()) {
       intake.spin(fwd,100,pct);
       b = 2;
+      wait(200,msec);
     }
   } else if (b==2) {
     if (gamers.ButtonR2.pressing()) {
       intake.stop(coast);
       b = 0;
+      wait(200,msec);
     } else if (gamers.ButtonR1.pressing()) {
       intake.spin(rev,100,pct);
       b = 1;
+      wait(200,msec);
     }
   }
 }
