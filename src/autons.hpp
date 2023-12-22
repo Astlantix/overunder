@@ -78,18 +78,16 @@ void auton1 () {
 
 //Right Side AWP
 void auton2 () {
-    /*
-    
-    */
-    For(100);
+    /**/
+    For(36);
     wings.open();
     Right(90);
     msp(intake,1);
-    For(10);
+    For(5);
     wait(200,msec);
     msc(intake);
     wait(20,msec);
-    Rev(10);
+    Rev(5);
     wings.close();
     Right(180);
     msp(intake);
@@ -100,7 +98,7 @@ void auton2 () {
     Rev(10);
     Right(180);
     msp(intake,1);
-    For(25);
+    For(20);
     wait(200,msec);
     msc(intake);
     wait(20,msec);
@@ -108,24 +106,23 @@ void auton2 () {
     Right(135);
     msp(intake);
     For(12);
-    wait(20,msec);
+    wait(33,msec);
     msc(intake);
     wait(20,msec);
     Left(180);
-    For(12);
+    For(33);
     wait(20,msec);
     Right(45);
     msp(intake,1);
-    For(10);
+    For(5);
     wait(200,msec);
     msc(intake);
     wait(20,msec);
     Rev(10);
     Right(180);
-    For(100);
+    For(36);
     Left(90);
-    Rev(50);
-
+    Rev(30);
 } 
 
 
