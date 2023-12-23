@@ -1,5 +1,4 @@
 #include "vex.h"
-#include "pid.hpp"
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
 /\ \L\ \ \ \__/ /\ \/\ \\/___//'/'/\ \/\ \ \ \L\ \  
@@ -99,15 +98,16 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
 //pure pursuit with odometry
 void travel(double distance, double angle) {
     //Get current distance sensor value
-    double currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
-
+    //double currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
+    double currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
     //Get current orientation sensor value
     double currentOrientation = inert.yaw();
 
     //Move forward
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
-        currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
+        //currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
+        currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
     }
 
     //Turn

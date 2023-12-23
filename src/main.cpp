@@ -29,8 +29,6 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-#include "autons.hpp"
-
 using namespace vex;
 
 /*   __   ______     __    ________    __   ____      
@@ -128,9 +126,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.2,2);
+      dtcode(0.5,-2);
     } else if (!modes) {
-      dtcode(0.2,-2);
+      dtcode(0.5,2);
     }
 
     //toggle flywheel
@@ -155,7 +153,7 @@ void usercontrol(void) {
     tempcheck();
     intaking();
     // ........................................................................
-    wait(10,msec); // Sleep the task for a short amount of time to
+    wait(11,msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }
@@ -172,7 +170,7 @@ int main() {
   // Prevent main from exiting with an infinite loop.
   while (1) {
     if(Competition.DISABLE) {
-      autonslctr();
+      printing("you better be ready");
     }
     wait(10,msec);
   }
