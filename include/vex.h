@@ -28,9 +28,6 @@
 #include "v5_vcs.h"
 
 #include "robot-config.h"
-#include "functions.hpp"
-#include "pid.hpp"
-#include "autons.hpp"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \

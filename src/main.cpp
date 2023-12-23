@@ -30,6 +30,9 @@
 
 #include "vex.h"
 using namespace vex;
+#include "autons.hpp"
+#include "pid.hpp"
+#include "functions.hpp"
 
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    

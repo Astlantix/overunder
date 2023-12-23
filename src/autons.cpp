@@ -1,4 +1,7 @@
 #include "vex.h"
+#include "autons.hpp"
+#include "pid.hpp"
+#include "functions.hpp"
 using namespace vex;
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    

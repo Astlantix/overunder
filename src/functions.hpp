@@ -1,5 +1,5 @@
+using namespace vex;
 #include "vex.h"
-
 int b = 0;
 bool catamode = 0; //catapult spin or coast
 bool modes = 1; //reverse or forward
@@ -121,7 +121,46 @@ void intaking() {
 
 //drivetrain stuff
 // ........................................................................
+//stop is brake
+void setbrake() {
+    R.setStopping(brake);
+    L.setStopping(brake);
+}
 
+//stop
+void stoop() {
+    R.stop(coast);
+    L.stop(coast);
+}
+
+//Forward function
+void For(double joe, double adjust = 20) {
+    L.spinFor(fwd,joe*adjust,degrees,false);
+    R.spinFor(fwd,joe*adjust,degrees);
+}
+
+//Backward function
+void Rev(double joe, double adjust = 20) {
+    L.spinFor(rev,joe*adjust,degrees,false);
+    R.spinFor(rev,joe*adjust,degrees);
+}
+
+//Left function
+void Left(double joe, double adjust = 1.5) {
+    L.spinFor(rev,joe*adjust,degrees,false);
+    R.spinFor(fwd,joe*adjust,degrees);
+}
+
+//Right function
+void Right(double joe, double adjust = 1.5) {
+    L.spinFor(fwd,joe*adjust,degrees,false);
+    R.spinFor(rev,joe*adjust,degrees);
+}
+
+void setv(double joe) {
+    L.setVelocity(joe,pct);
+    R.setVelocity(joe,pct);
+}
 //stop is  coast
 void setcoast() {
   ml.setStopping(coast);
@@ -147,9 +186,9 @@ void sethold() {
 void printing(std::string string) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
-  gamers.Screen.print("--------------------");
+  gamers.Screen.print("------------------------------");
   gamers.Screen.setCursor(4,1);
-  gamers.Screen.print("--------------------");
+  gamers.Screen.print("------------------------------");
   gamers.Screen.setCursor(2,1);
   gamers.Screen.print(string.c_str());
 }
