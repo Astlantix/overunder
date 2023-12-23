@@ -67,6 +67,7 @@ void pre_auton(void) {
   D.setPosition(0,turns);
   E.setPosition(0,turns);
   climb.close();
+  inert.calibrate();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }

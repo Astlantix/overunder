@@ -29,7 +29,7 @@ Increase kI until the robot reaches the target distance in a reasonable time dur
 
 */
 //PID constants
-double kP = 0.0; //kP is the constant for proportional control
+double kP = 0.1; //kP is the constant for proportional control
 double kI = 0.0; //kI is the constant for integral control
 double kD = 0.0; //kD is the constant for derivative control
 
@@ -102,7 +102,7 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
 void travel(double distance, double angle) {
     //Get current distance sensor value
     //double currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
-    double currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
+    double currentDistance = (E.position(turns) + D.position(turns) / 2) * π * ws;
     //Get current orientation sensor value
     double currentOrientation = inert.yaw();
 
@@ -110,7 +110,7 @@ void travel(double distance, double angle) {
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
         //currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
-        currentDistance = (L.position(turns) + R.position(turns) / 2) * π * ws;
+        currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
     }
 
     //Turn

@@ -149,14 +149,22 @@ void Rev(double dist, double adjust) {
 
 //Left function
 void Left(double angle, double adjust) {
-    L.spinFor(rev,angle*adjust,degrees,false);
-    R.spinFor(fwd,angle*adjust,degrees);
+    inert.setRotation(0,deg);
+    while (fabs(inert.rotation(degrees)) < angle) {
+        double error = angle - fabs(inert.rotation(degrees));
+        L.spin(rev,10 + adjust*error,pct);
+        R.spin(fwd,10 + adjust*error,pct);
+    }
 }
 
 //Right function
 void Right(double angle, double adjust) {
-    L.spinFor(fwd,angle*adjust,degrees,false);
-    R.spinFor(rev,angle*adjust,degrees);
+    inert.setRotation(0,deg);
+    while (fabs(inert.rotation(degrees)) < angle) {
+        double error = angle - fabs(inert.rotation(degrees));
+        L.spin(fwd,10 + adjust*error,pct);
+        R.spin(rev,10 + adjust*error,pct);
+    }
 }
 
 //set velocity
@@ -286,7 +294,7 @@ void tempcheck() {
 
 //drivetrain test
 void auton1 () {
-    Right(90);
+    travel(24,0);
 }
 
 //Right Side AWP safe
