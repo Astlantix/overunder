@@ -29,10 +29,10 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-using namespace vex;
 #include "autons.hpp"
-#include "pid.hpp"
 #include "functions.hpp"
+#include "pid.hpp"
+using namespace vex;
 
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
