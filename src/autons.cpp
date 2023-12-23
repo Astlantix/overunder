@@ -151,20 +151,28 @@ void Rev(double dist, double adjust) {
 void Left(double angle, double adjust) {
     inert.setRotation(0,deg);
     while (fabs(inert.rotation(degrees)) < angle) {
+        std::cout << inert.rotation(degrees) << std::endl;
         double error = angle - fabs(inert.rotation(degrees));
-        L.spin(rev,10 + adjust*error,pct);
-        R.spin(fwd,10 + adjust*error,pct);
+        L.spin(rev,5 + adjust*error,pct);
+        R.spin(fwd,5 + adjust*error,pct);
+        wait(20,msec);
     }
+    L.stop(brake);
+    R.stop(brake);
 }
 
 //Right function
 void Right(double angle, double adjust) {
     inert.setRotation(0,deg);
     while (fabs(inert.rotation(degrees)) < angle) {
+        std::cout << inert.rotation(degrees) << std::endl;
         double error = angle - fabs(inert.rotation(degrees));
-        L.spin(fwd,10 + adjust*error,pct);
-        R.spin(rev,10 + adjust*error,pct);
+        L.spin(fwd,5 + adjust*error,pct);
+        R.spin(rev,5 + adjust*error,pct);
+        wait(20,msec);
     }
+    L.stop(brake);
+    R.stop(brake);
 }
 
 //set velocity
@@ -202,6 +210,17 @@ void printing(std::string string) {
   gamers.Screen.print("------------------------------");
   gamers.Screen.setCursor(2,1);
   gamers.Screen.print(string.c_str());
+}
+
+//another printing function
+void printer(double x) {
+  gamers.Screen.clearScreen();
+  gamers.Screen.setCursor(1,1);
+  gamers.Screen.print("------------------------------");
+  gamers.Screen.setCursor(4,1);
+  gamers.Screen.print("------------------------------");
+  gamers.Screen.setCursor(2,1);
+  gamers.Screen.print(x);
 }
 
 //drivecode
@@ -294,18 +313,19 @@ void tempcheck() {
 
 //drivetrain test
 void auton1 () {
-    travel(24,0);
+    Right(90);
 }
 
 //Right Side AWP safe
 void auton2 () {
     /**/
     setv(40);
-    For(24);
+    For(28);
     wings.open();
-    Right(90);
+    Right(80);
     msp(intake,1,90);
     setv(20);
+    wait(200,msec);
     For(5);
     wait(700,msec);
     setv(40);
@@ -313,15 +333,16 @@ void auton2 () {
     wait(20,msec);
     Rev(5);
     wings.close();
-    Right(190);
+    Right(135);
     msp(intake,0,90);
     For(13.5);
-    wait(20,msec);
+    wait(200,msec);
     msc(intake);
     wait(20,msec);
-    Left(190);
-    For(22);
+    Rev(5);
+    Left(175);
     msp(intake,1,90);
+    For(22);
     setv(20);
     For(5);
     setv(40);

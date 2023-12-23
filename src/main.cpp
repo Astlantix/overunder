@@ -68,6 +68,7 @@ void pre_auton(void) {
   E.setPosition(0,turns);
   climb.close();
   inert.calibrate();
+  if(inert.isCalibrating()) gamers.rumble(rumblePulse);
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -129,9 +130,9 @@ void usercontrol(void) {
     
     //(turn,fwdrev)
     if (modes) {
-      dtcode(0.5,-2);
+      dtcode(0.2,-2);
     } else if (!modes) {
-      dtcode(0.5,2);
+      dtcode(0.2,2);
     }
 
     //toggle flywheel
@@ -172,9 +173,9 @@ int main() {
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
-    if(Competition.DISABLE) {
+    /*if(Competition.DISABLE) {
       printing("you better be ready");
-    }
+    }*/
     wait(10,msec);
   }
 }
