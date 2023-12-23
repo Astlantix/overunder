@@ -31,7 +31,7 @@ motor_group R = motor_group(mr, br, fr); //right motors
 pneumatics climb = pneumatics(Brain.ThreeWirePort.C); //very cool lifting mechanism
 rotation D = rotation(PORT6, 0); //very cool rotation sensor
 rotation E = rotation(PORT8,0); //very cool rotation sensor
-inertial inert = inertial(PORT3); //disgusting
+inertial inert = inertial(PORT16); //disgusting
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A); //left wing
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H); //right wing
 motor cata = motor(PORT2, ratio36_1, 0); //catapult
@@ -49,5 +49,4 @@ bool RemoteControlCodeEnabled = 1;
  * This should be called at the start of your int main function.
  */
 void vexcodeInit(void) {
-    gamers.rumble(rumblePulse);
 };

@@ -278,7 +278,7 @@ void autonslctr() {
 
 //changind modes
 void modechange() {
-  if (gamers.ButtonB.pressing()) {
+  if (gamers.ButtonA.pressing()) {
     sethold();
   } else {
     setcoast();
