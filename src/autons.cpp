@@ -292,12 +292,16 @@ void catamoving() {
   } else if( gamers.Axis2.position() > 10) {
     catamode = 0;
   }
-
+  //one red one orange
   if (catamode) {
-    cata.spin(fwd,100,pct);
+    msp(cata,1);
   } else {
-    cata.stop(coast);
-  }    
+      if(gamers.ButtonLeft.pressing() || gamers.ButtonRight.pressing()) {
+        msp(cata,1,40);
+      } else {
+        msc(cata);
+      }
+    }
 }
 
 //printing intake and drivetrain temperature
@@ -336,7 +340,7 @@ void auton2 () {
     Right(135);
     msp(intake,0,90);
     For(13.5);
-    wait(200,msec);
+    wait(500,msec);
     msc(intake);
     wait(20,msec);
     Rev(5);
@@ -408,7 +412,7 @@ void auton3() {
 
 //Left Side AWP
 void auton4() {
-    
+    Rev(100);
 }
 
 //Right Side No AWP
