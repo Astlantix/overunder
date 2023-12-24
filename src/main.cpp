@@ -32,6 +32,7 @@
 #include "autons.hpp"
 #include "pid.hpp"
 using namespace vex;
+using namespace std;
 
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
@@ -69,6 +70,8 @@ void pre_auton(void) {
   climb.close();
   inert.calibrate();
   if(inert.isCalibrating()) gamers.rumble(rumblePulse);
+  cout << "hi" << endl;
+
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }

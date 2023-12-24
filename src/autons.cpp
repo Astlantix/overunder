@@ -1,7 +1,8 @@
 #include "vex.h"
 #include "autons.hpp"
 #include "pid.hpp"
-//using namespace vex;
+using namespace vex;
+using namespace std;
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
 /\ \L\ \ \ \__/ /\ \/\ \\/___//'/'/\ \/\ \ \ \L\ \  
@@ -151,7 +152,6 @@ void Rev(double dist, double adjust) {
 void Left(double angle, double adjust) {
     inert.setRotation(0,deg);
     while (fabs(inert.rotation(degrees)) < angle) {
-        std::cout << inert.rotation(degrees) << std::endl;
         double error = angle - fabs(inert.rotation(degrees));
         L.spin(rev,5 + adjust*error,pct);
         R.spin(fwd,5 + adjust*error,pct);
@@ -165,7 +165,6 @@ void Left(double angle, double adjust) {
 void Right(double angle, double adjust) {
     inert.setRotation(0,deg);
     while (fabs(inert.rotation(degrees)) < angle) {
-        std::cout << inert.rotation(degrees) << std::endl;
         double error = angle - fabs(inert.rotation(degrees));
         L.spin(fwd,5 + adjust*error,pct);
         R.spin(rev,5 + adjust*error,pct);

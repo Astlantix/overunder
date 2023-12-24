@@ -1,5 +1,3 @@
-#pragma once
-
 #include "vex.h"
 #include "pid.hpp"
 /*   __   ______     __    ________    __   ____      
@@ -11,7 +9,7 @@
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
                                                     
 */
-//using namespace vex;
+using namespace vex;
 
 double π = atan(1) * 4; //defining pi using the symbol because im cool
 double ws = 4; //wheel diameter in inches
