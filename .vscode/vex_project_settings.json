@@ -1,18 +1,18 @@
 {
-	"extension": {
-		"version": "0.4.1",
-		"json": 1
-	},
 	"project": {
-		"name": "overunder",
-		"description": "2023 - 2024 VEX Over Under Season 95070B code",
-		"creationDate": "5/8/2023, 5:11:51 PM",
-		"platform": "V5",
-		"language": "cpp",
+		"name": "amzing",
 		"slot": 1,
+		"description": "VEX OVER UNDER SEASON 2023-2024 95070B\n",
+		"platform": "V5",
+		"creationDate": "Mon, 25 Dec 2023 01:25:14 GMT",
+		"language": "cpp",
 		"sdkVersion": "V5_20220726_10_00_00",
 		"cpp": {
 			"includePath": []
 		}
+	},
+	"extension": {
+		"version": "0.5.0",
+		"json": 1
 	}
 }
