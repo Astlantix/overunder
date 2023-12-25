@@ -116,6 +116,7 @@ void autonomous(void) {
 /*---------------------------------------------------------------------------*/
 
 bool a = 0;
+double sen = 1;
 //user control
 void usercontrol(void) {
   //User control code here, inside the loop
@@ -132,18 +133,26 @@ void usercontrol(void) {
     // update your motors, etc.
     
     //(turn,fwdrev)
+    if(gamers.ButtonL1.pressing()) {
+      sen = 0.35;
+    } else if (gamers.ButtonL2.pressing()) {
+      sen = 0.7;
+    } else {
+      sen = 1;
+    }
+
     if (modes) {
-      dtcode(0.2,-2);
+      dtcode(0.2*sen,-2*sen);
     } else if (!modes) {
-      dtcode(0.2,2);
+      dtcode(0.2*sen,2*sen);
     }
 
     //toggle flywheel
     if(gamers.ButtonX.pressing()) airborne = !airborne;
 
     //wings
-    gamers.ButtonL1.pressed(wingactiona);
-    gamers.ButtonL2.pressed(wingactionb);
+    gamers.ButtonX.pressed(wingactiona);
+    gamers.ButtonY.pressed(wingactionb);
 
     //lifting
     gamers.ButtonUp.pressed(up);
