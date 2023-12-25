@@ -300,126 +300,165 @@ void catamoving() {
       } else {
         msc(cata);
       }
-    }
+  }
 }
 
 //printing intake and drivetrain temperature
 void tempcheck() {
-    gamers.Screen.clearScreen();
-    gamers.Screen.setCursor(1,1);
-    gamers.Screen.print(modes);
-    gamers.Screen.setCursor(2,1);
-    gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
-    gamers.Screen.setCursor(3,1);
-    gamers.Screen.print(cata.temperature(celsius));
+  gamers.Screen.clearScreen();
+  gamers.Screen.setCursor(1,1);
+  gamers.Screen.print(modes);
+  gamers.Screen.setCursor(2,1);
+  gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
+  gamers.Screen.setCursor(3,1);
+  gamers.Screen.print(cata.temperature(celsius));
 }
 
 //drivetrain test
 void auton1 () {
-    Right(90);
+  Right(90);
 }
 
-//Right Side AWP safe
+//Right Side AWP 2 triball
 void auton2 () {
-    /**/
-    setv(40);
-    For(28);
-    wings.open();
-    Right(80);
-    msp(intake,1,90);
-    setv(20);
-    wait(200,msec);
-    For(5);
-    wait(700,msec);
-    setv(40);
-    msc(intake);
-    wait(20,msec);
-    Rev(5);
-    wings.close();
-    Right(135);
-    msp(intake,0,90);
-    For(13.5);
-    wait(500,msec);
-    msc(intake);
-    wait(20,msec);
-    Rev(5);
-    Left(175);
-    msp(intake,1,90);
-    For(22);
-    setv(20);
-    For(5);
-    setv(40);
-    wait(700,msec);
-    msc(intake); 
-    wait(20,msec);
-    Rev(5);
-    msp(intake,1,90);
-    wait(500,msec);
-    For(5);
-    /*Right(135);
-    msp(intake,0,90);
-    For(12);
-    wait(33,msec);
-    msc(intake);
-    wait(20,msec);
-    Left(180);
-    For(33);
-    wait(20,msec);
-    Right(45);
-    msp(intake,1,90);
-    For(5);
-    wait(200,msec);
-    msc(intake);
-    wait(20,msec);
-    Rev(10);
-    Right(180);
-    For(24);
-    Left(90);
-    Rev(30);*/
+  /**/
+  setv(40);
+  For(28);
+  wings.open();
+  Right(80);
+  msp(intake,1,90);
+  setv(20);
+  wait(200,msec);
+  For(5);
+  wait(700,msec);
+  setv(40);
+  msc(intake);
+  wait(20,msec);
+  Rev(5);
+  wings.close();
+  Right(135);
+  msp(intake,0,90);
+  For(13.5);
+  wait(500,msec);
+  msc(intake);
+  wait(20,msec);
+  Rev(5);
+  Left(175);
+  msp(intake,1,90);
+  For(22);
+  setv(20);
+  For(5);
+  setv(40);
+  wait(700,msec);
+  msc(intake); 
+  wait(20,msec);
+  Rev(5);
+  msp(intake,1,90);
+  wait(500,msec);
+  For(5);
+  /*Right(135);
+  msp(intake,0,90);
+  For(12);
+  wait(33,msec);
+  msc(intake);
+  wait(20,msec);
+  Left(180);
+  For(33);
+  wait(20,msec);
+  Right(45);
+  msp(intake,1,90);
+  For(5);
+  wait(200,msec);
+  msc(intake);
+  wait(20,msec);
+  Rev(10);
+  Right(180);
+  For(24);
+  Left(90);
+  Rev(30);*/
 }
 
 
 //skills
 void auton3() {
-    flies();
-    wait(30,sec);
-    flies(1);
-    //
-    For(100);
-    wingactiona();
-    For(100);
-    wait(200,msec);
-    Rev(50);
-    travel(0,90);
-    travel(36,-90);
-    travel(12,-90);
-    For(10);
-    wait(200,msec);
-    Rev(10);
-    wait(200,msec);
-    travel(0,-90);
-    travel(12,90);
-    travel(60,90);
-    travel(12,90);
-    For(10);
-    wait(200,msec);
-    Rev(10);
-    wait(200,msec);
-    travel(0,90);
-    travel(36,0);
+  flies();
+  wait(30,sec);
+  flies(1);
+  //
+  For(100);
+  wingactiona();
+  For(100);
+  wait(200,msec);
+  Rev(50);
+  travel(0,90);
+  travel(36,-90);
+  travel(12,-90);
+  For(10);
+  wait(200,msec);
+  Rev(10);
+  wait(200,msec);
+  travel(0,-90);
+  travel(12,90);
+  travel(60,90);
+  travel(12,90);
+  For(10);
+  wait(200,msec);
+  Rev(10);
+  wait(200,msec);
+  travel(0,90);
+  travel(36,0);
 }
 
 //Left Side AWP
 void auton4() {
-    Rev(100);
+  fly.open();
+  Left(30);
+  wait(10,msec);
+  fly.close();
+  Right(30);
+  wait(10,msec);
+  Rev(7.5);
+  wait(10,msec);
+  For(7.5);
+  wait(10,msec);
+  Left(30);
+  msp(intake,1);
+  For(20);
 }
 
-//Right Side No AWP
+//Right Side AWP 4 triballs
 void auton5() {
-    
+  For(35);
+  fly.open();
+  wait(10,msec);
+  Right(90);
+  msp(intake,1,90);
+  For(5);
+  wait(500,msec);
+  Rev(5);
+  msc(intake);
+  Right(180);
+  msp(intake);
+  For(19);
+  wait(500,msec);
+  msc(intake);
+  Rev(5);
+  Right(180);
+  msp(intake,1,90);
+  For(17);
+  wait(500,msec);
+  
 }
 
-//Left Side No AWP 
+//Left Side Elims
 void auton6() {
-
+  Rev(7.5);
+  wait(10,msec);
+  For(7.5);
+  wait(10,msec);
+  Left(30);
+  msp(intake,1);
+  For(20);
+  wait(20,msec);
+  Rev(17);
 }
