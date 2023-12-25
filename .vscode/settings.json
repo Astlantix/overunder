@@ -5,5 +5,25 @@
 	},
 	"C_Cpp.default.systemIncludePath": [
 		"${config:vexrobotics.vexcode.Cpp.Sdk.Home}\\V5\\V5_20220726_10_00_00\\vexv5\\gcc\\include\\sys"
-	]
+	],
+	"workbench.colorCustomizations": {
+	
+		"activityBar.activeBackground": "#000000",
+		"activityBar.background": "#000000",
+		"activityBar.foreground": "#ff0000",
+		"activityBar.inactiveForeground": "#2256ff",
+		"activityBarBadge.background": "#000000",
+		"activityBarBadge.foreground": "#ff0000",
+		"commandCenter.border": "#e7e7e799",
+		"sash.hoverBorder": "#000000",
+		"statusBar.background": "#000000",
+		"statusBar.foreground": "#ff0000",
+		"statusBarItem.hoverBackground": "#000000",
+		"statusBarItem.remoteBackground": "#ff00009d",
+		"statusBarItem.remoteForeground": "#003cff",
+		"titleBar.activeBackground": "#010201",
+		"titleBar.activeForeground": "#ff0000",
+		"titleBar.inactiveBackground": "#00000099",
+		"titleBar.inactiveForeground": "#2256ff"
+	},
 }
