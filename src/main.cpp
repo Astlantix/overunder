@@ -65,12 +65,13 @@ void pre_auton(void) {
   setv(100);
   setcoast();
   wingactionb();
+  int x;
   D.setPosition(0,turns);
   E.setPosition(0,turns);
   climb.close();
   inert.calibrate();
   if(inert.isCalibrating()) gamers.rumble(rumblePulse);
-  cout << "hi" << endl;
+  cout << "calibrated" << endl;
 
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...

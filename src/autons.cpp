@@ -261,7 +261,7 @@ void autonslctr() {
   } else if (auton == 4) {
     printing("LAWP");
   } else if (auton == 5) {
-    printing("RNAWP");
+    printing("RAWP4");
   } else if (auton == 6) {
     printing("LNAWP");
   }
@@ -271,6 +271,9 @@ void autonslctr() {
   } else if (gamers.ButtonLeft.pressing()) {
     auton--;                        
     wait(200,msec);
+  }
+  if(gamers.ButtonUp.pressing()) {
+    cin >> auton;
   }
 }
 // ........................................................................
@@ -322,7 +325,7 @@ void auton1 () {
 //Right Side AWP 2 triball
 void auton2 () {
   /**/
-  setv(40);
+  setv(20);
   For(28);
   wings.open();
   Right(80);
@@ -381,17 +384,24 @@ void auton2 () {
 
 //skills
 void auton3() {
-  flies();
+  /*flies();
   wait(30,sec);
-  flies(1);
+  flies(1);*/
   //
-  For(100);
+  msp(cata,1);
+  wait(35,sec);
+  Rev(30);
+  msc(cata);
+  Left(45);
+  wingactiona();
+  Rev(70); 
+  /*For(100);
   wingactiona();
   For(100);
   wait(200,msec);
   Rev(50);
-  travel(0,90);
-  travel(36,-90);
+  Right(90);*/
+  /*travel(36,-90);
   travel(12,-90);
   For(10);
   wait(200,msec);
@@ -406,48 +416,90 @@ void auton3() {
   Rev(10);
   wait(200,msec);
   travel(0,90);
-  travel(36,0);
+  travel(36,0);*/
 }
 
 //Left Side AWP
 void auton4() {
-  fly.open();
-  Left(30);
+  /*Right(37);
   wait(10,msec);
-  fly.close();
-  Right(30);
+  Rev(13.5);
   wait(10,msec);
-  Rev(7.5);
+  setv(40);
+  For(15.625);
   wait(10,msec);
-  For(7.5);
-  wait(10,msec);
-  Left(30);
+  Left(40); 
+  wings.open();
+  Left(45);
+  wings.close();
   msp(intake,1);
   For(20);
+  msc(intake);*/
+  wait(30,msec);
+  fly.open();
+  wait(300,msec);
+  Left(45);
+  wait(40,msec);
+  fly.close();
+  Right(20);
+  msp(intake,1,90);
+  setv(100);
+  For(12);
+  wait(750,msec);
+  Rev(8);
+  Right(120);
+  setv(40);
+  setcoast();
+  For(7.5);
+  Left(25);
+  For(20.2);
+  wait(200,msec);
+  msc(intake);
 }
 
 //Right Side AWP 4 triballs
 void auton5() {
-  For(35);
+  timer t;
+  setv(50);
+  t.clear();
+  For(29.5);
   fly.open();
   wait(10,msec);
   Right(90);
   msp(intake,1,90);
-  For(5);
   wait(500,msec);
-  Rev(5);
   msc(intake);
-  Right(180);
+  For(5.5);
+  wait(500,msec);
+  Rev(5.5);
+  setv(45);
+  fly.close();
+  Left(165);
   msp(intake);
-  For(19);
+  For(17);
   wait(500,msec);
   msc(intake);
   Rev(5);
   Right(180);
   msp(intake,1,90);
-  For(17);
+  wait(200,msec);
+  For(16);
   wait(500,msec);
-  
+  Rev(5);
+  Right(125);
+  msp(intake);
+  For(23);
+  wait(500,msec);
+  msc(intake);
+  Rev(5);
+  Right(160);
+  msp(intake,1,90);
+  For(16);
+  wait(500,msec);
+  cout << t.time(sec) << endl;
+  Rev(5);
+  msc(intake);
+  Right(180);
 }
 
 //Left Side Elims
