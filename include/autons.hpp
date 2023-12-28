@@ -13,7 +13,7 @@
 
 
 
-//declare your functions
+// Declare your functions and variables
 
 extern int b;
 extern bool catamode;

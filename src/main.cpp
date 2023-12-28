@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       VEX                                                       */
+/*    Author:       VY                                                        */
 /*    Created:      Fri Dec 1 2023                                            */
-/*    Description:  Competition Template                                      */
+/*    Description:  Over Under 95070B :)                                      */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
@@ -47,8 +47,6 @@ using namespace std;
 // A global instance of competition
 competition Competition;
 
-// define your global instances of motors and other devices here
-
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
@@ -58,14 +56,12 @@ competition Competition;
 /*  function is only called once after the V5 has been powered on and        */
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
-
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   setv(100);
   setcoast();
   wingactionb();
-  int x;
   D.setPosition(0,turns);
   E.setPosition(0,turns);
   climb.close();
@@ -86,7 +82,6 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
@@ -103,8 +98,12 @@ void autonomous(void) {
   } else if (auton == 6) {
     auton6();
   }
+  cout << "completed auton" << endl;
   // ..........................................................................
 }
+
+bool a = 0; // auton selector boolean
+double sen = 1; // sensitivity
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -115,12 +114,8 @@ void autonomous(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-
-bool a = 0;
-double sen = 1;
-//user control
 void usercontrol(void) {
-  //User control code here, inside the loop
+  // User control code here, inside the loop
   while (!a) {
     autonslctr();
     if (gamers.ButtonB.pressing()) a = 1;
@@ -133,7 +128,7 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     
-    //(turn,fwdrev)
+    // (turn,fwdrev)
     if(gamers.ButtonL1.pressing()) {
       sen = 0.35;
     } else if (gamers.ButtonL2.pressing()) {
@@ -148,29 +143,29 @@ void usercontrol(void) {
       dtcode(0.2*sen,2*sen);
     }
 
-    //toggle flywheel
+    // toggle flywheel
     if(gamers.ButtonX.pressing()) airborne = !airborne;
 
-    //wings
+    // wings
     gamers.ButtonX.pressed(wingactiona);
     gamers.ButtonY.pressed(wingactionb);
 
-    //lifting
+    // lifting
     gamers.ButtonUp.pressed(up);
     gamers.ButtonDown.pressed(down);
 
-    //change brake modes
+    // change brake modes
     if (gamers.ButtonB.pressing()) modes = !modes;
 
     modechange();
 
-    //other stuff
+    // other stuff
     liftoff();
     catamoving();
     tempcheck();
     intaking();
     // ........................................................................
-    wait(11,msec); // Sleep the task for a short amount of time to
+    wait(10,msec);  // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
 }
@@ -186,9 +181,18 @@ int main() {
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
-    /*if(Competition.DISABLE) {
-      printing("you better be ready");
-    }*/
+    if(Competition.DISABLE) {
+      int x = rand();
+      if(x == 0){
+        printing("you better be ready");
+      } else if (rand() == 1) {
+        printing("aaron dont throw");
+      } else if (rand() < 0) {
+        printing("ik we're gonna win but gl");
+      } else {
+        printing("its slim shady");
+      }
+    }
     wait(10,msec);
   }
 }

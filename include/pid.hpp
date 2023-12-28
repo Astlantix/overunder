@@ -6,10 +6,11 @@
 \ \___, \ \___``\ \ \ \ \   /' /' \ \ \ \ \ \  _ <' 
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
-       \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
+       \/_/\/___/  \/___/\//         \/___/  \/___/                                                  
 */
-//Declare your variables
+
+// Declare your variables
+
 extern double integral_orient;
 extern double lastError;
 extern double lastError_orient;
@@ -20,9 +21,10 @@ extern double kP_orient;
 extern double kI_orient;
 extern double kD_orient;
 
-//Declare your functions
+// Declare your functions
+
 void drivetrainPID(double error, double error_orient);
 
 void travel(double distance, double angle);
 
-#endif //PID_HPP
+#endif // PID_HPP

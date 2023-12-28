@@ -14,78 +14,78 @@ using namespace std;
 */
 
 int b = 0;
-bool catamode = 0; //catapult spin or coast
-bool modes = 1; //reverse or forward
+bool catamode = 0; // catapult spin or coast
+bool modes = 1; // reverse or forward
 
-//general stuff
+// general stuff
 // ........................................................................
 
 
-//spin motor (motor, dir, speed)
+// spin motor (motor, dir, speed)
 void msp(motor m, bool x, double speed) {
-    if (x) {
-        m.spin(fwd,speed,pct);
-    } else {
-        m.spin(rev,speed,pct);
-    }
+  if (x) {
+      m.spin(fwd,speed,pct);
+  } else {
+      m.spin(rev,speed,pct);
+  }
 }
-//coast motor
+// coast motor
 void msc(motor m) {m.stop(coast);}
 // ........................................................................
 
-//wings stuff
+// wings stuff
 // ........................................................................
 
-//open wings
+// open wings
 void wingactiona() {
-    wings.open();
-    fly.open();
+  wings.open();
+  fly.open();
 }
-//close wings
+// close wings
 void wingactionb() {
-    wings.close();
-    fly.close();
+  wings.close();
+  fly.close();
 }
-// ........................................................................
+// .......................................................................
 
 
 // ........................................................................
 
-//flywheel stuff
+// flywheel stuff
 // ........................................................................
 
-bool airborne = 1; //toggle flywheel
-//flying
+bool airborne = 1; // toggle flywheel
+// flying
 void flies(bool c) {
-    if (c==0) {
-        flywheel.spin(fwd,100,pct);
-    } else if (c==1) {
-        flywheel.stop(coast);
-    }
+  if (c==0) {
+      flywheel.spin(fwd,100,pct);
+  } else if (c==1) {
+      flywheel.stop(coast);
+  }
 }
-//toggle flywheel
+// toggle flywheel
 void liftoff() {
   flies(airborne);
 }
 
 // ........................................................................
 
-//climbing stuff
+// climbing stuff
 // ........................................................................
 
-//lifting stays down or very strong pullup
+// lifting stays down or very strong pullup
 void down() {climb.open();}
 
-//im tall
+// im tall
 void up() {climb.open();}
 
 // ........................................................................
 
 
-//intake
+// intake
 // ........................................................................
 
-//intake thing
+// intake thing
 void intaking() {
   if (b==0) {
     if (gamers.ButtonR1.pressing()) {
@@ -122,64 +122,64 @@ void intaking() {
 
 // ........................................................................
 
-//drivetrain stuff
+// drivetrain stuff
 // ........................................................................
-//stop is brake
+// stop is brake
 void setbrake() {
-    R.setStopping(brake);
-    L.setStopping(brake);
+  R.setStopping(brake);
+  L.setStopping(brake);
 }
 
-//stop
+// stop
 void stoop() {
-    R.stop(coast);
-    L.stop(coast);
+  R.stop(coast);
+  L.stop(coast);
 }
 
-//Forward function
+// Forward function
 void For(double dist, double adjust) {
-    L.spinFor(fwd,dist*adjust,degrees,false);
-    R.spinFor(fwd,dist*adjust,degrees);
+  L.spinFor(fwd,dist*adjust,degrees,false);
+  R.spinFor(fwd,dist*adjust,degrees);
 }
 
-//Backward function
+// Backward function
 void Rev(double dist, double adjust) {
-    L.spinFor(rev,dist*adjust,degrees,false);
-    R.spinFor(rev,dist*adjust,degrees);
+  L.spinFor(rev,dist*adjust,degrees,false);
+  R.spinFor(rev,dist*adjust,degrees);
 }
 
-//Left function
+// Left function
 void Left(double angle, double adjust) {
-    inert.setRotation(0,deg);
-    while (fabs(inert.rotation(degrees)) < angle) {
-        double error = angle - fabs(inert.rotation(degrees));
-        L.spin(rev,5 + adjust*error,pct);
-        R.spin(fwd,5 + adjust*error,pct);
-        wait(20,msec);
-    }
-    L.stop(brake);
-    R.stop(brake);
+  inert.setRotation(0,deg);
+  while (fabs(inert.rotation(degrees)) < angle) {
+    double error = angle - fabs(inert.rotation(degrees));
+    L.spin(rev,5 + adjust*error,pct);
+    R.spin(fwd,5 + adjust*error,pct);
+    wait(20,msec);
+  }
+  L.stop(brake);
+  R.stop(brake);
 }
 
-//Right function
+// Right function
 void Right(double angle, double adjust) {
-    inert.setRotation(0,deg);
-    while (fabs(inert.rotation(degrees)) < angle) {
-        double error = angle - fabs(inert.rotation(degrees));
-        L.spin(fwd,5 + adjust*error,pct);
-        R.spin(rev,5 + adjust*error,pct);
-        wait(20,msec);
-    }
-    L.stop(brake);
-    R.stop(brake);
+  inert.setRotation(0,deg);
+  while (fabs(inert.rotation(degrees)) < angle) {
+    double error = angle - fabs(inert.rotation(degrees));
+    L.spin(fwd,5 + adjust*error,pct);
+    R.spin(rev,5 + adjust*error,pct);
+    wait(20,msec);
+  }
+  L.stop(brake);
+  R.stop(brake);
 }
 
-//set velocity
+// set velocity
 void setv(double vel) {
-    L.setVelocity(vel,pct);
-    R.setVelocity(vel,pct);
+  L.setVelocity(vel,pct);
+  R.setVelocity(vel,pct);
 }
-//stop is  coast
+// stop is  coast
 void setcoast() {
   ml.setStopping(coast);
   mr.setStopping(coast);
@@ -189,7 +189,7 @@ void setcoast() {
   fr.setStopping(coast);
 }
 
-//stop is hold
+// stop is hold
 void sethold() {
   ml.setStopping(hold);
   mr.setStopping(hold);
@@ -200,7 +200,7 @@ void sethold() {
 }
 // ........................................................................
 
-//printing function
+// printing function
 void printing(std::string string) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
@@ -211,7 +211,7 @@ void printing(std::string string) {
   gamers.Screen.print(string.c_str());
 }
 
-//another printing function
+// another printing function
 void printer(double x) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
@@ -222,7 +222,7 @@ void printer(double x) {
   gamers.Screen.print(x);
 }
 
-//drivecode
+// drivecode
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
   if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {
@@ -240,12 +240,12 @@ void dtcode(double x, double y) {
   R.spin(fwd, rightspeed, pct);
 }
 
-//auton stuff
+// auton stuff
 // ........................................................................
 
-int auton = 1; //selected auton
-int numofautons = 6; //number of autons
-//auton selector
+int auton = 1; // selected auton
+int numofautons = 6; // number of autons
+// auton selector
 void autonslctr() {
   if (auton < 1) {
     auton = numofautons;
@@ -278,7 +278,7 @@ void autonslctr() {
 }
 // ........................................................................
 
-//changind modes
+// changind modes
 void modechange() {
   if (gamers.ButtonA.pressing()) {
     sethold();
@@ -287,14 +287,14 @@ void modechange() {
   }
 }
 
-//catapult movement
+// catapult movement
 void catamoving() {
   if (gamers.Axis2.position() < -10) {
     catamode = 1;
   } else if( gamers.Axis2.position() > 10) {
     catamode = 0;
   }
-  //one red one orange
+  // one red one orange
   if (catamode) {
     msp(cata,1);
   } else {
@@ -302,11 +302,11 @@ void catamoving() {
         msp(cata,1,40);
       } else {
         msc(cata);
-      }
+    }
   }
 }
 
-//printing intake and drivetrain temperature
+// printing intake and drivetrain temperature
 void tempcheck() {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
@@ -317,12 +317,12 @@ void tempcheck() {
   gamers.Screen.print(cata.temperature(celsius));
 }
 
-//drivetrain test
+// drivetrain test
 void auton1 () {
   Right(90);
 }
 
-//Right Side AWP 2 triball
+// Right Side AWP 2 triball
 void auton2 () {
   /**/
   setv(20);
@@ -382,7 +382,7 @@ void auton2 () {
 }
 
 
-//skills
+// skills
 void auton3() {
   /*flies();
   wait(30,sec);
@@ -419,7 +419,7 @@ void auton3() {
   travel(36,0);*/
 }
 
-//Left Side AWP
+// Left Side AWP
 void auton4() {
   /*Right(37);
   wait(10,msec);
@@ -457,7 +457,7 @@ void auton4() {
   msc(intake);
 }
 
-//Right Side AWP 4 triballs
+// Right Side AWP 4 triballs
 void auton5() {
   timer t;
   setv(50);
@@ -502,7 +502,7 @@ void auton5() {
   Right(180);
 }
 
-//Left Side Elims
+// Left Side Elims
 void auton6() {
   Rev(7.5);
   wait(10,msec);

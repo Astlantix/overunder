@@ -29,10 +29,12 @@
 
 #include "robot-config.h"
 
+// wait until condition is complete
 #define waitUntil(condition)                                                   \
   do {                                                                         \
     wait(5, msec);                                                             \
   } while (!(condition))
 
+// for loop one var
 #define repeat(iterations)                                                     \
   for (int iterator = 0; iterator < iterations; iterator++)
