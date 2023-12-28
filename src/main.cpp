@@ -30,6 +30,7 @@
 
 #include "vex.h"
 #include "autons.hpp"
+#include "functions.hpp"
 #include "pid.hpp"
 using namespace vex;
 using namespace std;
