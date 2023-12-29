@@ -8,7 +8,6 @@ extern brain Brain;
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
 */
 
 // define your global instances of motors and other devices here
