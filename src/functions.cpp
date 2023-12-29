@@ -223,7 +223,6 @@ void printer(double x) {
   gamers.Screen.print(x);
 }
 
-// drivecode
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
   if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {

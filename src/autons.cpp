@@ -19,7 +19,7 @@ void auton1() {
   timer t;
   setv(50);
   t.clear();
-  For(29.5);
+  For(29);
   fly.open();
   wait(10,msec);
   Right(90);
@@ -31,7 +31,7 @@ void auton1() {
   Rev(5.5);
   setv(45);
   fly.close();
-  Left(165);
+  Left(180);
   msp(intake);
   For(17);
   wait(500,msec);
@@ -43,13 +43,13 @@ void auton1() {
   For(16);
   wait(500,msec);
   Rev(5);
-  Right(125);
+  Right(135);
   msp(intake);
   For(23);
   wait(500,msec);
   msc(intake);
   Rev(5);
-  Right(160);
+  Left(135);
   msp(intake,1,90);
   For(16);
   wait(500,msec);
@@ -86,15 +86,14 @@ void auton2() {
   setv(100);
   For(12);
   wait(750,msec);
-  Rev(8);
-  Right(120);
+  Rev(2.75);
+  Left(82.5);
+  msc(intake);
   setv(40);
   setcoast();
-  For(7.5);
+  Rev(35);
+  fly.open();
   Left(25);
-  For(20.2);
-  wait(200,msec);
-  msc(intake);
 }
 
 // Left Side Elims
@@ -174,14 +173,25 @@ void auton5() {
   /*flies();
   wait(30,sec);
   flies(1);*/
-  //
-  msp(cata,1);
-  wait(35,sec);
+  //3
+  while (1) {
+    For(45);
+    Left(70);
+    msp(intake,1,90);
+    For(10);
+    wait(200,msec);
+    Rev(10);
+    msc(intake);
+    Right(70);
+    Rev(45);
+    wait(2,sec);
+  }
+  /*wait(35,sec);
   Rev(30);
   msc(cata);
   Left(45);
   wingactiona();
-  Rev(70); 
+  Rev(70); */
   /*For(100);
   wingactiona();
   For(100);
@@ -208,7 +218,24 @@ void auton5() {
 
 // drivetrain test
 void auton6 () {
-  Right(90);
+  msp(fl);
+  wait(500,msec);
+  msc(fl);
+  msp(fr);
+  wait(500,msec);
+  msc(fr);
+  msp(ml);
+  wait(500,msec);
+  msc(ml);
+  msp(mr);
+  wait(500,msec);
+  msc(mr);
+  msp(bl);
+  wait(500,msec);
+  msc(bl);
+  msp(br);
+  wait(500,msec);
+  msc(br);
 }
 
 

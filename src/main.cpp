@@ -139,9 +139,9 @@ void usercontrol(void) {
     }
 
     if (modes) {
-      dtcode(0.2*sen,-2*sen);
-    } else if (!modes) {
       dtcode(0.2*sen,2*sen);
+    } else if (!modes) {
+      dtcode(0.2*sen,-2*sen);
     }
 
     // toggle flywheel
