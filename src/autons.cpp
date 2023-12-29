@@ -81,7 +81,7 @@ void auton2() {
   Left(45);
   wait(40,msec);
   fly.close();
-  Right(20);
+  Right(20); 
   msp(intake,1,90);
   setv(100);
   For(12);
