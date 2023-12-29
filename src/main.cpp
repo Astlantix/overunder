@@ -42,7 +42,6 @@ using namespace std;
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
 */
 
 // A global instance of competition
@@ -137,31 +136,33 @@ void usercontrol(void) {
     } else {
       sen = 1;
     }
-
-    if (modes) {
+    // fwd/rev
+    if (!modes) {
       dtcode(0.2*sen,2*sen);
-    } else if (!modes) {
+    } else if (modes) {
       dtcode(0.2*sen,-2*sen);
     }
 
-    // toggle flywheel
-    if(gamers.ButtonX.pressing()) airborne = !airborne;
-
+    // punching();
+    
     // wings
     gamers.ButtonX.pressed(wingactiona);
     gamers.ButtonY.pressed(wingactionb);
+    //gamers.BUttonY.pressed(wingaction);  
 
     // lifting
     gamers.ButtonUp.pressed(up);
     gamers.ButtonDown.pressed(down);
 
-    // change brake modes
+    // change modes
     if (gamers.ButtonB.pressing()) modes = !modes;
 
     modechange();
 
+    // new matchloading
+    //gamers.ButtonX.pressed(matchloading);
+
     // other stuff
-    liftoff();
     catamoving();
     tempcheck();
     intaking();
@@ -184,11 +185,11 @@ int main() {
   while (1) {
     if(Competition.DISABLE) {
       int x = rand();
-      if(x == 0){
+      if(x%2 == 0){
         printing("you better be ready");
-      } else if (rand() == 1) {
+      } else if (x%3 == 0) {
         printing("aaron dont throw");
-      } else if (rand() < 0) {
+      } else if (x%5 == 0) {
         printing("ik we're gonna win but gl");
       } else {
         printing("its slim shady");

@@ -11,7 +11,6 @@ using namespace std;
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
 */
 
 int b = 0;
@@ -37,6 +36,7 @@ void msc(motor m) {m.stop(coast);}
 // wings stuff
 // ........................................................................
 
+bool flapping = 0; // wings open or close
 // open wings
 void wingactiona() {
   wings.open();
@@ -47,30 +47,20 @@ void wingactionb() {
   wings.close();
   fly.close();
 }
+// toggle wings
+void wingaction() {
+  if (flapping) {
+    wingactionb();
+    flapping = 0;
+  } else {
+    wingactiona();
+    flapping = 1;
+  }
+}
 // .......................................................................
 
 
 // ........................................................................
-
-// flywheel stuff
-// ........................................................................
-
-bool airborne = 1; // toggle flywheel
-// flying
-void flies(bool c) {
-  if (c==0) {
-      flywheel.spin(fwd,100,pct);
-  } else if (c==1) {
-      flywheel.stop(coast);
-  }
-}
-// toggle flywheel
-void liftoff() {
-  flies(airborne);
-}
-
-// ........................................................................
-
 // climbing stuff
 // ........................................................................
 
@@ -142,12 +132,38 @@ void For(double dist, double adjust) {
   L.spinFor(fwd,dist*adjust,degrees,false);
   R.spinFor(fwd,dist*adjust,degrees);
 }
+/*
+void For(double dist, double adjust) {
+  double error = dist - (L.position(degrees) + R.position(degrees))/2;
+  while (fabs(error) > 0.5) {
+    error = dist - (L.position(degrees) + R.position(degrees))/2;
+    L.spin(fwd,5 + adjust*error,pct);
+    R.spin(fwd,5 + adjust*error,pct);
+    wait(20,msec);
+  }
+  L.stop(brake);
+  R.stop(brake);
+}
+*/
 
 // Backward function
 void Rev(double dist, double adjust) {
   L.spinFor(rev,dist*adjust,degrees,false);
   R.spinFor(rev,dist*adjust,degrees);
 }
+/*
+void Rev(double dist, double adjust) {
+  double error = dist - (L.position(degrees) + R.position(degrees))/2;
+  while (fabs(error) > 0.5) {
+    error = dist - (L.position(degrees) + R.position(degrees))/2;
+    L.spin(rev,5 + adjust*error,pct);
+    R.spin(rev,5 + adjust*error,pct);
+    wait(20,msec);
+  }
+  L.stop(brake);
+  R.stop(brake);
+}
+*/
 
 // Left function
 void Left(double angle, double adjust) {
@@ -223,6 +239,7 @@ void printer(double x) {
   gamers.Screen.print(x);
 }
 
+// drivetrain code
 void dtcode(double x, double y) {
   double rightspeed, leftspeed;
   if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {
@@ -238,6 +255,12 @@ void dtcode(double x, double y) {
   if (rightspeed > 85) rightspeed = 85;
   L.spin(fwd, leftspeed, pct);
   R.spin(fwd, rightspeed, pct);
+  /*
+  double leftspeed = gamers.Axis3.position();
+  double rightspeed = gamers.Axis2.position();
+  L.spin(fwd,leftspeed*x,pct);
+  R.spin(fwd,rightspeed*x,pct);
+  */
 }
 
 // auton stuff
@@ -278,7 +301,7 @@ void autonslctr() {
 }
 // ........................................................................
 
-// changind modes
+// changing brake modes
 void modechange() {
   if (gamers.ButtonA.pressing()) {
     sethold();
@@ -316,3 +339,19 @@ void tempcheck() {
   gamers.Screen.setCursor(3,1);
   gamers.Screen.print(cata.temperature(celsius));
 }
+// ........................................................................
+
+bool flying = 0; // flywheel on or off
+// puncher and flywheel
+void punching() {
+  if (flying) {
+    msp(cata);
+    msp(flywheel);
+    flying = 0;
+  } else {
+    msc(cata);
+    msc(flywheel);
+    flying = 1;
+  }
+}
+// ........................................................................

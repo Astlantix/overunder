@@ -7,7 +7,6 @@
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
 */
 using namespace vex;
 
@@ -82,25 +81,25 @@ void drivetrainPID(double targetDistance, double targetOrientation, double dista
     lastError_orient = error_orient; // update previous value
 
     // Calculate distance PID output
-    double output = kP * error + kI * integral + kD * derivative;
+    double output = kP*error + kI*integral + kD*derivative;
 
     // Calculate orientation PID output
-    double output_orient = kP_orient * error_orient + kI_orient * integral_orient + kD_orient * derivative_orient;
+    double output_orient = kP_orient*error_orient + kI_orient*integral_orient + kD_orient*derivative_orient;
 
     // Control motors
     double leftMotorSpeed = output + output_orient; // Calculate left speed
     double rightMotorSpeed = output - output_orient; // Calculate right speed
 
     // Set motor speeds...
-    L.spin(fwd, leftMotorSpeed, pct);
-    R.spin(fwd, rightMotorSpeed, pct);
+    L.spin(fwd,leftMotorSpeed,pct);
+    R.spin(fwd,rightMotorSpeed,pct);
 }
 
 // odometry using pid
 void travel(double distance, double angle) {
     // Get current distance sensor value
     // double currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
-    double currentDistance = (E.position(turns) + D.position(turns) / 2) * π * ws;
+    double currentDistance = (E.position(turns) + D.position(turns))/2*π*ws;
     // Get current orientation sensor value
     double currentOrientation = inert.yaw();
 
@@ -108,7 +107,7 @@ void travel(double distance, double angle) {
     while (fabs(distance - currentDistance) > 0.1) {
         drivetrainPID(distance, currentOrientation, currentDistance, currentOrientation);
         // currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
-        currentDistance = (D.position(turns) + E.position(turns) / 2) * π * ws;
+        currentDistance = (D.position(turns) + E.position(turns))/2*π*ws;
     }
 
     // Turn

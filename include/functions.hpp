@@ -15,9 +15,10 @@
 extern int b;
 extern bool catamode;
 extern bool modes;
-extern bool airborne;
 extern int auton;
 extern int numofautons;
+extern bool flying;
+extern bool flapping;
 
 // Declare your functions
 
@@ -25,16 +26,14 @@ void msp(motor m, bool x = 0, double speed = 100);
 void msc(motor m);
 void wingactiona();
 void wingactionb();
-
-void flies(bool c = 0);
-void liftoff();
+void wingaction();
 void down();
 void up();
 void intaking();
 void setbrake();
 void stoop();
-void For(double distance, double adjust = 20);
-void Rev(double distance, double adjust = 20);
+void For(double distance, double adjust = 20 /*double adjust = 0.25*/);
+void Rev(double distance, double adjust = 20 /*double adjust = 0.25*/);
 void Left(double angle, double adjust = 0.1);
 void Right(double angle, double adjust = 0.1);
 void setv(double vel);
@@ -47,6 +46,6 @@ void autonslctr();
 void modechange();
 void catamoving();
 void tempcheck();
-
+void punching();
 
 #endif // FUNCTIONS_HPP

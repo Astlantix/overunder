@@ -11,7 +11,6 @@ using namespace std;
  \/__,/\ \/\ \L\ \ \ \_\ \/' /'    \ \ \_\ \ \ \L\ \
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
-                                                    
 */
 
 // Right Side AWP 4 triballs
@@ -170,50 +169,10 @@ void auton4 () {
 
 // skills
 void auton5() {
-  /*flies();
-  wait(30,sec);
-  flies(1);*/
-  //3
-  while (1) {
-    For(45);
-    Left(70);
-    msp(intake,1,90);
-    For(10);
-    wait(200,msec);
-    Rev(10);
-    msc(intake);
-    Right(70);
-    Rev(45);
-    wait(2,sec);
-  }
-  /*wait(35,sec);
-  Rev(30);
-  msc(cata);
-  Left(45);
-  wingactiona();
-  Rev(70); */
-  /*For(100);
-  wingactiona();
-  For(100);
-  wait(200,msec);
-  Rev(50);
-  Right(90);*/
-  /*travel(36,-90);
-  travel(12,-90);
-  For(10);
-  wait(200,msec);
-  Rev(10);
-  wait(200,msec);
-  travel(0,-90);
-  travel(12,90);
-  travel(60,90);
-  travel(12,90);
-  For(10);
-  wait(200,msec);
-  Rev(10);
-  wait(200,msec);
-  travel(0,90);
-  travel(36,0);*/
+  punching();
+  Right(25);
+  For(20);
+  up();
 }
 
 // drivetrain test
