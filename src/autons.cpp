@@ -4,6 +4,7 @@
 #include "pid.hpp"
 using namespace vex;
 using namespace std;
+
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
 /\ \L\ \ \ \__/ /\ \/\ \\/___//'/'/\ \/\ \ \ \L\ \  
@@ -15,9 +16,7 @@ using namespace std;
 
 // Right Side AWP 4 triballs
 void auton1() {
-  timer t;
   setv(50);
-  t.clear();
   For(29);
   fly.open();
   wait(10,msec);
@@ -52,7 +51,6 @@ void auton1() {
   msp(intake,1,90);
   For(16);
   wait(500,msec);
-  cout << t.time(sec) << endl;
   Rev(5);
   msc(intake);
   Right(180);

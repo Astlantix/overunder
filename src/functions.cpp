@@ -115,6 +115,7 @@ void intaking() {
 
 // drivetrain stuff
 // ........................................................................
+
 // stop is brake
 void setbrake() {
   R.setStopping(brake);
@@ -129,11 +130,6 @@ void stoop() {
 
 // Forward function
 void For(double dist, double adjust) {
-  L.spinFor(fwd,dist*adjust,degrees,false);
-  R.spinFor(fwd,dist*adjust,degrees);
-}
-/*
-void For(double dist, double adjust) {
   double error = dist - (L.position(degrees) + R.position(degrees))/2;
   while (fabs(error) > 0.5) {
     error = dist - (L.position(degrees) + R.position(degrees))/2;
@@ -144,14 +140,8 @@ void For(double dist, double adjust) {
   L.stop(brake);
   R.stop(brake);
 }
-*/
 
 // Backward function
-void Rev(double dist, double adjust) {
-  L.spinFor(rev,dist*adjust,degrees,false);
-  R.spinFor(rev,dist*adjust,degrees);
-}
-/*
 void Rev(double dist, double adjust) {
   double error = dist - (L.position(degrees) + R.position(degrees))/2;
   while (fabs(error) > 0.5) {
@@ -163,7 +153,6 @@ void Rev(double dist, double adjust) {
   L.stop(brake);
   R.stop(brake);
 }
-*/
 
 // Left function
 void Left(double angle, double adjust) {
@@ -241,26 +230,10 @@ void printer(double x) {
 
 // drivetrain code
 void dtcode(double x, double y) {
-  double rightspeed, leftspeed;
-  if (abs(gamers.Axis3.position()) < 10 && abs(gamers.Axis4.position()) > 10) {
-    // If Axis3 is 0 and Axis4 is non-zero, make the robot turn in place
-    leftspeed = gamers.Axis4.position() * x;
-    rightspeed = gamers.Axis4.position() * -x;
-  } else {
-    double avgSpeed = ((abs(gamers.Axis3.position()) > 10 ? gamers.Axis3.position() * y : 0) + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0)) / 2;
-    leftspeed = avgSpeed + (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
-    rightspeed = avgSpeed - (abs(gamers.Axis4.position()) > 10 ? gamers.Axis4.position() * x : 0);
-  }
-  if (leftspeed > 85) leftspeed = 85;
-  if (rightspeed > 85) rightspeed = 85;
-  L.spin(fwd, leftspeed, pct);
-  R.spin(fwd, rightspeed, pct);
-  /*
   double leftspeed = gamers.Axis3.position();
   double rightspeed = gamers.Axis2.position();
   L.spin(fwd,leftspeed*x,pct);
   R.spin(fwd,rightspeed*x,pct);
-  */
 }
 
 // auton stuff

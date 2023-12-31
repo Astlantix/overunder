@@ -85,6 +85,9 @@ void pre_auton(void) {
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
+  
+  timer t; // timing auton for practice
+  t.clear();
   if (auton == 1) {
     auton1();
   } else if (auton == 2) {
@@ -98,7 +101,7 @@ void autonomous(void) {
   } else if (auton == 6) {
     auton6();
   }
-  cout << "completed auton" << endl;
+  cout << t.time() << endl;
   // ..........................................................................
 }
 
@@ -138,17 +141,15 @@ void usercontrol(void) {
     }
     // fwd/rev
     if (!modes) {
-      dtcode(0.2*sen,2*sen);
+      dtcode(sen);
     } else if (modes) {
-      dtcode(0.2*sen,-2*sen);
+      dtcode(sen);
     }
 
     // punching();
     
     // wings
-    gamers.ButtonX.pressed(wingactiona);
-    gamers.ButtonY.pressed(wingactionb);
-    //gamers.BUttonY.pressed(wingaction);  
+    gamers.ButtonY.pressed(wingaction);  
 
     // lifting
     gamers.ButtonUp.pressed(up);
@@ -160,7 +161,7 @@ void usercontrol(void) {
     modechange();
 
     // new matchloading
-    //gamers.ButtonX.pressed(matchloading);
+    gamers.ButtonX.pressed(punching);
 
     // other stuff
     catamoving();
@@ -184,17 +185,16 @@ int main() {
   // Prevent main from exiting with an infinite loop.
   while (1) {
     if(Competition.DISABLE) {
-      int x = rand();
-      if(x%2 == 0){
-        printing("you better be ready");
-      } else if (x%3 == 0) {
-        printing("aaron dont throw");
-      } else if (x%5 == 0) {
-        printing("ik we're gonna win but gl");
-      } else {
-        printing("its slim shady");
+      int x = rand() % 4;
+      if(x == 0) {
+        printing("dont throw");
+      } else if (x == 1) {
+        printing("ez W");
+      } else if (x == 2) {
+        printing("rubix cube");
+      } else if (x == 3) {
+        printing("ps5 controller");
       }
-    }
     wait(10,msec);
   }
 }
