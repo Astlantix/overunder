@@ -125,14 +125,15 @@ void usercontrol(void) {
   while (!a) {
     if(poopy) {
       autonslctr();
+      if (gamers.ButtonA.pressing()) poopy = 0;
     }
     else {
-      if (gamers.ButtonB.pressing()) a = 1;
       if (gamers.ButtonA.pressing()) drivemode = 0; printing("tank");
       if (gamers.ButtonY.pressing()) drivemode = 1; printing("arcade");
       if (gamers.ButtonX.pressing()) drivemode = 2; printing("IM VENGEANCE");
       if (gamers.ButtonDown.pressing()) cin >> drivemode;
     }
+    if (gamers.ButtonB.pressing()) a = 1;
   }
   while (a) {
     // This is the main execution loop for the user control program.
