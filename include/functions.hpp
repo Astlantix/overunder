@@ -27,6 +27,7 @@ void msc(motor m);
 void wingactiona();
 void wingactionb();
 void wingaction();
+void flap();
 void down();
 void up();
 void intaking();
@@ -39,13 +40,15 @@ void Right(double angle, double adjust = 0.1);
 void setv(double vel);
 void setcoast();
 void sethold();
-void printing(std::string string);
+void printing(std::string text);
 void printer(double x);
 void dtcode(double x);
+void dcode(int x);
+void batmobile();
 void autonslctr();
 void modechange();
-void catamoving();
 void tempcheck();
 void punching();
+void notpunching();
 
 #endif // FUNCTIONS_HPP

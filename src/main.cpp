@@ -73,6 +73,8 @@ void pre_auton(void) {
   // Example: clearing encoders, setting servo positions, ...
 }
 
+int drivemode = 0; // 0 = tank, 1 = arcade, 2 = aaron is driving the batmobile
+
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              Autonomous Task                              */
@@ -107,6 +109,7 @@ void autonomous(void) {
 
 bool a = 0; // auton selector boolean
 double sen = 1; // sensitivity
+bool poopy = 1;
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -120,8 +123,16 @@ double sen = 1; // sensitivity
 void usercontrol(void) {
   // User control code here, inside the loop
   while (!a) {
-    autonslctr();
-    if (gamers.ButtonB.pressing()) a = 1;
+    if(poopy) {
+      autonslctr();
+    }
+    else {
+      if (gamers.ButtonB.pressing()) a = 1;
+      if (gamers.ButtonA.pressing()) drivemode = 0; printing("tank");
+      if (gamers.ButtonY.pressing()) drivemode = 1; printing("arcade");
+      if (gamers.ButtonX.pressing()) drivemode = 2; printing("IM VENGEANCE");
+      if (gamers.ButtonDown.pressing()) cin >> drivemode;
+    }
   }
   while (a) {
     // This is the main execution loop for the user control program.
@@ -139,32 +150,40 @@ void usercontrol(void) {
     } else {
       sen = 1;
     }
-    // fwd/rev
-    if (!modes) {
-      dtcode(sen);
-    } else if (modes) {
-      dtcode(sen);
-    }
 
-    // punching();
-    
+    if (drivemode == 0) {
+      if(modes) {
+        dtcode(sen);
+      } else {
+        dtcode(-sen);
+      }
+    } else if (drivemode == 1) {
+      if (modes) {
+        dcode(sen);
+      } else {
+        dcode(-sen);
+      }
+    } else if (drivemode == 2) {
+      batmobile();
+    }
     // wings
-    gamers.ButtonY.pressed(wingaction);  
+    gamers.ButtonY.pressed(wingaction);
+    gamers.ButtonY.released(flap);
 
     // lifting
     gamers.ButtonUp.pressed(up);
     gamers.ButtonDown.pressed(down);
 
     // change modes
-    if (gamers.ButtonB.pressing()) modes = !modes;
+    if (drivemode != 2) if (gamers.ButtonB.pressing()) modes = !modes;
 
     modechange();
 
     // new matchloading
     gamers.ButtonX.pressed(punching);
+    gamers.ButtonX.released(notpunching);
 
     // other stuff
-    catamoving();
     tempcheck();
     intaking();
     // ........................................................................
@@ -184,17 +203,6 @@ int main() {
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
-    if(Competition.DISABLE) {
-      int x = rand() % 4;
-      if(x == 0) {
-        printing("dont throw");
-      } else if (x == 1) {
-        printing("ez W");
-      } else if (x == 2) {
-        printing("rubix cube");
-      } else if (x == 3) {
-        printing("ps5 controller");
-      }
     wait(10,msec);
   }
 }

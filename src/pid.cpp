@@ -10,7 +10,7 @@
 */
 using namespace vex;
 
-double π = atan(1) * 4; // defining pi using the symbol because im cool
+double π = atan(1.0) * 4; // defining pi using the symbol because im cool
 double ws = 4; // wheel diameter in inches
 
 /*

@@ -16,6 +16,7 @@
 */
 #include <math.h>
 #include <stdio.h>
+#include <algorithm>
 #include <cmath>
 #include <stdlib.h>
 #include <string.h>

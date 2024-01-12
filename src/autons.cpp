@@ -106,63 +106,18 @@ void auton3() {
   Rev(17);
 }
 
-// Right Side AWP 2 triball
+// Left Side Sabotage
 void auton4 () {
-  /**/
-  setv(20);
-  For(28);
-  wings.open();
-  Right(80);
-  msp(intake,1,90);
-  setv(20);
-  wait(200,msec);
-  For(5);
-  wait(700,msec);
-  setv(40);
-  msc(intake);
-  wait(20,msec);
-  Rev(5);
-  wings.close();
-  Right(135);
-  msp(intake,0,90);
-  For(13.5);
-  wait(500,msec);
-  msc(intake);
-  wait(20,msec);
-  Rev(5);
-  Left(175);
-  msp(intake,1,90);
-  For(22);
-  setv(20);
-  For(5);
-  setv(40);
-  wait(700,msec);
-  msc(intake); 
-  wait(20,msec);
-  Rev(5);
-  msp(intake,1,90);
-  wait(500,msec);
-  For(5);
-  /*Right(135);
-  msp(intake,0,90);
-  For(12);
-  wait(33,msec);
-  msc(intake);
-  wait(20,msec);
-  Left(180);
-  For(33);
-  wait(20,msec);
-  Right(45);
-  msp(intake,1,90);
-  For(5);
-  wait(200,msec);
-  msc(intake);
-  wait(20,msec);
-  Rev(10);
-  Right(180);
-  For(24);
+  For(20);
   Left(90);
-  Rev(30);*/
+  msp(intake,1);
+  wait(500,msec);
+  For(5);
+  fly.open();
+  msc(intake);
+  Rev(35);
+  Right(90);
+  fly.close();
 }
 
 // skills

@@ -1,5 +1,6 @@
 #include "vex.h"
 #include "functions.hpp"
+#include <string>
 
 using namespace vex;
 using namespace std;
@@ -51,11 +52,13 @@ void wingactionb() {
 void wingaction() {
   if (flapping) {
     wingactionb();
-    flapping = 0;
   } else {
     wingactiona();
-    flapping = 1;
   }
+}
+
+void flap() {
+  flapping = !flapping;
 }
 // .......................................................................
 
@@ -65,7 +68,7 @@ void wingaction() {
 // ........................................................................
 
 // lifting stays down or very strong pullup
-void down() {climb.open();}
+void down() {climb.close();}
 
 // im tall
 void up() {climb.open();}
@@ -207,14 +210,14 @@ void sethold() {
 // ........................................................................
 
 // printing function
-void printing(std::string string) {
+void printing(string text) {
   gamers.Screen.clearScreen();
   gamers.Screen.setCursor(1,1);
   gamers.Screen.print("------------------------------");
   gamers.Screen.setCursor(4,1);
   gamers.Screen.print("------------------------------");
   gamers.Screen.setCursor(2,1);
-  gamers.Screen.print(string.c_str());
+  gamers.Screen.print(text.c_str());
 }
 
 // another printing function
@@ -228,12 +231,84 @@ void printer(double x) {
   gamers.Screen.print(x);
 }
 
-// drivetrain code
-void dtcode(double x, double y) {
-  double leftspeed = gamers.Axis3.position();
-  double rightspeed = gamers.Axis2.position();
+// drivetrain code tank drive
+void dtcode(double x) {
+  double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
+  double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
   L.spin(fwd,leftspeed*x,pct);
   R.spin(fwd,rightspeed*x,pct);
+}
+
+// drivetrain code arcade drive
+void dcode(int x) {
+  double turn = gamers.Axis4.position()/5;
+  double speed = gamers.Axis3.position()*x;
+
+  double maximum = max(abs(speed), abs(turn));
+  double total = speed + turn;
+  double diff = speed - turn;
+
+  if (speed >= 0) {
+    if (turn >= 0) {
+      L.spin(fwd,maximum,pct);
+      R.spin(fwd,diff,pct);
+    } else {
+      L.spin(fwd,total,pct);
+      R.spin(fwd,maximum,pct);
+    }
+  } else {
+    if (turn >= 0) {
+      L.spin(fwd,total,pct);
+      R.spin(rev,maximum,pct);
+    } else {
+      L.spin(rev,maximum,pct);
+      R.spin(fwd,diff,pct);
+    }
+  }
+}
+
+// aaron goofy drive
+void batmobile() {
+  double vel = 0;
+  bool keep = 0;
+  if (gamers.ButtonL2.pressing()) {
+    keep = 1;
+  } else {
+    keep = 0;
+  }
+  if (gamers.ButtonL1.pressing()) {
+    if (!keep) {
+      if (vel < 1) {
+        vel += 0.5;
+      } else {
+        vel *= 1.25;
+      }
+    }
+  } else if (gamers.ButtonB.pressing()) {
+      if (!keep) {
+        if (vel > -1) {
+         vel -= 0.5;
+        } else {
+         vel *= 1.25;
+        }
+      }
+    } else {
+      vel = 0;
+    }
+  if (vel > 100) {
+    vel = 100;
+  } else if (vel < -100) {
+    vel = -100;
+  }
+
+  if (vel == 0) {
+    L.spin(fwd,gamers.Axis4.position()/4,pct);
+    R.spin(rev,gamers.Axis4.position()/4,pct);
+  } else {
+    L.spin(fwd,vel + gamers.Axis4.position()/4,pct);
+    R.spin(rev,vel - gamers.Axis4.position()/4,pct);
+  }
+
 }
 
 // auton stuff
@@ -255,7 +330,7 @@ void autonslctr() {
   } else if (auton == 3) {
     printing("eLim");
   } else if (auton == 4) {
-    printing("RAWP2");
+    printing("L Sabotage");
   } else if (auton == 5) {
     printing("Skills");
   } else if (auton == 6) {
@@ -283,25 +358,6 @@ void modechange() {
   }
 }
 
-// catapult movement
-void catamoving() {
-  if (gamers.Axis2.position() < -10) {
-    catamode = 1;
-  } else if( gamers.Axis2.position() > 10) {
-    catamode = 0;
-  }
-  // one red one orange
-  if (catamode) {
-    msp(cata,1);
-  } else {
-      if(gamers.ButtonLeft.pressing() || gamers.ButtonRight.pressing()) {
-        msp(cata,1,40);
-      } else {
-        msc(cata);
-    }
-  }
-}
-
 // printing intake and drivetrain temperature
 void tempcheck() {
   gamers.Screen.clearScreen();
@@ -311,20 +367,26 @@ void tempcheck() {
   gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
   gamers.Screen.setCursor(3,1);
   gamers.Screen.print(cata.temperature(celsius));
+
+  if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
+    gamers.rumble(".-.-.-");
+  }
 }
 // ........................................................................
 
-bool flying = 0; // flywheel on or off
+bool flying = 1; // flywheel on or off
 // puncher and flywheel
 void punching() {
   if (flying) {
     msp(cata);
     msp(flywheel);
-    flying = 0;
   } else {
     msc(cata);
     msc(flywheel);
-    flying = 1;
   }
+}
+
+void notpunching() {
+  flying = !flying;
 }
 // ........................................................................
