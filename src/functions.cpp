@@ -14,7 +14,7 @@ using namespace std;
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
 */
 
-int b = 0;
+int b = 0; // intaking thingy
 bool catamode = 0; // catapult spin or coast
 bool modes = 1; // reverse or forward
 
@@ -36,9 +36,10 @@ void msc(motor m) {m.stop(coast);}
 
 // wings stuff
 // ........................................................................
+using namespace chrono;
 
 bool flapping = 0; // wings open or close
-chrono::steady_clock::time_point lastFlap;
+steady_clock::time_point lastFlap; // time last flap
 
 // open wings
 void wingactiona() {
@@ -61,9 +62,10 @@ void wingaction() {
   }
 }
 
+// change flapping value
 void flap() {
-  auto now = chrono::steady_clock::now();
-  auto durLastFlap = chrono::duration_cast<chrono::milliseconds>(now-lastFlap).count();
+  auto now = steady_clock::now(); // current
+  auto durLastFlap = duration_cast<milliseconds>(now-lastFlap).count(); // duration
 
   // Only allow flap function to be called at least 200 ms have passed since the last call
   if (durLastFlap > 200) {
