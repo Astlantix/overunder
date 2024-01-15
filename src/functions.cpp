@@ -38,6 +38,8 @@ void msc(motor m) {m.stop(coast);}
 // ........................................................................
 
 bool flapping = 0; // wings open or close
+chrono::steady_clock::time_point lastFlap;
+
 // open wings
 void wingactiona() {
   wings.open();
@@ -52,13 +54,23 @@ void wingactionb() {
 void wingaction() {
   if (flapping) {
     wingactionb();
+    cout << "close" << endl;
   } else {
     wingactiona();
+    cout << "open" << endl;
   }
 }
 
 void flap() {
-  flapping = !flapping;
+  auto now = chrono::steady_clock::now();
+  auto durLastFlap = chrono::duration_cast<chrono::milliseconds>(now-lastFlap).count();
+
+  // Only allow flap function to be called at least 200 ms have passed since the last call
+  if (durLastFlap > 200) {
+    flapping = !flapping;
+    cout << flapping << endl;
+    lastFlap = now;
+  }
 }
 // .......................................................................
 
@@ -240,31 +252,11 @@ void dtcode(double x) {
 }
 
 // drivetrain code arcade drive
-void dcode(int x) {
-  double turn = gamers.Axis4.position()/5;
-  double speed = gamers.Axis3.position()*x;
-
-  double maximum = max(abs(speed), abs(turn));
-  double total = speed + turn;
-  double diff = speed - turn;
-
-  if (speed >= 0) {
-    if (turn >= 0) {
-      L.spin(fwd,maximum,pct);
-      R.spin(fwd,diff,pct);
-    } else {
-      L.spin(fwd,total,pct);
-      R.spin(fwd,maximum,pct);
-    }
-  } else {
-    if (turn >= 0) {
-      L.spin(fwd,total,pct);
-      R.spin(rev,maximum,pct);
-    } else {
-      L.spin(rev,maximum,pct);
-      R.spin(fwd,diff,pct);
-    }
-  }
+void dcode(double x, double y) {
+  double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
+  double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
+  L.spin(fwd,leftspeed,pct);
+  R.spin(fwd,rightspeed,pct);
 }
 
 // aaron goofy drive
@@ -277,6 +269,7 @@ void batmobile() {
     keep = 0;
   }
   if (gamers.ButtonL1.pressing()) {
+    vel = 50;
     if (!keep) {
       if (vel < 1) {
         vel += 0.5;
@@ -285,6 +278,7 @@ void batmobile() {
       }
     }
   } else if (gamers.ButtonB.pressing()) {
+    vel = -50;
       if (!keep) {
         if (vel > -1) {
          vel -= 0.5;
@@ -364,9 +358,11 @@ void tempcheck() {
   gamers.Screen.setCursor(1,1);
   gamers.Screen.print(modes);
   gamers.Screen.setCursor(2,1);
-  gamers.Screen.print((fr.temperature(celsius) + fl.temperature(celsius) + mr.temperature(celsius) + ml.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
+  gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius) + ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
   gamers.Screen.setCursor(3,1);
-  gamers.Screen.print(cata.temperature(celsius));
+  gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius))/2);
+  gamers.Screen.setCursor(3,6);
+  gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
 
   if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
     gamers.rumble(".-.-.-");

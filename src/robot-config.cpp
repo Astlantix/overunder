@@ -29,7 +29,7 @@ rotation E = rotation(PORT8,0); // very cool rotation sensor
 inertial inert = inertial(PORT16); // disgusting
 pneumatics wings = pneumatics(Brain.ThreeWirePort.A); // left wing
 pneumatics fly = pneumatics(Brain.ThreeWirePort.H); // right wing
-motor cata = motor(PORT2, ratio36_1, 0); // catapult
+motor cata = motor(PORT2, ratio36_1, 1); // catapult
 motor intake = motor(PORT12, ratio6_1, 1); // very cool intake
 motor flywheel = motor(PORT13, ratio6_1, 1); // flywheel
 

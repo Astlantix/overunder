@@ -116,7 +116,7 @@ bool poopy = 1;
 /*                              User Control Task                            */
 /*                                                                           */
 /*  This task is used to control your robot during the user control phase of */
-/*  a VEX Competition.                                                       */
+/*  a VEX Competition.                                             \          */
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
@@ -128,12 +128,24 @@ void usercontrol(void) {
       if (gamers.ButtonA.pressing()) poopy = 0;
     }
     else {
-      if (gamers.ButtonA.pressing()) drivemode = 0; printing("tank");
-      if (gamers.ButtonY.pressing()) drivemode = 1; printing("arcade");
-      if (gamers.ButtonX.pressing()) drivemode = 2; printing("IM VENGEANCE");
+      if (gamers.ButtonA.pressing()) {
+        drivemode = 0; 
+        printing("tank");
+      } 
+      if (gamers.ButtonY.pressing()) {
+        drivemode = 1;
+        printing("arcade");
+      }
+      if (gamers.ButtonX.pressing()) {
+        drivemode = 2;
+        printing("IM VENGEANCE");
+      } 
       if (gamers.ButtonDown.pressing()) cin >> drivemode;
     }
-    if (gamers.ButtonB.pressing()) a = 1;
+    if (gamers.ButtonB.pressing()) {
+      a = 1;
+      modes = 1;
+    }
   }
   while (a) {
     // This is the main execution loop for the user control program.
@@ -160,9 +172,10 @@ void usercontrol(void) {
       }
     } else if (drivemode == 1) {
       if (modes) {
-        dcode(sen);
+        dcode(0.2*sen, 1*sen);
+
       } else {
-        dcode(-sen);
+        dcode(0.2*sen,-1*sen);
       }
     } else if (drivemode == 2) {
       batmobile();

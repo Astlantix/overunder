@@ -43,7 +43,7 @@ void sethold();
 void printing(std::string text);
 void printer(double x);
 void dtcode(double x);
-void dcode(int x);
+void dcode(double x, double y);
 void batmobile();
 void autonslctr();
 void modechange();
