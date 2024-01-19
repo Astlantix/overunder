@@ -17,7 +17,7 @@ using namespace std;
 // Right Side AWP 4 triballs
 void auton1() {
   setv(50);
-  For(29);
+  For(30);
   fly.open();
   wait(10,msec);
   Right(90);
@@ -29,31 +29,30 @@ void auton1() {
   Rev(5.5);
   setv(45);
   fly.close();
-  Left(180);
+  Right(135);
   msp(intake);
   For(17);
   wait(500,msec);
   msc(intake);
   Rev(5);
-  Right(180);
+  Left(180);
   msp(intake,1,90);
   wait(200,msec);
   For(16);
   wait(500,msec);
   Rev(5);
-  Right(135);
+  Left(160);
   msp(intake);
-  For(23);
+  For(14);
   wait(500,msec);
   msc(intake);
   Rev(5);
-  Left(135);
+  Right(180);
   msp(intake,1,90);
   For(16);
   wait(500,msec);
   Rev(5);
   msc(intake);
-  Right(180);
 }
 
 // Left Side AWP
@@ -72,7 +71,6 @@ void auton2() {
   msp(intake,1);
   For(20);
   msc(intake);*/
-  wait(30,msec);
   fly.open();
   wait(300,msec);
   Left(45);
@@ -149,8 +147,3 @@ void auton6 () {
   wait(500,msec);
   msc(br);
 }
-
-
-
-
-

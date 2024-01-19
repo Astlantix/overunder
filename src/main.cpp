@@ -59,15 +59,8 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  setv(100);
   setcoast();
   wingactionb();
-  D.setPosition(0,turns);
-  E.setPosition(0,turns);
-  climb.close();
-  inert.calibrate();
-  if(inert.isCalibrating()) gamers.rumble(rumblePulse);
-  cout << "calibrated" << endl;
 
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -122,6 +115,9 @@ bool poopy = 1;
 /*---------------------------------------------------------------------------*/
 void usercontrol(void) {
   // User control code here, inside the loop
+  inert.calibrate();
+  waitUntil(!inert.isCalibrating());
+  gamers.rumble(rumbleLong);
   while (!a) {
     if(poopy) {
       autonslctr();

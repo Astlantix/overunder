@@ -70,7 +70,6 @@ void flap() {
   // Only allow flap function to be called at least 200 ms have passed since the last call
   if (durLastFlap > 200) {
     flapping = !flapping;
-    cout << flapping << endl;
     lastFlap = now;
   }
 }
@@ -93,38 +92,45 @@ void up() {climb.open();}
 // intake
 // ........................................................................
 
+steady_clock::time_point printake; // time last intake pressing
+
 // intake thing
 void intaking() {
-  if (b==0) {
-    if (gamers.ButtonR1.pressing()) {
-      intake.spin(rev,100,pct);
-      b = 1;
-      wait(200,msec);
-    } else if (gamers.ButtonR2.pressing()) {
-      intake.spin(fwd,100,pct);
-      b = 2;
-      wait(200,msec);
+  auto now = steady_clock::now(); // current time
+  auto durLastTake = duration_cast<milliseconds>(now-printake).count();
+  if(durLastTake > 150) {
+    if (b==0) {
+      if (gamers.ButtonR1.pressing()) {
+        intake.spin(rev,100,pct);
+        b = 1;
+        wait(200,msec);
+      } else if (gamers.ButtonR2.pressing()) {
+        intake.spin(fwd,100,pct);
+        b = 2;
+        wait(200,msec);
+      }
+    } else if (b==1) {
+      if(gamers.ButtonR1.pressing()) {
+        intake.stop(coast);
+        b = 0;
+        wait(200,msec);
+      } else if (gamers.ButtonR2.pressing()) {
+        intake.spin(fwd,100,pct);
+        b = 2;
+        wait(200,msec);
+      }
+    } else if (b==2) {
+      if (gamers.ButtonR2.pressing()) {
+        intake.stop(coast);
+        b = 0;
+        wait(200,msec);
+      } else if (gamers.ButtonR1.pressing()) {
+        intake.spin(rev,100,pct);
+        b = 1;
+        wait(200,msec);
+      }
     }
-  } else if (b==1) {
-    if(gamers.ButtonR1.pressing()) {
-      intake.stop(coast);
-      b = 0;
-      wait(200,msec);
-    } else if (gamers.ButtonR2.pressing()) {
-      intake.spin(fwd,100,pct);
-      b = 2;
-      wait(200,msec);
-    }
-  } else if (b==2) {
-    if (gamers.ButtonR2.pressing()) {
-      intake.stop(coast);
-      b = 0;
-      wait(200,msec);
-    } else if (gamers.ButtonR1.pressing()) {
-      intake.spin(rev,100,pct);
-      b = 1;
-      wait(200,msec);
-    }
+    printake = now;
   }
 }
 
@@ -147,28 +153,14 @@ void stoop() {
 
 // Forward function
 void For(double dist, double adjust) {
-  double error = dist - (L.position(degrees) + R.position(degrees))/2;
-  while (fabs(error) > 0.5) {
-    error = dist - (L.position(degrees) + R.position(degrees))/2;
-    L.spin(fwd,5 + adjust*error,pct);
-    R.spin(fwd,5 + adjust*error,pct);
-    wait(20,msec);
-  }
-  L.stop(brake);
-  R.stop(brake);
+  L.spinFor(fwd,dist*18,deg,0);
+  R.spinFor(fwd,dist*18,deg);
 }
 
 // Backward function
 void Rev(double dist, double adjust) {
-  double error = dist - (L.position(degrees) + R.position(degrees))/2;
-  while (fabs(error) > 0.5) {
-    error = dist - (L.position(degrees) + R.position(degrees))/2;
-    L.spin(rev,5 + adjust*error,pct);
-    R.spin(rev,5 + adjust*error,pct);
-    wait(20,msec);
-  }
-  L.stop(brake);
-  R.stop(brake);
+  L.spinFor(rev,dist*18,deg,0);
+  R.spinFor(rev,dist*18,deg);
 }
 
 // Left function
@@ -247,18 +239,44 @@ void printer(double x) {
 
 // drivetrain code tank drive
 void dtcode(double x) {
-  double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
-  double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
-  L.spin(fwd,leftspeed*x,pct);
-  R.spin(fwd,rightspeed*x,pct);
+  if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
+    L.spin(fwd,100,pct);
+    R.spin(fwd,100,pct);
+  }
+  else if(gamers.ButtonL1.pressing()) {
+    L.spin(fwd,100,pct);
+    R.spin(fwd,0,pct);
+  } else if (gamers.ButtonL2.pressing()) {
+    L.spin(fwd,0,pct);
+    R.spin(fwd,100,pct);
+  }
+  else {
+   double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
+    double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
+    L.spin(fwd,leftspeed*x,pct);
+    R.spin(fwd,rightspeed*x,pct);
+  }
 }
 
 // drivetrain code arcade drive
 void dcode(double x, double y) {
-  double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
-  double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
-  L.spin(fwd,leftspeed,pct);
-  R.spin(fwd,rightspeed,pct);
+  if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
+    L.spin(fwd,100,pct);
+    R.spin(fwd,100,pct);
+  }
+  else if(gamers.ButtonL1.pressing()) {
+    L.spin(fwd,100,pct);
+    R.spin(fwd,0,pct);
+  } else if (gamers.ButtonL2.pressing()) {
+    L.spin(fwd,0,pct);
+    R.spin(fwd,100,pct);
+  }  
+  else {
+    double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
+    double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
+    L.spin(fwd,leftspeed,pct);
+    R.spin(fwd,rightspeed,pct);
+  }
 }
 
 // aaron goofy drive
@@ -365,13 +383,19 @@ void tempcheck() {
   gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius))/2);
   gamers.Screen.setCursor(3,6);
   gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
-
-  if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
-    gamers.rumble(".-.-.-");
+  
+  if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
+    gamers.rumble("...");
+    wait(5, sec);
+  }
+  else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
+    gamers.rumble("---");
+    wait(5, sec);
   }
 }
 // ........................................................................
 
+steady_clock::time_point fist;
 bool flying = 1; // flywheel on or off
 // puncher and flywheel
 void punching() {
@@ -385,6 +409,11 @@ void punching() {
 }
 
 void notpunching() {
-  flying = !flying;
+  auto now = steady_clock::now();
+  auto durLastHit = duration_cast<milliseconds>(now-fist).count();
+  if (durLastHit > 200){
+    flying = !flying;
+    fist = now;
+  }
 }
 // ........................................................................
