@@ -251,8 +251,8 @@ void dtcode(double x) {
       L.spin(fwd,leftspeed*x,pct);
       R.spin(fwd,rightspeed*x,pct);
     } else {
-      double leftspeed = gamers.Axis3.position()/2;
-      double rightspeed = gamers.Axis2.position()/2;
+      double leftspeed = gamers.Axis3.position()*0.75;
+      double rightspeed = gamers.Axis2.position()*0.75;
       L.spin(fwd,leftspeed*x,pct);
       R.spin(fwd,rightspeed*x,pct);
     }
@@ -388,11 +388,9 @@ void tempcheck() {
   
   if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
     gamers.rumble("...");
-    wait(5, sec);
   }
   else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
     gamers.rumble("---");
-    wait(5, sec);
   }
 }
 // ........................................................................

@@ -74,6 +74,7 @@ void auton1() {
   setv(25);
   R.spinFor(fwd,360,deg);
   wingactiona();
+  wait(250,msec);
   setv(100);
   msc(intake);
   Rev(17);
@@ -114,11 +115,10 @@ void auton2() {
   setv(100);
   For(12);
   wait(750,msec);
-  Rev(2.75);
-  Left(82.5);
+  Rev(0.45);
+  Left(90);
   msc(intake);
   setv(40);
-  setcoast();
   Rev(35);
   fly.open();
   Left(25);
@@ -154,13 +154,28 @@ void auton4 () {
 // skills
 void auton5() {
   punching();
-  Right(25);
-  For(20);
-  up();
+  //Right(25);
+  //For(20);
 }
 
 // drivetrain test
 void auton6 () {
-  L.spin(fwd,100,pct);
-  R.spin(fwd,100,pct);
+  msp(fr);
+  wait(1,sec);
+  msc(fr);
+  msp(bl);
+  wait(1,sec);
+  msc(bl);
+  msp(ml);
+  wait(1,sec);
+  msc(ml);
+  msp(fl);
+  wait(1,sec);
+  msc(fl);
+  msp(mr);
+  wait(1,sec);
+  msc(mr);
+  msp(br);
+  wait(1,sec);
+  msc(br);
 }
