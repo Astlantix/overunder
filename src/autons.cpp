@@ -16,8 +16,8 @@ using namespace std;
 
 // Right Side AWP 4 triballs
 void auton1() {
-  setv(50);
-  For(30);
+  /*setv(50);
+  For(29);
   fly.open();
   wait(10,msec);
   Right(90);
@@ -31,17 +31,17 @@ void auton1() {
   fly.close();
   Right(135);
   msp(intake);
-  For(17);
-  wait(500,msec);
+  For(12.75);
+  wait(750,msec);
   msc(intake);
   Rev(5);
-  Left(180);
+  Right(180);
   msp(intake,1,90);
   wait(200,msec);
   For(16);
   wait(500,msec);
   Rev(5);
-  Left(160);
+  Left(155);
   msp(intake);
   For(14);
   wait(500,msec);
@@ -52,7 +52,40 @@ void auton1() {
   For(16);
   wait(500,msec);
   Rev(5);
+  msc(intake);*/
+  setv(40);
+  For(27);
+  Right(90);
+  msp(intake,1,90);
+  wait(100,msec);
+  For(5);
+  wait(250,msec);
+  Rev(5);
+  Right(145);
+  msp(intake);
+  For(11.25);
+  wait(200,msec);
+  Right(165);
+  msp(intake,1);
+  wait(600,msec);
+  Left(30);
+  msp(intake);
+  For(2.75);
+  setv(25);
+  R.spinFor(fwd,360,deg);
+  wingactiona();
+  setv(100);
   msc(intake);
+  Rev(17);
+  For(5);
+  wingactionb();
+  Right(180);
+  msp(intake,1,90);
+  For(5);
+  wait(100,msec);
+  Rev(5);
+  wait(100,msec);
+  For(5);
 }
 
 // Left Side AWP
@@ -128,22 +161,6 @@ void auton5() {
 
 // drivetrain test
 void auton6 () {
-  msp(fl);
-  wait(500,msec);
-  msc(fl);
-  msp(fr);
-  wait(500,msec);
-  msc(fr);
-  msp(ml);
-  wait(500,msec);
-  msc(ml);
-  msp(mr);
-  wait(500,msec);
-  msc(mr);
-  msp(bl);
-  wait(500,msec);
-  msc(bl);
-  msp(br);
-  wait(500,msec);
-  msc(br);
+  L.spin(fwd,100,pct);
+  R.spin(fwd,100,pct);
 }

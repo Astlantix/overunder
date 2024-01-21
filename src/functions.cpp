@@ -103,31 +103,25 @@ void intaking() {
       if (gamers.ButtonR1.pressing()) {
         intake.spin(rev,100,pct);
         b = 1;
-        wait(200,msec);
       } else if (gamers.ButtonR2.pressing()) {
         intake.spin(fwd,100,pct);
         b = 2;
-        wait(200,msec);
       }
     } else if (b==1) {
       if(gamers.ButtonR1.pressing()) {
         intake.stop(coast);
         b = 0;
-        wait(200,msec);
       } else if (gamers.ButtonR2.pressing()) {
         intake.spin(fwd,100,pct);
         b = 2;
-        wait(200,msec);
       }
     } else if (b==2) {
       if (gamers.ButtonR2.pressing()) {
         intake.stop(coast);
         b = 0;
-        wait(200,msec);
       } else if (gamers.ButtonR1.pressing()) {
         intake.spin(rev,100,pct);
         b = 1;
-        wait(200,msec);
       }
     }
     printake = now;
@@ -251,15 +245,24 @@ void dtcode(double x) {
     R.spin(fwd,100,pct);
   }
   else {
-   double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
-    double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
-    L.spin(fwd,leftspeed*x,pct);
-    R.spin(fwd,rightspeed*x,pct);
+    if (abs(gamers.Axis3.position(pct) - gamers.Axis2.position(pct)) <= 13) {
+      double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
+      double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
+      L.spin(fwd,leftspeed*x,pct);
+      R.spin(fwd,rightspeed*x,pct);
+    } else {
+      double leftspeed = gamers.Axis3.position()/2;
+      double rightspeed = gamers.Axis2.position()/2;
+      L.spin(fwd,leftspeed*x,pct);
+      R.spin(fwd,rightspeed*x,pct);
+    }
   }
 }
 
 // drivetrain code arcade drive
 void dcode(double x, double y) {
+  double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
+  double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
   if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
     L.spin(fwd,100,pct);
     R.spin(fwd,100,pct);
@@ -272,8 +275,6 @@ void dcode(double x, double y) {
     R.spin(fwd,100,pct);
   }  
   else {
-    double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
-    double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
     L.spin(fwd,leftspeed,pct);
     R.spin(fwd,rightspeed,pct);
   }
@@ -321,6 +322,7 @@ void batmobile() {
   } else {
     L.spin(fwd,vel + gamers.Axis4.position()/4,pct);
     R.spin(rev,vel - gamers.Axis4.position()/4,pct);
+    gamers.rumble(rumbleLong);
   }
 
 }

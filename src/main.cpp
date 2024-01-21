@@ -102,22 +102,26 @@ void autonomous(void) {
 
 bool a = 0; // auton selector boolean
 double sen = 1; // sensitivity
-bool poopy = 1;
+bool poopy = 1; // drive selection
+bool morepoopy = 1; // calibration
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              User Control Task                            */
 /*                                                                           */
 /*  This task is used to control your robot during the user control phase of */
-/*  a VEX Competition.                                             \          */
+/*  a VEX Competition.                                                       */
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 void usercontrol(void) {
   // User control code here, inside the loop
-  inert.calibrate();
-  waitUntil(!inert.isCalibrating());
-  gamers.rumble(rumbleLong);
+  if (morepoopy) {
+    inert.calibrate();
+    waitUntil(!inert.isCalibrating());
+    morepoopy = 0;
+    gamers.rumble(rumbleLong);
+  }
   while (!a) {
     if(poopy) {
       autonslctr();
