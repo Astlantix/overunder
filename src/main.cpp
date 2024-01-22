@@ -198,8 +198,8 @@ void usercontrol(void) {
     gamers.ButtonX.released(notpunching);
 
     // other stuff
-    tempcheck();
     intaking();
+    thread checktemp = thread(tempcheck);
     // ........................................................................
     wait(10,msec);  // Sleep the task for a short amount of time to
                     // prevent wasted resources.

@@ -375,23 +375,26 @@ void modechange() {
 }
 
 // printing intake and drivetrain temperature
-void tempcheck() {
-  gamers.Screen.clearScreen();
-  gamers.Screen.setCursor(1,1);
-  gamers.Screen.print(modes);
-  gamers.Screen.setCursor(2,1);
-  gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius) + ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
-  gamers.Screen.setCursor(3,1);
-  gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius))/2);
-  gamers.Screen.setCursor(3,6);
-  gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
+int tempcheck() {
   
   if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
-    gamers.rumble("...");
+    printing("super hot");
   }
   else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
-    gamers.rumble("---");
+    printing("hot");
+  } else {
+    gamers.Screen.clearScreen();
+    gamers.Screen.setCursor(1,1);
+    gamers.Screen.print(modes);
+    gamers.Screen.setCursor(2,1);
+    gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius) + ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
+    gamers.Screen.setCursor(3,1);
+    gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius))/2);
+    gamers.Screen.setCursor(3,6);
+    gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
   }
+  return 0;
+  this_thread::sleep_for(25);
 }
 // ........................................................................
 

@@ -47,7 +47,7 @@ void dcode(double x, double y);
 void batmobile();
 void autonslctr();
 void modechange();
-void tempcheck();
+int tempcheck();
 void punching();
 void notpunching();
 

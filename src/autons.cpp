@@ -153,9 +153,31 @@ void auton4 () {
 
 // skills
 void auton5() {
+  timer t;
+  t.clear();
   punching();
-  //Right(25);
-  //For(20);
+  waitUntil(t.time() >= 40);
+  notpunching();
+  Right(25);
+  Rev(20);
+  Left(90);
+  Rev(10);
+  wait(100,msec);
+  For(5);
+  Right(90);
+  For(100);
+  Right(90);
+  For(7.5);
+  Left(90);
+  wingactiona();
+  Rev(7.5);
+  wait(100,msec);
+  For(7.5);
+  Left(90);
+  For(10);
+  Right(90);
+  setv(40);
+  For(5);
 }
 
 // drivetrain test
