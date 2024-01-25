@@ -14,7 +14,6 @@
 
 extern int b;
 extern bool catamode;
-extern bool modes;
 extern int auton;
 extern int numofautons;
 extern bool flying;
@@ -42,12 +41,12 @@ void setcoast();
 void sethold();
 void printing(std::string text);
 void printer(double x);
-void dtcode(double x);
-void dcode(double x, double y);
+int dtcode();
+int dcode();
 void batmobile();
 void autonslctr();
 void modechange();
-int tempcheck();
+void tempcheck();
 void punching();
 void notpunching();
 

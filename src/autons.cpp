@@ -1,7 +1,6 @@
 #include "vex.h"
 #include "autons.hpp"
 #include "functions.hpp"
-#include "pid.hpp"
 using namespace vex;
 using namespace std;
 
@@ -16,51 +15,11 @@ using namespace std;
 
 // Right Side AWP 4 triballs
 void auton1() {
-  /*setv(50);
-  For(29);
-  fly.open();
-  wait(10,msec);
-  Right(90);
-  msp(intake,1,90);
-  wait(500,msec);
-  msc(intake);
-  For(5.5);
-  wait(500,msec);
-  Rev(5.5);
-  setv(45);
-  fly.close();
-  Right(135);
-  msp(intake);
-  For(12.75);
-  wait(750,msec);
-  msc(intake);
-  Rev(5);
-  Right(180);
-  msp(intake,1,90);
-  wait(200,msec);
-  For(16);
-  wait(500,msec);
-  Rev(5);
-  Left(155);
-  msp(intake);
-  For(14);
-  wait(500,msec);
-  msc(intake);
-  Rev(5);
-  Right(180);
-  msp(intake,1,90);
-  For(16);
-  wait(500,msec);
-  Rev(5);
-  msc(intake);*/
-  setv(40);
+  /*setv(40);
   For(27);
   Right(90);
   msp(intake,1,90);
   wait(100,msec);
-  For(5);
-  wait(250,msec);
-  Rev(5);
   Right(145);
   msp(intake);
   For(11.25);
@@ -87,24 +46,54 @@ void auton1() {
   Rev(5);
   wait(100,msec);
   For(5);
+  wait(100,msec);
+  Rev(5);
+  Right(135);
+  For(24);*/
+  msp(intake,1);
+  wait(200,msec);
+  Left(135);
+  msp(intake);
+  For(20);
+  wait(350,msec);
+  Rev(25);
+  Right(135);
+  msp(intake,1);
+  wait(100,msec);
+  For(12);
+  wings.open();
+  Left(90);
+  wings.close();
+  Right(45);
+  msc(intake);
+  wait(100,msec);
+  For(8.2);
+  wait(100,msec);
+  Rev(8.2);
+  Left(73);
+  msp(intake);
+  For(29);
+  wait(100,msec);
+  Right(85);
+  msp(intake,1);
+  wait(100,msec);
+  msp(intake);
+  Left(40);
+  For(10);
+  wait(100,msec);
+  msc(intake);
+  Left(90);
+  wingactiona();
+  Rev(17);
+  For(5);
+  wingactionb();
+  Right(180);
+  msp(intake,1,90);
+  For(5);
 }
 
 // Left Side AWP
 void auton2() {
-  /*Right(37);
-  wait(10,msec);
-  Rev(13.5);
-  wait(10,msec);
-  setv(40);
-  For(15.625);
-  wait(10,msec);
-  Left(40); 
-  wings.open();
-  Left(45);
-  wings.close();
-  msp(intake,1);
-  For(20);
-  msc(intake);*/
   fly.open();
   wait(300,msec);
   Left(45);

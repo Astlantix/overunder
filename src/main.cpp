@@ -31,7 +31,6 @@
 #include "vex.h"
 #include "autons.hpp"
 #include "functions.hpp"
-#include "pid.hpp"
 using namespace vex;
 using namespace std;
 
@@ -66,7 +65,6 @@ void pre_auton(void) {
   // Example: clearing encoders, setting servo positions, ...
 }
 
-int drivemode = 0; // 0 = tank, 1 = arcade, 2 = aaron is driving the batmobile
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -101,8 +99,6 @@ void autonomous(void) {
 }
 
 bool a = 0; // auton selector boolean
-double sen = 1; // sensitivity
-bool poopy = 1; // drive selection
 bool morepoopy = 1; // calibration
 
 /*---------------------------------------------------------------------------*/
@@ -115,6 +111,7 @@ bool morepoopy = 1; // calibration
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 void usercontrol(void) {
+  //thread arcade = thread(dcode);
   // User control code here, inside the loop
   if (morepoopy) {
     inert.calibrate();
@@ -123,29 +120,8 @@ void usercontrol(void) {
     gamers.rumble(rumbleLong);
   }
   while (!a) {
-    if(poopy) {
       autonslctr();
-      if (gamers.ButtonA.pressing()) poopy = 0;
-    }
-    else {
-      if (gamers.ButtonA.pressing()) {
-        drivemode = 0; 
-        printing("tank");
-      } 
-      if (gamers.ButtonY.pressing()) {
-        drivemode = 1;
-        printing("arcade");
-      }
-      if (gamers.ButtonX.pressing()) {
-        drivemode = 2;
-        printing("IM VENGEANCE");
-      } 
-      if (gamers.ButtonDown.pressing()) cin >> drivemode;
-    }
-    if (gamers.ButtonB.pressing()) {
-      a = 1;
-      modes = 1;
-    }
+    if (gamers.ButtonB.pressing()) a = 1;   
   }
   while (a) {
     // This is the main execution loop for the user control program.
@@ -154,32 +130,7 @@ void usercontrol(void) {
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
-    
-    // (turn,fwdrev)
-    if(gamers.ButtonL1.pressing()) {
-      sen = 0.35;
-    } else if (gamers.ButtonL2.pressing()) {
-      sen = 0.7;
-    } else {
-      sen = 1;
-    }
 
-    if (drivemode == 0) {
-      if(modes) {
-        dtcode(sen);
-      } else {
-        dtcode(-sen);
-      }
-    } else if (drivemode == 1) {
-      if (modes) {
-        dcode(0.2*sen, 1*sen);
-
-      } else {
-        dcode(0.2*sen,-1*sen);
-      }
-    } else if (drivemode == 2) {
-      batmobile();
-    }
     // wings
     gamers.ButtonY.pressed(wingaction);
     gamers.ButtonY.released(flap);
@@ -188,9 +139,6 @@ void usercontrol(void) {
     gamers.ButtonUp.pressed(up);
     gamers.ButtonDown.pressed(down);
 
-    // change modes
-    if (drivemode != 2) if (gamers.ButtonB.pressing()) modes = !modes;
-
     modechange();
 
     // new matchloading
@@ -198,8 +146,7 @@ void usercontrol(void) {
     gamers.ButtonX.released(notpunching);
 
     // other stuff
-    intaking();
-    thread checktemp = thread(tempcheck);
+    tempcheck();
     // ........................................................................
     wait(10,msec);  // Sleep the task for a short amount of time to
                     // prevent wasted resources.
@@ -212,11 +159,12 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
   
-  
+  thread arcade = thread(dcode);
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
+    if(!Competition.isDriverControl()) arcade.interrupt();
     wait(10,msec);
   }
 }

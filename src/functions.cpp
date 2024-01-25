@@ -16,7 +16,6 @@ using namespace std;
 
 int b = 0; // intaking thingy
 bool catamode = 0; // catapult spin or coast
-bool modes = 1; // reverse or forward
 
 // general stuff
 // ........................................................................
@@ -232,52 +231,57 @@ void printer(double x) {
 }
 
 // drivetrain code tank drive
-void dtcode(double x) {
-  if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
-    L.spin(fwd,100,pct);
-    R.spin(fwd,100,pct);
-  }
-  else if(gamers.ButtonL1.pressing()) {
-    L.spin(fwd,100,pct);
-    R.spin(fwd,0,pct);
-  } else if (gamers.ButtonL2.pressing()) {
-    L.spin(fwd,0,pct);
-    R.spin(fwd,100,pct);
-  }
-  else {
-    if (abs(gamers.Axis3.position(pct) - gamers.Axis2.position(pct)) <= 13) {
-      double leftspeed = gamers.Axis3.position(); // speed of left side controlled by left joystick
-      double rightspeed = gamers.Axis2.position(); // speed of right side controlled by right joystick
-      L.spin(fwd,leftspeed*x,pct);
-      R.spin(fwd,rightspeed*x,pct);
-    } else {
-      double leftspeed = gamers.Axis3.position()*0.75;
-      double rightspeed = gamers.Axis2.position()*0.75;
-      L.spin(fwd,leftspeed*x,pct);
-      R.spin(fwd,rightspeed*x,pct);
+int dtcode() {
+  while (1) {
+    if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
+      L.spin(fwd,100,pct);
+      R.spin(fwd,100,pct);
     }
+    else if(gamers.ButtonL1.pressing()) {
+      L.spin(fwd,100,pct);
+      R.spin(fwd,0,pct);
+    } else if (gamers.ButtonL2.pressing()) {
+      L.spin(fwd,0,pct);
+      R.spin(fwd,100,pct);
+    }
+    else {
+      double leftspeed = gamers.Axis3.position()*abs(gamers.Axis3.position())/100;
+      double rightspeed = gamers.Axis2.position()*abs(gamers.Axis2.position())/100;
+      L.spin(fwd,leftspeed,pct);
+      R.spin(fwd,rightspeed,pct);
+    }
+    intaking();
+    wait(10,msec);
   }
+  this_thread::sleep_for(10);
+  return 0;
 }
 
 // drivetrain code arcade drive
-void dcode(double x, double y) {
-  double leftspeed = (gamers.Axis3.value()*y) + (gamers.Axis4.value()*x);
-  double rightspeed = (gamers.Axis3.value()*y) - (gamers.Axis4.value()*x);
-  if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
-    L.spin(fwd,100,pct);
-    R.spin(fwd,100,pct);
+int dcode() {
+  while (1) {
+    double leftspeed = (gamers.Axis3.position() + gamers.Axis4.position())*(abs(gamers.Axis3.position() + gamers.Axis4.position()))/100;
+    double rightspeed = (gamers.Axis3.position() - gamers.Axis4.position())*(abs(gamers.Axis3.position() - gamers.Axis4.position()))/100;
+    if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
+      L.spin(fwd,100,pct);
+      R.spin(fwd,100,pct);
+    }
+    else if(gamers.ButtonL1.pressing()) {
+      L.spin(fwd,100,pct);
+      R.spin(fwd,0,pct);
+    } else if (gamers.ButtonL2.pressing()) {
+      L.spin(fwd,0,pct);
+      R.spin(fwd,100,pct);
+    }  
+    else {
+      L.spin(fwd,leftspeed,pct);
+      R.spin(fwd,rightspeed,pct);
+    }
+    intaking();
+    wait(10,msec);
   }
-  else if(gamers.ButtonL1.pressing()) {
-    L.spin(fwd,100,pct);
-    R.spin(fwd,0,pct);
-  } else if (gamers.ButtonL2.pressing()) {
-    L.spin(fwd,0,pct);
-    R.spin(fwd,100,pct);
-  }  
-  else {
-    L.spin(fwd,leftspeed,pct);
-    R.spin(fwd,rightspeed,pct);
-  }
+  this_thread::sleep_for(10);
+  return 0;
 }
 
 // aaron goofy drive
@@ -375,7 +379,7 @@ void modechange() {
 }
 
 // printing intake and drivetrain temperature
-int tempcheck() {
+void tempcheck() {
   
   if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
     printing("super hot");
@@ -385,7 +389,7 @@ int tempcheck() {
   } else {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
-    gamers.Screen.print(modes);
+    gamers.Screen.print(cata.temperature(celsius));
     gamers.Screen.setCursor(2,1);
     gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius) + ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
     gamers.Screen.setCursor(3,1);
@@ -393,8 +397,6 @@ int tempcheck() {
     gamers.Screen.setCursor(3,6);
     gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
   }
-  return 0;
-  this_thread::sleep_for(25);
 }
 // ........................................................................
 
