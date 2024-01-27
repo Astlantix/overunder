@@ -34,6 +34,9 @@
 using namespace vex;
 using namespace std;
 
+// A global instance of competition
+competition Competition;
+
 /*   __   ______     __    ________    __   ____      
  /'_ `\/\  ___\  /'__`\ /\_____  \ /'__`\/\  _`\    
 /\ \L\ \ \ \__/ /\ \/\ \\/___//'/'/\ \/\ \ \ \L\ \  
@@ -42,9 +45,6 @@ using namespace std;
       \ \_\ \____/\ \____/\_/       \ \____/\ \____/
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
 */
-
-// A global instance of competition
-competition Competition;
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -78,7 +78,6 @@ void pre_auton(void) {
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
-  
   timer t; // timing auton for practice
   t.clear();
   if (auton == 1) {
@@ -99,7 +98,11 @@ void autonomous(void) {
 }
 
 bool a = 0; // auton selector boolean
+bool poopy = 1; // driving selection
 bool morepoopy = 1; // calibration
+int drivemode = 0; // driving mode
+
+
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -111,7 +114,7 @@ bool morepoopy = 1; // calibration
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 void usercontrol(void) {
-  //thread arcade = thread(dcode);
+  thread arcade = thread(dcode);
   // User control code here, inside the loop
   if (morepoopy) {
     inert.calibrate();
@@ -120,8 +123,26 @@ void usercontrol(void) {
     gamers.rumble(rumbleLong);
   }
   while (!a) {
+    if (poopy) {
       autonslctr();
-    if (gamers.ButtonB.pressing()) a = 1;   
+    } else {
+      if (gamers.ButtonA.pressing()) {
+        drivemode = 0; 
+        printing("arcade");
+      } 
+      if (gamers.ButtonY.pressing()) {
+        drivemode = 1;
+        printing("tank");
+      }
+      if (gamers.ButtonX.pressing()) {
+        drivemode = 2;
+        printing("IM VENGEANCE");
+      } 
+      if (gamers.ButtonDown.pressing()) cin >> drivemode;
+    }
+    if (gamers.ButtonB.pressing()) {
+      a = 1;
+    }
   }
   while (a) {
     // This is the main execution loop for the user control program.
@@ -130,6 +151,15 @@ void usercontrol(void) {
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
+    
+    // arcade
+    if (drivemode == 0) {
+      dcode();
+    } else if (drivemode == 1) {
+      dtcode();
+    } else if (drivemode == 2) {
+      batmobile();
+    }
 
     // wings
     gamers.ButtonY.pressed(wingaction);
@@ -139,21 +169,10 @@ void usercontrol(void) {
     gamers.ButtonUp.pressed(up);
     gamers.ButtonDown.pressed(down);
 
-    modechange();
-
     // new matchloading
     gamers.ButtonX.pressed(punching);
     gamers.ButtonX.released(notpunching);
-    if(gamers.ButtonB.pressing()) {
-      if (D.pressing()) {
-        msc(cata);
-      } else {
-        msp(cata,0,40);
-      } 
-    }
 
-    // other stuff
-    tempcheck();
     // ........................................................................
     wait(10,msec);  // Sleep the task for a short amount of time to
                     // prevent wasted resources.
@@ -161,25 +180,14 @@ void usercontrol(void) {
 }
 
 // Main will set up the competition functions and callbacks.
-bool enable = 0;
 int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  
-  thread arcade = thread(dcode);
   // Run the pre-autonomous function.
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
-    if(!Competition.isEnabled()) {
-      arcade.interrupt();
-      enable = 1;
-    }
-    if (Competition.isEnabled() && enable) {
-      arcade = thread(dcode);
-      enable = 0;
-    }
     wait(10,msec);
   }
 }

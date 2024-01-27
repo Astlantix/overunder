@@ -14,6 +14,7 @@ using namespace std;
        \/_/\/___/  \/___/\//         \/___/  \/___/ 
 */
 
+
 int b = 0; // intaking thingy
 
 // general stuff
@@ -264,15 +265,13 @@ int dcode() {
     if(gamers.ButtonL1.pressing() && gamers.ButtonL2.pressing()) {
       L.spin(fwd,100,pct);
       R.spin(fwd,100,pct);
-    }
-    else if(gamers.ButtonL1.pressing()) {
+    } else if(gamers.ButtonL1.pressing()) {
       L.spin(fwd,100,pct);
       R.spin(fwd,0,pct);
     } else if (gamers.ButtonL2.pressing()) {
       L.spin(fwd,0,pct);
       R.spin(fwd,100,pct);
-    }  
-    else {
+    } else {
       L.spin(fwd,leftspeed,pct);
       R.spin(fwd,rightspeed,pct);
     }
@@ -377,26 +376,6 @@ void modechange() {
   }
 }
 
-// printing intake and drivetrain temperature
-void tempcheck() {
-  timer t;
-  if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
-    printing("super hot");
-  } else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
-    printing("hot");
-  } else if (t.time() > 1000) {
-    gamers.Screen.clearScreen();
-    gamers.Screen.setCursor(1,1);
-    gamers.Screen.print(cata.temperature(celsius));
-    gamers.Screen.setCursor(2,1);
-    gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius) + ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/6);
-    gamers.Screen.setCursor(3,1);
-    gamers.Screen.print((fl.temperature(celsius) + fr.temperature(celsius))/2);
-    gamers.Screen.setCursor(3,6);
-    gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
-  }
-  t.clear();
-}
 // ........................................................................
 steady_clock::time_point fist; // time last punch
 bool flying = 1; // flywheel on or off
