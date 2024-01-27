@@ -144,6 +144,13 @@ void usercontrol(void) {
     // new matchloading
     gamers.ButtonX.pressed(punching);
     gamers.ButtonX.released(notpunching);
+    if(gamers.ButtonB.pressing()) {
+      if (D.pressing()) {
+        msc(cata);
+      } else {
+        msp(cata,0,40);
+      } 
+    }
 
     // other stuff
     tempcheck();
@@ -154,6 +161,7 @@ void usercontrol(void) {
 }
 
 // Main will set up the competition functions and callbacks.
+bool enable = 0;
 int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
@@ -164,7 +172,14 @@ int main() {
   pre_auton();
   // Prevent main from exiting with an infinite loop.
   while (1) {
-    if(!Competition.isDriverControl()) arcade.interrupt();
+    if(!Competition.isEnabled()) {
+      arcade.interrupt();
+      enable = 1;
+    }
+    if (Competition.isEnabled() && enable) {
+      arcade = thread(dcode);
+      enable = 0;
+    }
     wait(10,msec);
   }
 }

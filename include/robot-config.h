@@ -29,6 +29,7 @@ extern pneumatics fly;
 extern motor cata;
 extern motor intake;
 extern motor flywheel;
+extern limit D;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

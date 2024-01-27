@@ -13,7 +13,6 @@
 // Declare your variables
 
 extern int b;
-extern bool catamode;
 extern int auton;
 extern int numofautons;
 extern bool flying;

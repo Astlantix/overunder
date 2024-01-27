@@ -15,7 +15,6 @@ using namespace std;
 */
 
 int b = 0; // intaking thingy
-bool catamode = 0; // catapult spin or coast
 
 // general stuff
 // ........................................................................
@@ -161,8 +160,8 @@ void Left(double angle, double adjust) {
   inert.setRotation(0,deg);
   while (fabs(inert.rotation(degrees)) < angle) {
     double error = angle - fabs(inert.rotation(degrees));
-    L.spin(rev,5 + adjust*error,pct);
-    R.spin(fwd,5 + adjust*error,pct);
+    L.spin(rev,20 + adjust*error,pct);
+    R.spin(fwd,20 + adjust*error,pct);
     wait(20,msec);
   }
   L.stop(brake);
@@ -174,8 +173,8 @@ void Right(double angle, double adjust) {
   inert.setRotation(0,deg);
   while (fabs(inert.rotation(degrees)) < angle) {
     double error = angle - fabs(inert.rotation(degrees));
-    L.spin(fwd,5 + adjust*error,pct);
-    R.spin(rev,5 + adjust*error,pct);
+    L.spin(fwd,20 + adjust*error,pct);
+    R.spin(rev,20 + adjust*error,pct);
     wait(20,msec);
   }
   L.stop(brake);
@@ -380,13 +379,12 @@ void modechange() {
 
 // printing intake and drivetrain temperature
 void tempcheck() {
-  
+  timer t;
   if (ml.temperature(celsius) > 55 || mr.temperature(celsius) > 55 || fl.temperature(celsius) > 55 || fr.temperature(celsius) > 55 || bl.temperature(celsius) > 55 || br.temperature(celsius) > 55 || cata.temperature(celsius) > 55 || flywheel.temperature(celsius) > 55) {
     printing("super hot");
-  }
-  else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
+  } else if (ml.temperature(celsius) > 50 || mr.temperature(celsius) > 50 || fl.temperature(celsius) > 50 || fr.temperature(celsius) > 50 || bl.temperature(celsius) > 50 || br.temperature(celsius) > 50 || cata.temperature(celsius) > 50 || flywheel.temperature(celsius) > 50) {
     printing("hot");
-  } else {
+  } else if (t.time() > 1000) {
     gamers.Screen.clearScreen();
     gamers.Screen.setCursor(1,1);
     gamers.Screen.print(cata.temperature(celsius));
@@ -397,10 +395,10 @@ void tempcheck() {
     gamers.Screen.setCursor(3,6);
     gamers.Screen.print((ml.temperature(celsius) + mr.temperature(celsius) + br.temperature(celsius) + bl.temperature(celsius))/4);
   }
+  t.clear();
 }
 // ........................................................................
-
-steady_clock::time_point fist;
+steady_clock::time_point fist; // time last punch
 bool flying = 1; // flywheel on or off
 // puncher and flywheel
 void punching() {

@@ -38,6 +38,7 @@ pneumatics fly = pneumatics(Brain.ThreeWirePort.H); // right wing
 motor cata = motor(PORT2, ratio36_1, 1); // catapult
 motor intake = motor(PORT12, ratio6_1, 1); // very cool intake
 motor flywheel = motor(PORT13, ratio6_1, 1); // flywheel
+limit D = limit(Brain.ThreeWirePort.E); // limit switch
 
 // VEXcode generated functions
 
